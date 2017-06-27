@@ -1,5 +1,5 @@
 import React from 'react';
-import {Expense} from './Expense.jsx';
+import {ExpensesListItem} from './ExpensesListItem.jsx';
 
 export class Expenses extends React.Component {
 

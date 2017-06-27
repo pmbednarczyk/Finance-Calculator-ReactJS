@@ -1,9 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
 
-export class Expense extends React.Component {
+const ExpenseContainer = styled.div`
+      max-width: 600px;
+      width: 100%;
+      background: #ccc;
+      margin: 0 auto;
+`;
+
+
+
+export class ExpensesListItem extends React.Component {
     render() {
         return (
-            <form>
+            <ExpenseContainer>
                 Nazwa wydatku: <br/>
                 <input type="text"/><br/><br/>
                 Wartość wydatku: <br/>
@@ -11,12 +21,12 @@ export class Expense extends React.Component {
                 Częstotliwość wydatku: <br/>
                 <input type="text" /><br/><br/>
                 <span>na</span>
-                <select >
+                <select>
                     <option>Tydzień</option>
                     <option>Miesiąc</option>
                     <option>Rok</option>
                 </select><br/><br/>
-            </form>
+            </ExpenseContainer>
         )
     }
 }
