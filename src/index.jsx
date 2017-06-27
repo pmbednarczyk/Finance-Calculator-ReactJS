@@ -1,9 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Header} from "./components/Header.jsx";
-import {Expense} from './components/Expense.jsx';
+import {Expenses} from './components/Expenses.jsx';
 import {Chart} from './components/Chart.jsx';
 import {About} from './components/About.jsx';
+import styled from 'styled-components';
+
+const Container = styled.div`
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+`;
 
 document.addEventListener('DOMContentLoaded', () => {
     class App extends React.Component {
@@ -14,13 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         render() {
             return (
-                <section>
-                    <h1>Finance App</h1>
+                <div>
                     <Header/>
-                    <Expense/>
-                    <Chart/>
+                    <Container>
+                        <Expenses/>
+                        <Chart/>
+                    </Container>
                     <About/>
-                </section>
+                </div>
             )
         }
     }
