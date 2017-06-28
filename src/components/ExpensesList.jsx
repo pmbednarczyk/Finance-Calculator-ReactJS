@@ -5,15 +5,16 @@ export class ExpensesList extends React.Component {
     getExpenses = () => {
         const expense = this.props.expenses.map((expense, i) => {
             return <ExpensesListItem
-                key={expense.name + i}
+                key={i}
                 name={expense.name}
                 value={expense.value}
                 frequency={expense.frequency}
                 period={expense.period}
-                onNameChange={e => this.props.onNameChange(expense, i)}
-                onValueChange={e => this.props.onValueChange(expense, i)}
-                onFrequencyChange={e => this.props.onFrequencyChange(expense, i)}
-                onPeriodChange={e => this.props.onPeriodChange(expense, i)}
+                onNameChange={event => this.props.onNameChange(event, expense, i)}
+                onValueChange={event => this.props.onValueChange(event, expense, i)}
+                onFrequencyChange={event => this.props.onFrequencyChange(event, expense, i)}
+                onPeriodChange={event => this.props.onPeriodChange(event, expense, i)}
+                onRemoveClick={event => this.props.onPeriodChange(event, expense, i)}
             />;
         });
         return expense;
@@ -25,17 +26,6 @@ export class ExpensesList extends React.Component {
         <div>
             <h2>Add your expenses:</h2>
             {this.getExpenses()}
-            {/*<ExpensesListItem*/}
-                {/*key={this.props.expenses.name}*/}
-                {/*name={this.props.expenses.name}*/}
-                {/*value={this.props.expenses.value}*/}
-                {/*frequency={this.props.expenses.frequency}*/}
-                {/*period={this.props.expenses.period}*/}
-                {/*onNameChange={this.props.onNameChange}*/}
-                {/*onValueChange={this.props.onValueChange}*/}
-                {/*onFrequencyChange={this.props.onFrequencyChange}*/}
-                {/*onPeriodChange={this.props.onPeriodChange}*/}
-            {/*/>*/}
             <button onClick={this.props.addNewExpense}>Add another expense</button>
             <button onClick={this.props.expensesCount}>Count your expenses</button>
         </div>

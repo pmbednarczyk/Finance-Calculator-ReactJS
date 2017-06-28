@@ -5,74 +5,47 @@ const ExpenseContainer = styled.div`
       max-width: 600px;
       width: 100%;
       background: #ccc;
-      margin: 0 auto;
+      margin: 10px auto;
+      box-sizing: border-box;
+      padding: 1%;
 `;
 
 
 export class ExpensesListItem extends React.Component {
-    constructor() {
-        super(...arguments);
-        // this.state = {
-        //     name: '',
-        //     value: 0,
-        //     frequency: 0,
-        //     periodVal: 0,
-        //     validationText: '',
-        //     validation: null,
-        // }
+    componentDidMount(){
+        console.log("ExpensesListItem");
     }
-    // handleNameValChange = event => {
-    //     this.setState({
-    //         name: event.target.value,
-    //     });
-    // };
-    // handleValueValChange = event => {
-    //     this.setState({
-    //         value: event.target.value,
-    //     });
-    // };
-    // handleFrequencyValChange = event => {
-    //     this.setState({
-    //         frequency: event.target.value,
-    //     });
-    // };
-    // handlePeriodValChange = event => {
-    //     this.setState({
-    //         period: event.target.value,
-    //     });
-    // };
-
     render() {
         return (
             <ExpenseContainer>
-                Nazwa wydatku: <br/>
+                Expense name: <br/>
                 <input type="text"
-                       /*onChange={this.handleNameValChange}*/
                        onChange={this.props.onNameChange}
                        value={this.props.name}
+                       placeholder="Ex: Beer, Snacks, Cigarettes..."
                 /><br/><br/>
-                Wartość wydatku: <br/>
+                Expense value: <br/>
                 <input type="number"
-                       /*onChange={this.handleValueValChange}*/
                        onChange={this.props.onValueChange}
                        value={this.props.value}
+                       placeholder="Ex: 9,99"
                 /><br/><br/>
-                Częstotliwość wydatku: <br/>
+                Expense frequency: <br/>
                 <input type="number"
-                       /*onChange={this.handleFrequencyValChange}*/
                        onChange={this.props.onFrequencyChange}
                        value={this.props.frequency}
-                /><br/><br/>
-                <span>na</span>
+                       placeholder="Ex: 4"
+                />
+                <span>per</span>
                 <select
-                    /*onChange={this.handlePeriodValChange}*/
                     onChange={this.props.onPeriodChange}
                     value={this.props.period}
                 >
-                    <option>Tydzień</option>
-                    <option>Miesiąc</option>
-                    <option>Rok</option>
+                    <option>Week</option>
+                    <option>Month</option>
+                    <option>Year</option>
                 </select><br/><br/>
+                <button onClick={this.props.expensesCount}>Remove</button>
             </ExpenseContainer>
         )
     }
