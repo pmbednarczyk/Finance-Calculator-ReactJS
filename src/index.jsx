@@ -9,6 +9,7 @@ const Container = styled.div`
       width: 100%;
       max-width: 1000px;
       margin: 0 auto;
+      min-height: 100vh;
 `;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -21,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         name: '',
                         value: '',
                         frequency: 1,
-                        period: 'Week',
+                        period: 'per week',
                         validationText: '',
                         validation: '',
                     },
@@ -64,6 +65,19 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         };
 
+        handleExpenseRemove = (expense, i) => {
+            if(this.state.expenses.length > 1) {
+                const expensesCopy = this.state.expenses.slice();
+                expensesCopy.splice(i, 1);
+                this.setState({
+                    expenses: expensesCopy
+                });
+            }
+
+        };
+
+
+
         //Dodawanie kolejnycych wydatków
         handleAddNewExpense = event => {
             const expensesCopy = this.state.expenses.slice();
@@ -71,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: '',
                 value: '',
                 frequency: 1,
-                period: 'Week',
+                period: 'per week',
                 validationText: '',
                 validation: '',
             };
@@ -87,17 +101,24 @@ document.addEventListener('DOMContentLoaded', () => {
             this.getChartData();
         };
 
+        handleDecreaseYears = () => {
+            this.setState({
+                userYears: this.state.userYears - 1,
+            });
+            this.getChartData();
+        };
 
-        handleIncreaseYears = event => {
+        handleIncreaseYears = () => {
             this.setState({
                 userYears: this.state.userYears + 1,
             });
+            this.getChartData();
         };
 
 
 
+
         getChartData() {
-            const expensesPerYear = 0;
             const userYears = this.state.userYears;
 
             const expensesCopy = this.state.expenses.slice();
@@ -106,13 +127,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             const expensesValues = expensesCopy.map((expense, i) => {
 
-                if (expense.period === "Week") {
+                if (expense.period === "per week") {
                     // 365.2422 / 7 = 52.2
                     return (52.2 * expense.frequency * expense.value * userYears).toFixed(2)
-                } else if (expense.period === "Month" ) {
+                } else if (expense.period === "per month" ) {
                     // 365.2422 / 30.43685 = 12
                     return (12 * expense.frequency * expense.value * userYears).toFixed(2)
-                } else if (expense.period === "Year") {
+                } else if (expense.period === "per year") {
                     return (expense.frequency * expense.value * userYears).toFixed(2)
                 }
                 // return (expense.value * expense.frequency)
@@ -154,11 +175,13 @@ document.addEventListener('DOMContentLoaded', () => {
                                       onPeriodChange={this.handlePeriodValChange}
                                       addNewExpense={this.handleAddNewExpense}
                                       expensesCount={this.handleExpensesCount}
+                                      onRemoveClick={this.handleExpenseRemove}
                                       expenses={this.state.expenses}
                         />
                         <Chart chartData={this.state.chartData}
                                expenses={this.state.expenses}
                                onUserYearsIncrease={this.handleIncreaseYears}
+                               onUserYearsDecrease={this.handleDecreaseYears}
                                userYears={this.state.userYears}
                                showChart={this.state.showChart}/>
                     </Container>
