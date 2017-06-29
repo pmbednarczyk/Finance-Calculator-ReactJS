@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Contact} from "./components/Contact.jsx";
+import {Menu} from "./components/Menu.jsx";
 import {Header} from "./components/Header.jsx";
 import {ExpensesList} from './components/ExpensesList.jsx';
 import {Chart} from './components/Chart.jsx';
 import styled from 'styled-components';
+import {Router, Route, Link, IndexLink, IndexRoute, hashHistory} from 'react-router';
 
 const Container = styled.div`
       width: 100%;
@@ -13,7 +16,7 @@ const Container = styled.div`
 `;
 
 document.addEventListener('DOMContentLoaded', () => {
-    class App extends React.Component {
+    class Main extends React.Component {
         constructor() {
             super(...arguments);
             this.state = {
@@ -66,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         handleExpenseRemove = (expense, i) => {
-            if(this.state.expenses.length > 1) {
+            if (this.state.expenses.length > 1) {
                 const expensesCopy = this.state.expenses.slice();
                 expensesCopy.splice(i, 1);
                 this.setState({
@@ -75,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
         };
-
 
 
         //Dodawanie kolejnycych wydatków
@@ -116,8 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
 
-
-
         getChartData() {
             const userYears = this.state.userYears;
 
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (expense.period === "per week") {
                     // 365.2422 / 7 = 52.2
                     return (52.2 * expense.frequency * expense.value * userYears).toFixed(2)
-                } else if (expense.period === "per month" ) {
+                } else if (expense.period === "per month") {
                     // 365.2422 / 30.43685 = 12
                     return (12 * expense.frequency * expense.value * userYears).toFixed(2)
                 } else if (expense.period === "per year") {
@@ -163,29 +163,48 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        render() {
+            return <div>
+                <Menu/>
+                <Header/>
+                <Container>
+                    <ExpensesList onNameChange={this.handleNameValChange}
+                                  onValueChange={this.handleValueValChange}
+                                  onFrequencyChange={this.handleFrequencyValChange}
+                                  onPeriodChange={this.handlePeriodValChange}
+                                  addNewExpense={this.handleAddNewExpense}
+                                  expensesCount={this.handleExpensesCount}
+                                  onRemoveClick={this.handleExpenseRemove}
+                                  expenses={this.state.expenses}
+
+                    />
+                    <Chart chartData={this.state.chartData}
+                           expenses={this.state.expenses}
+                           onUserYearsIncrease={this.handleIncreaseYears}
+                           onUserYearsDecrease={this.handleDecreaseYears}
+                           userYears={this.state.userYears}
+                           showChart={this.state.showChart}
+                    />
+                </Container>
+            </div>
+        }
+    }
+    class App extends React.Component {
 
         render() {
             return (
-                <div>
-                    <Header/>
-                    <Container>
-                        <ExpensesList onNameChange={this.handleNameValChange}
-                                      onValueChange={this.handleValueValChange}
-                                      onFrequencyChange={this.handleFrequencyValChange}
-                                      onPeriodChange={this.handlePeriodValChange}
-                                      addNewExpense={this.handleAddNewExpense}
-                                      expensesCount={this.handleExpensesCount}
-                                      onRemoveClick={this.handleExpenseRemove}
-                                      expenses={this.state.expenses}
-                        />
-                        <Chart chartData={this.state.chartData}
-                               expenses={this.state.expenses}
-                               onUserYearsIncrease={this.handleIncreaseYears}
-                               onUserYearsDecrease={this.handleDecreaseYears}
-                               userYears={this.state.userYears}
-                               showChart={this.state.showChart}/>
-                    </Container>
-                </div>
+                <Router history={hashHistory}>
+
+                    {/*<IndexRoute component={Main}/>*/}
+                    <Route path="/" component={Main}/>
+                    <Route path="/contact" component={Contact} />
+                    {/*<Route path="*" component={NotFound}/>*/}
+
+
+                    <Route path="/" component={Main}>
+
+                    </Route>
+                </Router>
             )
         }
     }

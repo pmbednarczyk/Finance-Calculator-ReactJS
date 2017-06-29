@@ -17,17 +17,33 @@ const FullContainer = styled.div`
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      
 `;
 
 const MainHeading = styled.h1`
     font-size: 64px;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.7);
     font-weight: 700;
-    font-family: "acumin-pro", 'Roboto', sans-serif;
     letter-spacing: -1.4px;
+    text-align: center;
     @media (max-width: 600px) {
         font-size: 44px;
+    }
+`;
+
+const P = styled.p`
+    color: rgba(255, 255, 255, .85);
+    letter-spacing: -.4px;
+    max-width: 40%;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 22px;
+    font-weight: 300;
+    @media (max-width: 1000px) {
+        max-width: 70%;
+    }
+    
+    @media (max-width: 600px) {
+        max-width: 85%;
     }
 `;
 
@@ -35,9 +51,8 @@ const CTA = styled.a`
     color: rgba(0, 0, 0, 0.58);
     font-size: 30px;
     font-weight: 700;
-    font-family: "acumin-pro", 'Roboto', sans-serif;
     letter-spacing: -1.4px;
-    margin-top: 65px;
+    margin-top: 35px;
     text-decoration: none;
     background: rgba(255, 255, 255, 0.66);
     border-radius: 10px;
@@ -47,19 +62,45 @@ const CTA = styled.a`
         font-size: 24px;
     }
     &:hover {
-    background: rgba(255, 255, 255, 0.86);
+        background: rgba(4, 105, 255, 0.96);
+        color: #111c27;
     }
+
 `;
 
-
+const B = styled.b`
+    font-weight: 900;
+`;
 
 export class Header extends React.Component {
+    constructor() {
+        super(...arguments);
+        this.state = {
+            uselessExpenses: ["Beer", "Hazard", "Snacks"],
+            seconds: 0,
+        }
+    }
+
+    componentDidMount() {
+        console.log(this.state.uselessExpenses.length);
+        this.intervalId = setInterval(() => {
+                this.setState({
+                    seconds: this.state.seconds + 1
+                });
+
+        }, 1000)
+    }
+
+    componentWillUnmount() {
+        clearInterval(interval);
+    }
 
     render() {
         return (
             <FullContainer id="start">
-                <MainHeading>Calculate Your Useless Expenses...</MainHeading>
-                <CTA href="#calcStart">Start</CTA>
+                <MainHeading>Calculate your unnecessary expenses</MainHeading>
+                <P>Have you ever wondered how much money do you spend on <B>{this.state.uselessExpenses[this.state.seconds%3]}</B> during your whole life?</P>
+                <CTA href="#calcStart">Check it out</CTA>
             </FullContainer>
         )
     }

@@ -82,6 +82,7 @@ export class Chart extends React.Component {
                         }
                     }}
                 />
+                {/*<ChartTreasures/>*/}
             </ChartContainer>
         )
     }
