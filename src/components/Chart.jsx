@@ -3,8 +3,9 @@ import {Pie} from 'react-chartjs-2';
 import styled from 'styled-components';
 
 const ChartContainer = styled.div`
-    text-align: center;
+     text-align: center;
      margin: 80px 0;
+     width: 100%;
      h2 {
         font-size: 34px;
         font-weight: 700;
@@ -45,15 +46,12 @@ export class Chart extends React.Component {
         if (this.props.showChart === false || typeof this.props.chartData.datasets === 'undefined') {
             return null;
         }
-        console.log(this.props.chartData.datasets, 'render');
         const expensesCopy = this.props.chartData.datasets[0].data.slice();
         let totalSum = 0;
         expensesCopy.forEach((expense) => {
             totalSum += parseInt(expense);
         });
-
         const currencyFormatter = require('currency-formatter');
-        console.log(currencyFormatter.format(1000000, {locale: 'pl-PL'}));
 
         return (
             <ChartContainer>

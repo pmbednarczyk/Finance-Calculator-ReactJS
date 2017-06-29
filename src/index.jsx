@@ -8,12 +8,27 @@ import {Chart} from './components/Chart.jsx';
 import styled from 'styled-components';
 import {Router, Route, Link, IndexLink, IndexRoute, hashHistory} from 'react-router';
 
+const Wrapper = styled.div`
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    box-sizing: border-box;
+    padding: 0;
+    background: linear-gradient(rgba(255, 255, 255, .3),rgba(255, 255, 255, 0.7)), url(./src/bg-calc.jpg) no-repeat center center;
+    background-attachment: fixed;
+`;
+
 const Container = styled.div`
       width: 100%;
       max-width: 1000px;
       margin: 0 auto;
       min-height: 100vh;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
 `;
+
+export default Container;
 
 document.addEventListener('DOMContentLoaded', () => {
     class Main extends React.Component {
@@ -98,24 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         };
 
-        // Sumowanie wszystkich wydatków
-        handleExpensesCount = () => {
-            this.getChartData();
-        };
 
-        handleDecreaseYears = () => {
-            this.setState({
-                userYears: this.state.userYears - 1,
-            });
-            this.getChartData();
-        };
-
-        handleIncreaseYears = () => {
-            this.setState({
-                userYears: this.state.userYears + 1,
-            });
-            this.getChartData();
-        };
 
 
         getChartData() {
@@ -163,10 +161,28 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // Sumowanie wszystkich wydatków
+        handleExpensesCount = () => {
+            this.getChartData();
+        };
+
+        handleDecreaseYears = () => {
+            const newYears = this.state.userYears - 1;
+            this.setState({
+                userYears: newYears,
+            });
+            this.getChartData();
+        };
+
+        handleIncreaseYears = () => {
+            const newYears = this.state.userYears + 1;
+            this.setState({
+                userYears: newYears,
+            });
+            this.getChartData();
+        };
         render() {
-            return <div>
-                {/*<Menu/>*/}
-                {/*<Header/>*/}
+            return <Wrapper>
                 <Container>
                     <ExpensesList onNameChange={this.handleNameValChange}
                                   onValueChange={this.handleValueValChange}
@@ -180,13 +196,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     />
                     <Chart chartData={this.state.chartData}
                            expenses={this.state.expenses}
-                           onUserYearsIncrease={this.handleIncreaseYears}
-                           onUserYearsDecrease={this.handleDecreaseYears}
                            userYears={this.state.userYears}
                            showChart={this.state.showChart}
+                           onUserYearsIncrease={this.handleIncreaseYears}
+                           onUserYearsDecrease={this.handleDecreaseYears}
                     />
                 </Container>
-            </div>
+            </Wrapper>
         }
     }
     class App extends React.Component {
@@ -194,18 +210,11 @@ document.addEventListener('DOMContentLoaded', () => {
         render() {
             return (
                 <Router history={hashHistory}>
-
-                    {/*<IndexRoute component={Main}/>*/}
                     <Route path="/" component={Menu}>
                         <IndexRoute component={Header}/>
                         <Route path="/calc" component={Main}/>
-                        <Route path="/contact" component={Contact} />
+                        <Route path="/contact" component={Contact}/>
                     </Route>
-
-                    {/*<Route path="*" component={NotFound}/>*/}
-
-
-
                 </Router>
             )
         }

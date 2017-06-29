@@ -48,24 +48,24 @@ const P = styled.p`
     }
 `;
 
-const CTA = styled.span`
+const CTA = styled.div`
+    margin-top: 35px;
     a {
-        color: rgba(0, 0, 0, 0.58);
-        font-size: 30px;
+        background: rgba(4, 105, 255, .6);
+        color: rgba(255, 255, 255, .86);
+        font-size: 26px;
         font-weight: 300;
         letter-spacing: -1.4px;
         text-decoration: none;
-        margin-top: 35px;
-        background: rgba(255, 255, 255, 0.66);
-        border-radius: 5px;
+        border-radius: 15px 0 15px 0;
         padding: 10px 48px;
         transition: all 0.3s ease-in-out;
         @media (max-width: 600px) {
-            font-size: 24px;
+            font-size: 22px;
         }
         &:hover {
-            background: rgba(4, 105, 255, .6);
-            color: rgba(255, 255, 255, .76);
+         color: rgba(0, 0, 0, 0.58);
+         background: rgba(255, 255, 255, 0.66);
         }
     }
 `;

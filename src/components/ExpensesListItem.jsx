@@ -9,7 +9,7 @@ const ExpenseContainer = styled.div`
       padding: 1%;
       text-align: left;
       border-radius: 5px;
-      background: rgba(31, 38, 62, 0.08);
+      background: linear-gradient(228deg,rgba(39, 44, 50, 0.1) 0%,rgba(39, 44, 50, 0.35) 26%);
       position: relative;
       @media (max-width: 600px) {
         margin: 25px auto;

@@ -11,7 +11,7 @@ const AddHeading = styled.h2`
 
 const AddExpensesContainer = styled.div`
     text-align: center;
-    padding: 70px 2% 10px;
+    padding: 110px 2% 10px;
 `;
 
 const Button = styled.button`
@@ -65,7 +65,7 @@ export class ExpensesList extends React.Component {
 
 
         return (
-        <AddExpensesContainer id="calcStart">
+        <AddExpensesContainer>
             <AddHeading>Add your expenses:</AddHeading>
             {this.getExpenses()}
             <Button onClick={this.props.addNewExpense}>Add another expense</Button>

@@ -4,10 +4,10 @@ import styled from 'styled-components'
 
 const Nav = styled.nav`
     display: block;
-    background: rgba(0, 0, 0, 0.55);
-    position: fixed;
+    background: rgb(39, 44, 50);
     width: 100%;
     z-index: 2;
+    position: fixed;
     top: 0;
     border-top: 4px solid #0469ff;
 `;
@@ -25,14 +25,20 @@ const Li = styled.li`
 `;
 
 export class Menu extends React.Component {
+
     render() {
+        const active = {
+            textShadow: 'rgba(30, 53, 116, 0.9) 0px 0px 15px',
+            color: 'rgb(227, 225, 228)',
+        };
+
         return (
             <div>
                 <Nav>
                     <ul>
-                        <Li><IndexLink to="/">Start</IndexLink></Li>
-                        <Li><IndexLink to="/calc">Calc it</IndexLink></Li>
-                        <Li><IndexLink to="/contact">Contact</IndexLink></Li>
+                        <Li><IndexLink activeStyle={active} to="/">Start</IndexLink></Li>
+                        <Li><IndexLink activeStyle={active} to="/calc">Calc it</IndexLink></Li>
+                        <Li><IndexLink activeStyle={active} to="/contact">Contact</IndexLink></Li>
                     </ul>
                 </Nav>
                 {this.props.children}

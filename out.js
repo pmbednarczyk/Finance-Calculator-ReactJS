@@ -31790,9 +31790,14 @@ return zhTw;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n      width: 100%;\n      max-width: 1000px;\n      margin: 0 auto;\n      min-height: 100vh;\n'], ['\n      width: 100%;\n      max-width: 1000px;\n      margin: 0 auto;\n      min-height: 100vh;\n']);
+var _templateObject = _taggedTemplateLiteral(['\n    width: 100%;\n    margin-right: auto;\n    margin-left: auto;\n    box-sizing: border-box;\n    padding: 0;\n    background: linear-gradient(rgba(255, 255, 255, .3),rgba(255, 255, 255, 0.7)), url(./src/bg-calc.jpg) no-repeat center center;\n    background-attachment: fixed;\n'], ['\n    width: 100%;\n    margin-right: auto;\n    margin-left: auto;\n    box-sizing: border-box;\n    padding: 0;\n    background: linear-gradient(rgba(255, 255, 255, .3),rgba(255, 255, 255, 0.7)), url(./src/bg-calc.jpg) no-repeat center center;\n    background-attachment: fixed;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n      width: 100%;\n      max-width: 1000px;\n      margin: 0 auto;\n      min-height: 100vh;\n      display: flex;\n      align-items: center;\n      flex-direction: column;\n'], ['\n      width: 100%;\n      max-width: 1000px;\n      margin: 0 auto;\n      min-height: 100vh;\n      display: flex;\n      align-items: center;\n      flex-direction: column;\n']);
 
 var _react = __webpack_require__(6);
 
@@ -31828,7 +31833,12 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var Container = _styledComponents2.default.div(_templateObject);
+var Wrapper = _styledComponents2.default.div(_templateObject);
+
+var Container = _styledComponents2.default.div(_templateObject2);
+
+exports.default = Container;
+
 
 document.addEventListener('DOMContentLoaded', function () {
     var Main = function (_React$Component) {
@@ -31903,15 +31913,17 @@ document.addEventListener('DOMContentLoaded', function () {
             };
 
             _this.handleDecreaseYears = function () {
+                var newYears = _this.state.userYears - 1;
                 _this.setState({
-                    userYears: _this.state.userYears - 1
+                    userYears: newYears
                 });
                 _this.getChartData();
             };
 
             _this.handleIncreaseYears = function () {
+                var newYears = _this.state.userYears + 1;
                 _this.setState({
-                    userYears: _this.state.userYears + 1
+                    userYears: newYears
                 });
                 _this.getChartData();
             };
@@ -31933,9 +31945,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         //Dodawanie kolejnycych wydatków
-
-
-        // Sumowanie wszystkich wydatków
 
 
         _createClass(Main, [{
@@ -31973,11 +31982,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 });
             }
+
+            // Sumowanie wszystkich wydatków
+
         }, {
             key: 'render',
             value: function render() {
                 return _react2.default.createElement(
-                    'div',
+                    Wrapper,
                     null,
                     _react2.default.createElement(
                         Container,
@@ -31994,10 +32006,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         }),
                         _react2.default.createElement(_Chart.Chart, { chartData: this.state.chartData,
                             expenses: this.state.expenses,
-                            onUserYearsIncrease: this.handleIncreaseYears,
-                            onUserYearsDecrease: this.handleDecreaseYears,
                             userYears: this.state.userYears,
-                            showChart: this.state.showChart
+                            showChart: this.state.showChart,
+                            onUserYearsIncrease: this.handleIncreaseYears,
+                            onUserYearsDecrease: this.handleDecreaseYears
                         })
                     )
                 );
@@ -44149,11 +44161,23 @@ exports.Contact = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _templateObject = _taggedTemplateLiteral(['\n    justify-content: center;\n'], ['\n    justify-content: center;\n']);
+
 var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _styledComponents = __webpack_require__(29);
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _index = __webpack_require__(233);
+
+var _index2 = _interopRequireDefault(_index);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -44173,10 +44197,15 @@ var Contact = exports.Contact = function (_React$Component) {
     _createClass(Contact, [{
         key: 'render',
         value: function render() {
+            var ContactContainer = (0, _styledComponents2.default)(_index2.default)(_templateObject);
             return _react2.default.createElement(
-                'h1',
+                ContactContainer,
                 null,
-                'Contact us at contact@example.com'
+                _react2.default.createElement(
+                    'h1',
+                    null,
+                    'Contact us at contact@example.com'
+                )
             );
         }
     }]);
@@ -44198,7 +44227,7 @@ exports.Menu = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n    display: block;\n    background: rgba(0, 0, 0, 0.55);\n    position: fixed;\n    width: 100%;\n    z-index: 2;\n    top: 0;\n    border-top: 4px solid #0469ff;\n'], ['\n    display: block;\n    background: rgba(0, 0, 0, 0.55);\n    position: fixed;\n    width: 100%;\n    z-index: 2;\n    top: 0;\n    border-top: 4px solid #0469ff;\n']),
+var _templateObject = _taggedTemplateLiteral(['\n    display: block;\n    background: rgb(39, 44, 50);\n    width: 100%;\n    z-index: 2;\n    position: fixed;\n    top: 0;\n    border-top: 4px solid #0469ff;\n'], ['\n    display: block;\n    background: rgb(39, 44, 50);\n    width: 100%;\n    z-index: 2;\n    position: fixed;\n    top: 0;\n    border-top: 4px solid #0469ff;\n']),
     _templateObject2 = _taggedTemplateLiteral([' \n    padding: 15px 30px;\n    display: inline-block;\n    a {\n        text-decoration: none;\n        color: rgba(255, 255, 255, 0.58);\n        transition: all 0.3s ease-in-out;\n        &:hover {\n            color: rgba(255, 255, 255, 1);\n        }\n    }\n'], [' \n    padding: 15px 30px;\n    display: inline-block;\n    a {\n        text-decoration: none;\n        color: rgba(255, 255, 255, 0.58);\n        transition: all 0.3s ease-in-out;\n        &:hover {\n            color: rgba(255, 255, 255, 1);\n        }\n    }\n']);
 
 var _react = __webpack_require__(6);
@@ -44236,6 +44265,11 @@ var Menu = exports.Menu = function (_React$Component) {
     _createClass(Menu, [{
         key: 'render',
         value: function render() {
+            var active = {
+                textShadow: 'rgba(30, 53, 116, 0.9) 0px 0px 15px',
+                color: 'rgb(227, 225, 228)'
+            };
+
             return _react2.default.createElement(
                 'div',
                 null,
@@ -44250,7 +44284,7 @@ var Menu = exports.Menu = function (_React$Component) {
                             null,
                             _react2.default.createElement(
                                 _reactRouter.IndexLink,
-                                { to: '/' },
+                                { activeStyle: active, to: '/' },
                                 'Start'
                             )
                         ),
@@ -44259,7 +44293,7 @@ var Menu = exports.Menu = function (_React$Component) {
                             null,
                             _react2.default.createElement(
                                 _reactRouter.IndexLink,
-                                { to: '/calc' },
+                                { activeStyle: active, to: '/calc' },
                                 'Calc it'
                             )
                         ),
@@ -44268,7 +44302,7 @@ var Menu = exports.Menu = function (_React$Component) {
                             null,
                             _react2.default.createElement(
                                 _reactRouter.IndexLink,
-                                { to: '/contact' },
+                                { activeStyle: active, to: '/contact' },
                                 'Contact'
                             )
                         )
@@ -47899,7 +47933,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _templateObject = _taggedTemplateLiteral(['\n      width: 100%;\n      max-width: 1920px;\n      margin: 0 auto;\n      height: 100vh;\n      overflow: hidden;\n      position: relative;\n      background: linear-gradient(rgba(39,39,75,1),rgba(21,23,43,0.3)), url(\'./src/bg.jpeg\') no-repeat center center;\n      background-size: cover;\n      background-attachment: fixed;\n      padding: 2%;\n      box-sizing: border-box;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      flex-direction: column;\n'], ['\n      width: 100%;\n      max-width: 1920px;\n      margin: 0 auto;\n      height: 100vh;\n      overflow: hidden;\n      position: relative;\n      background: linear-gradient(rgba(39,39,75,1),rgba(21,23,43,0.3)), url(\'./src/bg.jpeg\') no-repeat center center;\n      background-size: cover;\n      background-attachment: fixed;\n      padding: 2%;\n      box-sizing: border-box;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      flex-direction: column;\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n    font-size: 64px;\n    color: rgba(255, 255, 255, 0.85);\n    font-weight: 700;\n    letter-spacing: -1.4px;\n    text-align: center;\n    @media (max-width: 600px) {\n        font-size: 44px;\n    }\n'], ['\n    font-size: 64px;\n    color: rgba(255, 255, 255, 0.85);\n    font-weight: 700;\n    letter-spacing: -1.4px;\n    text-align: center;\n    @media (max-width: 600px) {\n        font-size: 44px;\n    }\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n    color: rgba(255, 255, 255, .85);\n    letter-spacing: -.4px;\n    max-width: 40%;\n    text-align: center;\n    margin-top: 30px;\n    font-size: 22px;\n    font-weight: 300;\n    @media (max-width: 1000px) {\n        max-width: 70%;\n    }\n    \n    @media (max-width: 600px) {\n        max-width: 85%;\n    }\n'], ['\n    color: rgba(255, 255, 255, .85);\n    letter-spacing: -.4px;\n    max-width: 40%;\n    text-align: center;\n    margin-top: 30px;\n    font-size: 22px;\n    font-weight: 300;\n    @media (max-width: 1000px) {\n        max-width: 70%;\n    }\n    \n    @media (max-width: 600px) {\n        max-width: 85%;\n    }\n']),
-    _templateObject4 = _taggedTemplateLiteral(['\n    a {\n        color: rgba(0, 0, 0, 0.58);\n        font-size: 30px;\n        font-weight: 300;\n        letter-spacing: -1.4px;\n        text-decoration: none;\n        margin-top: 35px;\n        background: rgba(255, 255, 255, 0.66);\n        border-radius: 5px;\n        padding: 10px 48px;\n        transition: all 0.3s ease-in-out;\n        @media (max-width: 600px) {\n            font-size: 24px;\n        }\n        &:hover {\n            background: rgba(4, 105, 255, .6);\n            color: rgba(255, 255, 255, .76);\n        }\n    }\n'], ['\n    a {\n        color: rgba(0, 0, 0, 0.58);\n        font-size: 30px;\n        font-weight: 300;\n        letter-spacing: -1.4px;\n        text-decoration: none;\n        margin-top: 35px;\n        background: rgba(255, 255, 255, 0.66);\n        border-radius: 5px;\n        padding: 10px 48px;\n        transition: all 0.3s ease-in-out;\n        @media (max-width: 600px) {\n            font-size: 24px;\n        }\n        &:hover {\n            background: rgba(4, 105, 255, .6);\n            color: rgba(255, 255, 255, .76);\n        }\n    }\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\n    margin-top: 35px;\n    a {\n        background: rgba(4, 105, 255, .6);\n        color: rgba(255, 255, 255, .86);\n        font-size: 26px;\n        font-weight: 300;\n        letter-spacing: -1.4px;\n        text-decoration: none;\n        border-radius: 15px 0 15px 0;\n        padding: 10px 48px;\n        transition: all 0.3s ease-in-out;\n        @media (max-width: 600px) {\n            font-size: 22px;\n        }\n        &:hover {\n         color: rgba(0, 0, 0, 0.58);\n         background: rgba(255, 255, 255, 0.66);\n        }\n    }\n'], ['\n    margin-top: 35px;\n    a {\n        background: rgba(4, 105, 255, .6);\n        color: rgba(255, 255, 255, .86);\n        font-size: 26px;\n        font-weight: 300;\n        letter-spacing: -1.4px;\n        text-decoration: none;\n        border-radius: 15px 0 15px 0;\n        padding: 10px 48px;\n        transition: all 0.3s ease-in-out;\n        @media (max-width: 600px) {\n            font-size: 22px;\n        }\n        &:hover {\n         color: rgba(0, 0, 0, 0.58);\n         background: rgba(255, 255, 255, 0.66);\n        }\n    }\n']),
     _templateObject5 = _taggedTemplateLiteral(['\n    font-weight: 900;\n'], ['\n    font-weight: 900;\n']);
 
 var _react = __webpack_require__(6);
@@ -47928,7 +47962,7 @@ var MainHeading = _styledComponents2.default.h1(_templateObject2);
 
 var P = _styledComponents2.default.p(_templateObject3);
 
-var CTA = _styledComponents2.default.span(_templateObject4);
+var CTA = _styledComponents2.default.div(_templateObject4);
 
 var B = _styledComponents2.default.b(_templateObject5);
 
@@ -48016,7 +48050,7 @@ exports.ExpensesList = undefined;
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n    font-size: 34px;\n    font-weight: 700;\n    letter-spacing: -1.4px;\n    margin: 0px auto 50px auto;\n'], ['\n    font-size: 34px;\n    font-weight: 700;\n    letter-spacing: -1.4px;\n    margin: 0px auto 50px auto;\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n    text-align: center;\n    padding: 70px 2% 10px;\n'], ['\n    text-align: center;\n    padding: 70px 2% 10px;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n    text-align: center;\n    padding: 110px 2% 10px;\n'], ['\n    text-align: center;\n    padding: 110px 2% 10px;\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n\tborder-radius: 3px;\n    padding: 7px 20px;\n\tmargin: 0 1em;\n\tbackground: transparent;\n\tcolor: #5d5d78;\n\tborder: 2px solid #5d5d78;\n\ttransition: all 0.3s ease-in-out;\n\t&:hover {\n\t    border: 2px solid #6464c2;\n\t    color: #6464c2;\n\t}\n\t', '\n\t  @media (max-width: 600px) {\n\t    width: 80%;\n\t    display: block;\n        margin: 10px auto;\n        padding: 10px;\n      }\n'], ['\n\tborder-radius: 3px;\n    padding: 7px 20px;\n\tmargin: 0 1em;\n\tbackground: transparent;\n\tcolor: #5d5d78;\n\tborder: 2px solid #5d5d78;\n\ttransition: all 0.3s ease-in-out;\n\t&:hover {\n\t    border: 2px solid #6464c2;\n\t    color: #6464c2;\n\t}\n\t', '\n\t  @media (max-width: 600px) {\n\t    width: 80%;\n\t    display: block;\n        margin: 10px auto;\n        padding: 10px;\n      }\n']);
 
 var _react = __webpack_require__(6);
@@ -48096,7 +48130,7 @@ var ExpensesList = exports.ExpensesList = function (_React$Component) {
 
             return _react2.default.createElement(
                 AddExpensesContainer,
-                { id: 'calcStart' },
+                null,
                 _react2.default.createElement(
                     AddHeading,
                     null,
@@ -48134,7 +48168,7 @@ exports.ExpensesListItem = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n      max-width: 700px;\n      width: 100%;\n      margin: 10px auto;\n      box-sizing: border-box;\n      padding: 1%;\n      text-align: left;\n      border-radius: 5px;\n      background: rgba(31, 38, 62, 0.08);\n      position: relative;\n      @media (max-width: 600px) {\n        margin: 25px auto;\n      }\n      >div {\n        display: inline-block;\n        box-sizing: border-box;\n        padding: 1%;\n        span {\n            display: block;\n            font-size: 13px;\n        }\n        input {\n            display: inline-block;\n            width: 100%;\n            margin-top: 8px;\n            border: transparent;\n            &:focus {\n            box-shadow: inset 0 0px 11px rgba(132, 181, 255, 0.6), 0 0px 1px rgba(0, 126, 255, 0.2), 0 0px 10px rgba(110, 141, 255, 0.5);\n            outline: 0;\n           }\n        }\n        input, select {\n            min-height: 35px;\n            box-sizing: border-box;\n            padding: 5px;\n        }\n        select {\n            margin-top: 9px;\n            border: transparent;\n            background: transparent;\n        }\n        option {\n            background: #edeef0;\n            color: #5d5d78;      \n        }\n        &:nth-of-type(1) {\n            width: 40%;\n        }\n        &:nth-of-type(2) {\n            width: 15%;\n        }\n        &:nth-of-type(3) {\n            width: 35%;\n            input {\n                width: 20%;\n            }\n        }\n        @media (max-width: 600px) {\n             &:nth-of-type(1) {\n                width: 100%;\n             }\n             &:nth-of-type(2), &:nth-of-type(3) {\n                width: 50%;\n             }\n        }\n      }\n      a {\n          position: absolute;\n          right: 32px;\n          top: 32px;\n          width: 32px;\n          height: 32px;\n          opacity: 0.3;\n          transition: all 0.2s ease-in-out;\n          cursor: pointer;\n          &:before, &:after {\n              position: absolute;\n              left: 15px;\n              content: \' \';\n              height: 33px;\n              width: 2px;\n              background-color: #333;\n        }\n        &:after {\n            transform: rotate(45deg);\n        }\n        &:before {\n            transform: rotate(-45deg);\n        }\n        &:hover {\n             opacity: 1;\n        }\n        @media (max-width: 600px) {\n            right: 0;\n            top: -14px;\n            height: 32px;\n            padding: 10px;\n            background: #edeef0;\n            width: 32px;\n            opacity: 1;\n            border-radius: 50%;\n            &:before, &:after {\n              position: absolute;\n              left: 15px;\n              content: \' \';\n              height: 15px;\n            }\n        }\n        \n      }\n'], ['\n      max-width: 700px;\n      width: 100%;\n      margin: 10px auto;\n      box-sizing: border-box;\n      padding: 1%;\n      text-align: left;\n      border-radius: 5px;\n      background: rgba(31, 38, 62, 0.08);\n      position: relative;\n      @media (max-width: 600px) {\n        margin: 25px auto;\n      }\n      >div {\n        display: inline-block;\n        box-sizing: border-box;\n        padding: 1%;\n        span {\n            display: block;\n            font-size: 13px;\n        }\n        input {\n            display: inline-block;\n            width: 100%;\n            margin-top: 8px;\n            border: transparent;\n            &:focus {\n            box-shadow: inset 0 0px 11px rgba(132, 181, 255, 0.6), 0 0px 1px rgba(0, 126, 255, 0.2), 0 0px 10px rgba(110, 141, 255, 0.5);\n            outline: 0;\n           }\n        }\n        input, select {\n            min-height: 35px;\n            box-sizing: border-box;\n            padding: 5px;\n        }\n        select {\n            margin-top: 9px;\n            border: transparent;\n            background: transparent;\n        }\n        option {\n            background: #edeef0;\n            color: #5d5d78;      \n        }\n        &:nth-of-type(1) {\n            width: 40%;\n        }\n        &:nth-of-type(2) {\n            width: 15%;\n        }\n        &:nth-of-type(3) {\n            width: 35%;\n            input {\n                width: 20%;\n            }\n        }\n        @media (max-width: 600px) {\n             &:nth-of-type(1) {\n                width: 100%;\n             }\n             &:nth-of-type(2), &:nth-of-type(3) {\n                width: 50%;\n             }\n        }\n      }\n      a {\n          position: absolute;\n          right: 32px;\n          top: 32px;\n          width: 32px;\n          height: 32px;\n          opacity: 0.3;\n          transition: all 0.2s ease-in-out;\n          cursor: pointer;\n          &:before, &:after {\n              position: absolute;\n              left: 15px;\n              content: \' \';\n              height: 33px;\n              width: 2px;\n              background-color: #333;\n        }\n        &:after {\n            transform: rotate(45deg);\n        }\n        &:before {\n            transform: rotate(-45deg);\n        }\n        &:hover {\n             opacity: 1;\n        }\n        @media (max-width: 600px) {\n            right: 0;\n            top: -14px;\n            height: 32px;\n            padding: 10px;\n            background: #edeef0;\n            width: 32px;\n            opacity: 1;\n            border-radius: 50%;\n            &:before, &:after {\n              position: absolute;\n              left: 15px;\n              content: \' \';\n              height: 15px;\n            }\n        }\n        \n      }\n']);
+var _templateObject = _taggedTemplateLiteral(['\n      max-width: 700px;\n      width: 100%;\n      margin: 10px auto;\n      box-sizing: border-box;\n      padding: 1%;\n      text-align: left;\n      border-radius: 5px;\n      background: linear-gradient(228deg,rgba(39, 44, 50, 0.1) 0%,rgba(39, 44, 50, 0.35) 26%);\n      position: relative;\n      @media (max-width: 600px) {\n        margin: 25px auto;\n      }\n      >div {\n        display: inline-block;\n        box-sizing: border-box;\n        padding: 1%;\n        span {\n            display: block;\n            font-size: 13px;\n        }\n        input {\n            display: inline-block;\n            width: 100%;\n            margin-top: 8px;\n            border: transparent;\n            &:focus {\n            box-shadow: inset 0 0px 11px rgba(132, 181, 255, 0.6), 0 0px 1px rgba(0, 126, 255, 0.2), 0 0px 10px rgba(110, 141, 255, 0.5);\n            outline: 0;\n           }\n        }\n        input, select {\n            min-height: 35px;\n            box-sizing: border-box;\n            padding: 5px;\n        }\n        select {\n            margin-top: 9px;\n            border: transparent;\n            background: transparent;\n        }\n        option {\n            background: #edeef0;\n            color: #5d5d78;      \n        }\n        &:nth-of-type(1) {\n            width: 40%;\n        }\n        &:nth-of-type(2) {\n            width: 15%;\n        }\n        &:nth-of-type(3) {\n            width: 35%;\n            input {\n                width: 20%;\n            }\n        }\n        @media (max-width: 600px) {\n             &:nth-of-type(1) {\n                width: 100%;\n             }\n             &:nth-of-type(2), &:nth-of-type(3) {\n                width: 50%;\n             }\n        }\n      }\n      a {\n          position: absolute;\n          right: 32px;\n          top: 32px;\n          width: 32px;\n          height: 32px;\n          opacity: 0.3;\n          transition: all 0.2s ease-in-out;\n          cursor: pointer;\n          &:before, &:after {\n              position: absolute;\n              left: 15px;\n              content: \' \';\n              height: 33px;\n              width: 2px;\n              background-color: #333;\n        }\n        &:after {\n            transform: rotate(45deg);\n        }\n        &:before {\n            transform: rotate(-45deg);\n        }\n        &:hover {\n             opacity: 1;\n        }\n        @media (max-width: 600px) {\n            right: 0;\n            top: -14px;\n            height: 32px;\n            padding: 10px;\n            background: #edeef0;\n            width: 32px;\n            opacity: 1;\n            border-radius: 50%;\n            &:before, &:after {\n              position: absolute;\n              left: 15px;\n              content: \' \';\n              height: 15px;\n            }\n        }\n        \n      }\n'], ['\n      max-width: 700px;\n      width: 100%;\n      margin: 10px auto;\n      box-sizing: border-box;\n      padding: 1%;\n      text-align: left;\n      border-radius: 5px;\n      background: linear-gradient(228deg,rgba(39, 44, 50, 0.1) 0%,rgba(39, 44, 50, 0.35) 26%);\n      position: relative;\n      @media (max-width: 600px) {\n        margin: 25px auto;\n      }\n      >div {\n        display: inline-block;\n        box-sizing: border-box;\n        padding: 1%;\n        span {\n            display: block;\n            font-size: 13px;\n        }\n        input {\n            display: inline-block;\n            width: 100%;\n            margin-top: 8px;\n            border: transparent;\n            &:focus {\n            box-shadow: inset 0 0px 11px rgba(132, 181, 255, 0.6), 0 0px 1px rgba(0, 126, 255, 0.2), 0 0px 10px rgba(110, 141, 255, 0.5);\n            outline: 0;\n           }\n        }\n        input, select {\n            min-height: 35px;\n            box-sizing: border-box;\n            padding: 5px;\n        }\n        select {\n            margin-top: 9px;\n            border: transparent;\n            background: transparent;\n        }\n        option {\n            background: #edeef0;\n            color: #5d5d78;      \n        }\n        &:nth-of-type(1) {\n            width: 40%;\n        }\n        &:nth-of-type(2) {\n            width: 15%;\n        }\n        &:nth-of-type(3) {\n            width: 35%;\n            input {\n                width: 20%;\n            }\n        }\n        @media (max-width: 600px) {\n             &:nth-of-type(1) {\n                width: 100%;\n             }\n             &:nth-of-type(2), &:nth-of-type(3) {\n                width: 50%;\n             }\n        }\n      }\n      a {\n          position: absolute;\n          right: 32px;\n          top: 32px;\n          width: 32px;\n          height: 32px;\n          opacity: 0.3;\n          transition: all 0.2s ease-in-out;\n          cursor: pointer;\n          &:before, &:after {\n              position: absolute;\n              left: 15px;\n              content: \' \';\n              height: 33px;\n              width: 2px;\n              background-color: #333;\n        }\n        &:after {\n            transform: rotate(45deg);\n        }\n        &:before {\n            transform: rotate(-45deg);\n        }\n        &:hover {\n             opacity: 1;\n        }\n        @media (max-width: 600px) {\n            right: 0;\n            top: -14px;\n            height: 32px;\n            padding: 10px;\n            background: #edeef0;\n            width: 32px;\n            opacity: 1;\n            border-radius: 50%;\n            &:before, &:after {\n              position: absolute;\n              left: 15px;\n              content: \' \';\n              height: 15px;\n            }\n        }\n        \n      }\n']);
 
 var _react = __webpack_require__(6);
 
@@ -48257,7 +48291,7 @@ exports.Chart = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n    text-align: center;\n     margin: 80px 0;\n     h2 {\n        font-size: 34px;\n        font-weight: 700;\n        letter-spacing: -1.4px;\n        margin: 0px auto 50px auto;\n        @media (max-width: 600px) {\n            font-size: 24px;\n        }\n     }\n     em {\n        display: block;\n        margin-top: 30px;\n        font-size: 50px;\n        font-weight: 700;\n        @media (max-width: 600px) {\n            font-size: 34px;\n        }\n     }\n     button {\n        font-size: 14px;\n        width: 31px;\n        margin: 0 3px;\n        line-height: 20px;\n        vertical-align: middle;\n        &:nth-of-type(1) {\n            margin-left: 10px;\n        }\n        &:nth-of-type(2) {\n            margin-right: 10px;\n        }\n     }\n     \n'], ['\n    text-align: center;\n     margin: 80px 0;\n     h2 {\n        font-size: 34px;\n        font-weight: 700;\n        letter-spacing: -1.4px;\n        margin: 0px auto 50px auto;\n        @media (max-width: 600px) {\n            font-size: 24px;\n        }\n     }\n     em {\n        display: block;\n        margin-top: 30px;\n        font-size: 50px;\n        font-weight: 700;\n        @media (max-width: 600px) {\n            font-size: 34px;\n        }\n     }\n     button {\n        font-size: 14px;\n        width: 31px;\n        margin: 0 3px;\n        line-height: 20px;\n        vertical-align: middle;\n        &:nth-of-type(1) {\n            margin-left: 10px;\n        }\n        &:nth-of-type(2) {\n            margin-right: 10px;\n        }\n     }\n     \n']);
+var _templateObject = _taggedTemplateLiteral(['\n     text-align: center;\n     margin: 80px 0;\n     width: 100%;\n     h2 {\n        font-size: 34px;\n        font-weight: 700;\n        letter-spacing: -1.4px;\n        margin: 0px auto 50px auto;\n        @media (max-width: 600px) {\n            font-size: 24px;\n        }\n     }\n     em {\n        display: block;\n        margin-top: 30px;\n        font-size: 50px;\n        font-weight: 700;\n        @media (max-width: 600px) {\n            font-size: 34px;\n        }\n     }\n     button {\n        font-size: 14px;\n        width: 31px;\n        margin: 0 3px;\n        line-height: 20px;\n        vertical-align: middle;\n        &:nth-of-type(1) {\n            margin-left: 10px;\n        }\n        &:nth-of-type(2) {\n            margin-right: 10px;\n        }\n     }\n     \n'], ['\n     text-align: center;\n     margin: 80px 0;\n     width: 100%;\n     h2 {\n        font-size: 34px;\n        font-weight: 700;\n        letter-spacing: -1.4px;\n        margin: 0px auto 50px auto;\n        @media (max-width: 600px) {\n            font-size: 24px;\n        }\n     }\n     em {\n        display: block;\n        margin-top: 30px;\n        font-size: 50px;\n        font-weight: 700;\n        @media (max-width: 600px) {\n            font-size: 34px;\n        }\n     }\n     button {\n        font-size: 14px;\n        width: 31px;\n        margin: 0 3px;\n        line-height: 20px;\n        vertical-align: middle;\n        &:nth-of-type(1) {\n            margin-left: 10px;\n        }\n        &:nth-of-type(2) {\n            margin-right: 10px;\n        }\n     }\n     \n']);
 
 var _react = __webpack_require__(6);
 
@@ -48296,15 +48330,12 @@ var Chart = exports.Chart = function (_React$Component) {
             if (this.props.showChart === false || typeof this.props.chartData.datasets === 'undefined') {
                 return null;
             }
-            console.log(this.props.chartData.datasets, 'render');
             var expensesCopy = this.props.chartData.datasets[0].data.slice();
             var totalSum = 0;
             expensesCopy.forEach(function (expense) {
                 totalSum += parseInt(expense);
             });
-
             var currencyFormatter = __webpack_require__(418);
-            console.log(currencyFormatter.format(1000000, { locale: 'pl-PL' }));
 
             return _react2.default.createElement(
                 ChartContainer,
