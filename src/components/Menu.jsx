@@ -27,12 +27,16 @@ const Li = styled.li`
 export class Menu extends React.Component {
     render() {
         return (
-            <Nav>
-                <ul>
-                    <Li><IndexLink to="/">Start</IndexLink></Li>
-                    <Li><IndexLink to="/contact">Contact</IndexLink></Li>
-                </ul>
-            </Nav>
+            <div>
+                <Nav>
+                    <ul>
+                        <Li><IndexLink to="/">Start</IndexLink></Li>
+                        <Li><IndexLink to="/calc">Calc it</IndexLink></Li>
+                        <Li><IndexLink to="/contact">Contact</IndexLink></Li>
+                    </ul>
+                </Nav>
+                {this.props.children}
+            </div>
         )
     }
 }

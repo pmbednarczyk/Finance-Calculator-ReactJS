@@ -1,4 +1,5 @@
 import React from 'react';
+import {IndexLink} from 'react-router';
 import styled from 'styled-components';
 
 const FullContainer = styled.div`
@@ -21,7 +22,7 @@ const FullContainer = styled.div`
 
 const MainHeading = styled.h1`
     font-size: 64px;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.85);
     font-weight: 700;
     letter-spacing: -1.4px;
     text-align: center;
@@ -47,25 +48,26 @@ const P = styled.p`
     }
 `;
 
-const CTA = styled.a`
-    color: rgba(0, 0, 0, 0.58);
-    font-size: 30px;
-    font-weight: 700;
-    letter-spacing: -1.4px;
-    margin-top: 35px;
-    text-decoration: none;
-    background: rgba(255, 255, 255, 0.66);
-    border-radius: 10px;
-    padding: 10px 48px;
-    transition: all 0.3s ease-in-out;
-    @media (max-width: 600px) {
-        font-size: 24px;
+const CTA = styled.span`
+    a {
+        color: rgba(0, 0, 0, 0.58);
+        font-size: 30px;
+        font-weight: 300;
+        letter-spacing: -1.4px;
+        text-decoration: none;
+        margin-top: 35px;
+        background: rgba(255, 255, 255, 0.66);
+        border-radius: 5px;
+        padding: 10px 48px;
+        transition: all 0.3s ease-in-out;
+        @media (max-width: 600px) {
+            font-size: 24px;
+        }
+        &:hover {
+            background: rgba(4, 105, 255, .6);
+            color: rgba(255, 255, 255, .76);
+        }
     }
-    &:hover {
-        background: rgba(4, 105, 255, 0.96);
-        color: #111c27;
-    }
-
 `;
 
 const B = styled.b`
@@ -76,13 +78,12 @@ export class Header extends React.Component {
     constructor() {
         super(...arguments);
         this.state = {
-            uselessExpenses: ["Beer", "Hazard", "Snacks"],
+            uselessExpenses: ["Beer", "Hazard", "Snacks", "Parties", "Gas", "Cigarettes"],
             seconds: 0,
         }
     }
 
     componentDidMount() {
-        console.log(this.state.uselessExpenses.length);
         this.intervalId = setInterval(() => {
                 this.setState({
                     seconds: this.state.seconds + 1
@@ -92,15 +93,15 @@ export class Header extends React.Component {
     }
 
     componentWillUnmount() {
-        clearInterval(interval);
+        clearInterval(this.intervalId);
     }
 
     render() {
         return (
             <FullContainer id="start">
-                <MainHeading>Calculate your unnecessary expenses</MainHeading>
-                <P>Have you ever wondered how much money do you spend on <B>{this.state.uselessExpenses[this.state.seconds%3]}</B> during your whole life?</P>
-                <CTA href="#calcStart">Check it out</CTA>
+                <MainHeading>Calculate your unnecessary spendings</MainHeading>
+                <P>Have you ever wondered how much money do you spend on <B>{this.state.uselessExpenses[this.state.seconds%this.state.uselessExpenses.length]}</B> during your whole life?</P>
+                <CTA><IndexLink to="/calc">Check it out</IndexLink></CTA>
             </FullContainer>
         )
     }

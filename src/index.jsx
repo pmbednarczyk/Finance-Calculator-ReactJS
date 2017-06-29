@@ -165,8 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         render() {
             return <div>
-                <Menu/>
-                <Header/>
+                {/*<Menu/>*/}
+                {/*<Header/>*/}
                 <Container>
                     <ExpensesList onNameChange={this.handleNameValChange}
                                   onValueChange={this.handleValueValChange}
@@ -196,14 +196,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 <Router history={hashHistory}>
 
                     {/*<IndexRoute component={Main}/>*/}
-                    <Route path="/" component={Main}/>
-                    <Route path="/contact" component={Contact} />
+                    <Route path="/" component={Menu}>
+                        <IndexRoute component={Header}/>
+                        <Route path="/calc" component={Main}/>
+                        <Route path="/contact" component={Contact} />
+                    </Route>
+
                     {/*<Route path="*" component={NotFound}/>*/}
 
 
-                    <Route path="/" component={Main}>
 
-                    </Route>
                 </Router>
             )
         }
