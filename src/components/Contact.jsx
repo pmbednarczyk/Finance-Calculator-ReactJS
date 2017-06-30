@@ -46,14 +46,15 @@ export class Contact extends React.Component {
             }
             
         `;
+
         return (
             <ContactContainer>
                 <Img src="./src/img/default-avatar.jpg"/>
                 <H1>Contact us at contact@example.com</H1>
                 <AContainer>
-                    <a href="#"><img src="./src/img/git.jpg"/></a>
-                    <a href="#"><img src="./src/img/in.png"/></a>
-                    <a href="#"><img src="./src/img/fb.jpg"/></a>
+                    <a href="https://github.com/pmbednarczyk/" target="_blank"><img src="./src/img/git.jpg"/></a>
+                    <a href="https://www.linkedin.com/in/pawel-bednarczyk/" target="_blank"><img src="./src/img/in.png"/></a>
+                    <a href="https://www.fb.com/pavaka" target="_blank"><img src="./src/img/fb.jpg"/></a>
                 </AContainer>
             </ContactContainer>
 

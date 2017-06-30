@@ -44218,6 +44218,7 @@ var Contact = exports.Contact = function (_React$Component) {
         key: 'render',
         value: function render() {
             var ContactContainer = (0, _styledComponents2.default)(_index2.default)(_templateObject4);
+
             return _react2.default.createElement(
                 ContactContainer,
                 null,
@@ -44232,17 +44233,17 @@ var Contact = exports.Contact = function (_React$Component) {
                     null,
                     _react2.default.createElement(
                         'a',
-                        { href: '#' },
+                        { href: 'https://github.com/pmbednarczyk/', target: '_blank' },
                         _react2.default.createElement('img', { src: './src/img/git.jpg' })
                     ),
                     _react2.default.createElement(
                         'a',
-                        { href: '#' },
+                        { href: 'https://www.linkedin.com/in/pawel-bednarczyk/', target: '_blank' },
                         _react2.default.createElement('img', { src: './src/img/in.png' })
                     ),
                     _react2.default.createElement(
                         'a',
-                        { href: '#' },
+                        { href: 'https://www.fb.com/pavaka', target: '_blank' },
                         _react2.default.createElement('img', { src: './src/img/fb.jpg' })
                     )
                 )

@@ -123,7 +123,6 @@ export class Header extends React.Component {
                 this.setState({
                     seconds: this.state.seconds + 1
                 });
-
         }, 1000)
     }
 
