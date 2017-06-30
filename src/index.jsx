@@ -14,7 +14,7 @@ const Wrapper = styled.div`
     margin-left: auto;
     box-sizing: border-box;
     padding: 0;
-    background: linear-gradient(rgba(255, 255, 255, .3),rgba(255, 255, 255, 0.7)), url(./src/bg-calc.jpg) no-repeat center center;
+    background: linear-gradient(rgba(255, 255, 255, .3),rgba(255, 255, 255, 0.7)), url(./src/img/bg-calc.jpg) no-repeat center center;
     background-attachment: fixed;
 `;
 
@@ -137,6 +137,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 // return (expense.value * expense.frequency)
             });
 
+            const expensesColors = expensesCopy.map(() => {
+                return '#'+Math.random().toString(16).substr(-6);
+            });
 
             this.setState({
                 showChart: true,
@@ -146,15 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         {
                             label: 'Expenes',
                             data: expensesValues,
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.6)',
-                                'rgba(54, 162, 235, 0.6)',
-                                'rgba(255, 206, 86, 0.6)',
-                                'rgba(75, 192, 192, 0.6)',
-                                'rgba(153, 102, 255, 0.6)',
-                                'rgba(255, 159, 64, 0.6)',
-                                'rgba(255, 99, 132, 0.6)'
-                            ]
+                            backgroundColor: expensesColors,
                         }
                     ]
                 }
@@ -171,7 +166,11 @@ document.addEventListener('DOMContentLoaded', () => {
             this.setState({
                 userYears: newYears,
             });
-            this.getChartData();
+            // Wymuszynie aktualizacji state
+            this.forceUpdate( () => {
+                this.getChartData();
+            });
+
         };
 
         handleIncreaseYears = () => {
@@ -179,8 +178,16 @@ document.addEventListener('DOMContentLoaded', () => {
             this.setState({
                 userYears: newYears,
             });
-            this.getChartData();
+            this.forceUpdate( () => {
+                this.getChartData();
+            });
+
         };
+
+        componentWillUpdate() {
+
+        };
+
         render() {
             return <Wrapper>
                 <Container>

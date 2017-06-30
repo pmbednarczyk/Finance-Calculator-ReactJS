@@ -9,7 +9,7 @@ const FullContainer = styled.div`
       height: 100vh;
       overflow: hidden;
       position: relative;
-      background: linear-gradient(rgba(39,39,75,1),rgba(21,23,43,0.3)), url('./src/bg.jpeg') no-repeat center center;
+      background: linear-gradient(rgb(39, 44, 50),rgba(21,23,43,0.3)), url(./src/img/bg.jpeg) no-repeat center center;
       background-size: cover;
       background-attachment: fixed;
       padding: 2%;
@@ -18,6 +18,12 @@ const FullContainer = styled.div`
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      @media (max-width: 600px) {
+         padding: 131px 2%;
+         min-height: 100vh;
+         height: auto;
+      }
+            
 `;
 
 const MainHeading = styled.h1`
@@ -26,8 +32,31 @@ const MainHeading = styled.h1`
     font-weight: 700;
     letter-spacing: -1.4px;
     text-align: center;
-    @media (max-width: 600px) {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+     transform: translate3d(0, 0, 0);
+     backface-visibility: hidden;
+     perspective: 1000px;
+     @media (max-width: 600px) {
         font-size: 44px;
+     }
+    
+
+    @keyframes shake {
+      10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+      }
+      
+      20%, 80% {
+        transform: translate3d(2px, 0, 0);
+      }
+    
+      30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+      }
+    
+      40%, 60% {
+        transform: translate3d(4px, 0, 0);
+      }
     }
 `;
 
@@ -73,6 +102,12 @@ const CTA = styled.div`
 const B = styled.b`
     font-weight: 900;
 `;
+
+
+
+
+
+
 
 export class Header extends React.Component {
     constructor() {
