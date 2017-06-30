@@ -5,12 +5,24 @@ import Container from '../index.jsx';
 const Img = styled.img`
             max-width: 380px;
            width: 100%;
+           opacity: 0.8;
+           animation: 3s ease 0s normal forwards 1 fadein;
+           @keyframes fadein{
+                0% { opacity:0.5; }
+                66% { opacity:0.8; }
+                100% { opacity:1; }
+           }
+
+           &:hover {
+            opacity: 1;
+           }
         `;
 const H1 = styled.h1`
             margin-top: 30px;
             font-size: 21px;
             font-weight: 700;
             letter-spacing: -.9px;
+            color: #272c32;
         `;
 
 const AContainer = styled.div`

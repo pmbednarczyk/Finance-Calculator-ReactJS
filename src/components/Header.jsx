@@ -36,6 +36,8 @@ const MainHeading = styled.h1`
      transform: translate3d(0, 0, 0);
      backface-visibility: hidden;
      perspective: 1000px;
+     text-shadow: 2px 1px 5px rgba(0, 0, 0, 0.3);
+         
      @media (max-width: 600px) {
         font-size: 44px;
      }
