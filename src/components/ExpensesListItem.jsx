@@ -36,6 +36,9 @@ const ExpenseContainer = styled.div`
             min-height: 35px;
             box-sizing: border-box;
             padding: 5px;
+            &.invalid {
+              box-shadow: inset 0 0px 11px rgb(206, 20, 20), 0 0px 1px rgba(255, 0, 0, 0.6), 0 0px 10px rgba(255, 0, 0, 0.9);
+            }
         }
         select {
             margin-top: 9px;
@@ -117,6 +120,7 @@ const ExpenseContainer = styled.div`
 export class ExpensesListItem extends React.Component {
 
     render() {
+
         return (
             <ExpenseContainer>
                 <div>
@@ -134,6 +138,7 @@ export class ExpensesListItem extends React.Component {
                            onChange={this.props.onValueChange}
                            value={this.props.value}
                            placeholder="Ex: 9,99"
+                           className={this.props.validationClass}
                     />
                 </div>
                 <div>

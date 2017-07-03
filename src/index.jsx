@@ -41,10 +41,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         value: '',
                         frequency: 1,
                         period: 'per week',
-                        validationText: '',
-                        validation: null,
+                        validationClass: '',
                     },
                 ],
+                validationText: '',
+                validation: null,
                 chartData: null,
                 userYears: 10,
                 showChart: false,
@@ -62,9 +63,20 @@ document.addEventListener('DOMContentLoaded', () => {
         handleValueValChange = (event, expense, i) => {
             const expensesCopy = this.state.expenses.slice();
             expensesCopy[i].value = event.target.value;
-            this.setState({
-                expenses: expensesCopy
-            });
+            if (event.target.value > 0 && event.target.value !== '') {
+                expensesCopy[i].validationClass = "valid";
+                this.setState({
+                    expenses: expensesCopy,
+                    validation: true,
+                });
+            } else {
+                expensesCopy[i].validationClass = "invalid";
+                this.setState({
+                    expenses: expensesCopy,
+                    validation: false,
+                });
+            }
+            console.log(expensesCopy[i]);
         };
 
         handleFrequencyValChange = (event, expense, i) => {
@@ -103,8 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 value: '',
                 frequency: 1,
                 period: 'per week',
-                validationText: '',
-                validation: '',
+                validationClass: '',
             };
             expensesCopy.push(newExpense);
             this.setState({
@@ -112,8 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 chartData: {},
             });
         };
-
-
 
 
         getChartData() {
@@ -137,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             const expensesColors = expensesCopy.map(() => {
-                return '#'+Math.random().toString(16).substr(-6);
+                return '#' + Math.random().toString(16).substr(-6);
             });
 
             this.setState({
@@ -158,21 +167,37 @@ document.addEventListener('DOMContentLoaded', () => {
         // Sumowanie wszystkich wydatków
         handleExpensesCount = () => {
             const expensesCopy = this.state.expenses.slice();
-            const expensesValues = expensesCopy.map((expense) => {
-                return expense.value;
+            // const expensesValues = expensesCopy.map((expense) => {
+            //     return expense.value;
+            // });
+
+
+            expensesCopy.forEach((expense, i) => {
+                if (expense.validationClass === "invalid" || expense.validationClass === '') {
+                    expensesCopy[i].validationClass = "invalid";
+                    this.setState({
+                        expenses: expensesCopy,
+                    });
+                    console.log(expensesCopy[i].validationClass);
+                }
             });
 
-            let noValue = expensesValues.some((expense) => {
-                return expense === '' || expense === '0';
+            let noValue = expensesCopy.some((expense, i) => {
+                return expense.validationClass !== "valid";
             });
 
-
-            if (noValue) {
-                console.log("Dodaj wydatki!");
+            if (!noValue) {
+                this.setState({
+                    validation: true,
+                });
+                this.forceUpdate(() => {
+                    this.getChartData();
+                });
             } else {
-                this.getChartData();
+                this.setState({
+                    validation: false,
+                });
             }
-
         };
 
         handleDecreaseYears = () => {
@@ -181,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 userYears: newYears,
             });
             // Wymuszynie aktualizacji state
-            this.forceUpdate( () => {
+            this.forceUpdate(() => {
                 this.getChartData();
             });
 
@@ -192,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.setState({
                 userYears: newYears,
             });
-            this.forceUpdate( () => {
+            this.forceUpdate(() => {
                 this.getChartData();
             });
 
@@ -213,6 +238,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                   expensesCount={this.handleExpensesCount}
                                   onRemoveClick={this.handleExpenseRemove}
                                   expenses={this.state.expenses}
+                                  validation={this.state.validation}
+                                  validationText={this.state.validationText}
 
                     />
                     <Chart chartData={this.state.chartData}

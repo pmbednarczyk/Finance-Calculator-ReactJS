@@ -43,6 +43,12 @@ const Button = styled.button`
       }
 `
 
+const Error = styled.div`
+    color: red;
+    font-size: 14px;
+    padding: 20px 0;
+    `
+
 
 export class ExpensesList extends React.Component {
     getExpenses = () => {
@@ -58,6 +64,8 @@ export class ExpensesList extends React.Component {
                 onFrequencyChange={event => this.props.onFrequencyChange(event, expense, i)}
                 onPeriodChange={event => this.props.onPeriodChange(event, expense, i)}
                 onRemoveClick={event => this.props.onRemoveClick(expense, i)}
+                validation={this.props.validation}
+                validationClass={expense.validationClass}
             />;
         });
         return expense;
@@ -71,6 +79,9 @@ export class ExpensesList extends React.Component {
             {this.getExpenses()}
             <Button onClick={this.props.addNewExpense}>Add another expense</Button>
             <Button primary onClick={this.props.expensesCount}>Count your expenses</Button>
+            <Error style={{ display : this.props.validation === false ? 'block' : 'none',}}>
+               Check if every expense has its price!
+            </Error>
         </AddExpensesContainer>
         )
     }

@@ -15609,9 +15609,20 @@ document.addEventListener('DOMContentLoaded', function () {
             _this.handleValueValChange = function (event, expense, i) {
                 var expensesCopy = _this.state.expenses.slice();
                 expensesCopy[i].value = event.target.value;
-                _this.setState({
-                    expenses: expensesCopy
-                });
+                if (event.target.value > 0 && event.target.value !== '') {
+                    expensesCopy[i].validationClass = "valid";
+                    _this.setState({
+                        expenses: expensesCopy,
+                        validation: true
+                    });
+                } else {
+                    expensesCopy[i].validationClass = "invalid";
+                    _this.setState({
+                        expenses: expensesCopy,
+                        validation: false
+                    });
+                }
+                console.log(expensesCopy[i]);
             };
 
             _this.handleFrequencyValChange = function (event, expense, i) {
@@ -15647,8 +15658,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     value: '',
                     frequency: 1,
                     period: 'per week',
-                    validationText: '',
-                    validation: ''
+                    validationClass: ''
                 };
                 expensesCopy.push(newExpense);
                 _this.setState({
@@ -15659,18 +15669,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
             _this.handleExpensesCount = function () {
                 var expensesCopy = _this.state.expenses.slice();
-                var expensesValues = expensesCopy.map(function (expense) {
-                    return expense.value;
+                // const expensesValues = expensesCopy.map((expense) => {
+                //     return expense.value;
+                // });
+
+
+                expensesCopy.forEach(function (expense, i) {
+                    if (expense.validationClass === "invalid" || expense.validationClass === '') {
+                        expensesCopy[i].validationClass = "invalid";
+                        _this.setState({
+                            expenses: expensesCopy
+                        });
+                        console.log(expensesCopy[i].validationClass);
+                    }
                 });
 
-                var noValue = expensesValues.some(function (expense) {
-                    return expense === '' || expense === '0';
+                var noValue = expensesCopy.some(function (expense, i) {
+                    return expense.validationClass !== "valid";
                 });
 
-                if (noValue) {
-                    console.log("Dodaj wydatki!");
+                if (!noValue) {
+                    _this.setState({
+                        validation: true
+                    });
+                    _this.forceUpdate(function () {
+                        _this.getChartData();
+                    });
                 } else {
-                    _this.getChartData();
+                    _this.setState({
+                        validation: false
+                    });
                 }
             };
 
@@ -15701,9 +15729,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     value: '',
                     frequency: 1,
                     period: 'per week',
-                    validationText: '',
-                    validation: null
+                    validationClass: ''
                 }],
+                validationText: '',
+                validation: null,
                 chartData: null,
                 userYears: 10,
                 showChart: false
@@ -15774,7 +15803,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             addNewExpense: this.handleAddNewExpense,
                             expensesCount: this.handleExpensesCount,
                             onRemoveClick: this.handleExpenseRemove,
-                            expenses: this.state.expenses
+                            expenses: this.state.expenses,
+                            validation: this.state.validation,
+                            validationText: this.state.validationText
 
                         }),
                         _react2.default.createElement(_Chart.Chart, { chartData: this.state.chartData,
@@ -45650,7 +45681,7 @@ exports.Menu = undefined;
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n    display: block;\n    background: rgb(39, 44, 50);\n    width: 100%;\n    z-index: 2;\n    position: fixed;\n    top: 0;\n    border-top: 4px solid #0469ff;\n    opacity: 0.8;\n'], ['\n    display: block;\n    background: rgb(39, 44, 50);\n    width: 100%;\n    z-index: 2;\n    position: fixed;\n    top: 0;\n    border-top: 4px solid #0469ff;\n    opacity: 0.8;\n']),
-    _templateObject2 = _taggedTemplateLiteral([' \n    padding: 15px 30px;\n    display: inline-block;\n    a {\n        text-decoration: none;\n        color: rgba(255, 255, 255, 0.58);\n        transition: all 0.3s ease-in-out;\n        &:hover {\n            color: rgba(255, 255, 255, 1);\n        }\n    }\n'], [' \n    padding: 15px 30px;\n    display: inline-block;\n    a {\n        text-decoration: none;\n        color: rgba(255, 255, 255, 0.58);\n        transition: all 0.3s ease-in-out;\n        &:hover {\n            color: rgba(255, 255, 255, 1);\n        }\n    }\n']);
+    _templateObject2 = _taggedTemplateLiteral([' \n    padding: 15px 30px;\n    display: inline-block;\n    a {\n        text-decoration: none;\n        color: rgba(255, 255, 255, 0.58);\n        transition: all 0.3s ease-in-out;\n        padding: 7px 15px;\n        border 1px solid transparent;\n        &:hover {\n            color: rgba(255, 255, 255, 1);\n        }\n    }\n    &:last-of-type a {\n        color: #dcabdf;\n        &:hover {\n            background: rgba(103, 103, 103, 0.44);\n        }\n    }\n'], [' \n    padding: 15px 30px;\n    display: inline-block;\n    a {\n        text-decoration: none;\n        color: rgba(255, 255, 255, 0.58);\n        transition: all 0.3s ease-in-out;\n        padding: 7px 15px;\n        border 1px solid transparent;\n        &:hover {\n            color: rgba(255, 255, 255, 1);\n        }\n    }\n    &:last-of-type a {\n        color: #dcabdf;\n        &:hover {\n            background: rgba(103, 103, 103, 0.44);\n        }\n    }\n']);
 
 var _react = __webpack_require__(6);
 
@@ -45689,7 +45720,9 @@ var Menu = exports.Menu = function (_React$Component) {
         value: function render() {
             var active = {
                 textShadow: 'rgba(30, 53, 116, 0.9) 0px 0px 15px',
-                color: 'rgb(227, 225, 228)'
+                color: 'rgb(227, 225, 228)',
+                border: '1px solid rgba(231, 231, 231, 0.42)',
+                background: 'rgba(103, 103, 103, 0.44)'
             };
 
             return _react2.default.createElement(
@@ -45725,7 +45758,7 @@ var Menu = exports.Menu = function (_React$Component) {
                             _react2.default.createElement(
                                 _reactRouter.IndexLink,
                                 { activeStyle: active, to: '/contact' },
-                                'Contact'
+                                'Hire me'
                             )
                         )
                     )
@@ -48105,7 +48138,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _templateObject = _taggedTemplateLiteral(['\n    font-size: 34px;\n    font-weight: 700;\n    letter-spacing: -1.4px;\n    margin: 0px auto 50px auto;\n    color: #272c32;\n'], ['\n    font-size: 34px;\n    font-weight: 700;\n    letter-spacing: -1.4px;\n    margin: 0px auto 50px auto;\n    color: #272c32;\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n    text-align: center;\n    padding: 110px 2% 10px;\n'], ['\n    text-align: center;\n    padding: 110px 2% 10px;\n']),
-    _templateObject3 = _taggedTemplateLiteral(['\n\tborder-radius: 3px;\n    padding: 7px 20px;\n\tmargin: 0 1em;\n\tbackground: transparent;\n\tcolor: #5d5d78;\n\tborder: 2px solid #5d5d78;\n\ttransition: all 0.3s ease-in-out;\n\t&:hover {\n\t    border: 2px solid #6464c2;\n\t    color: #6464c2;\n\t}\n\t', '\n\t  @media (max-width: 600px) {\n\t    width: 80%;\n\t    display: block;\n        margin: 10px auto;\n        padding: 10px;\n      }\n'], ['\n\tborder-radius: 3px;\n    padding: 7px 20px;\n\tmargin: 0 1em;\n\tbackground: transparent;\n\tcolor: #5d5d78;\n\tborder: 2px solid #5d5d78;\n\ttransition: all 0.3s ease-in-out;\n\t&:hover {\n\t    border: 2px solid #6464c2;\n\t    color: #6464c2;\n\t}\n\t', '\n\t  @media (max-width: 600px) {\n\t    width: 80%;\n\t    display: block;\n        margin: 10px auto;\n        padding: 10px;\n      }\n']);
+    _templateObject3 = _taggedTemplateLiteral(['\n\tborder-radius: 3px;\n    padding: 7px 20px;\n\tmargin: 0 1em;\n\tbackground: transparent;\n\tcolor: #5d5d78;\n\tborder: 2px solid #5d5d78;\n\ttransition: all 0.3s ease-in-out;\n\t&:hover {\n\t    border: 2px solid #6464c2;\n\t    color: #6464c2;\n\t}\n\t', '\n\t  @media (max-width: 600px) {\n\t    width: 80%;\n\t    display: block;\n        margin: 10px auto;\n        padding: 10px;\n      }\n'], ['\n\tborder-radius: 3px;\n    padding: 7px 20px;\n\tmargin: 0 1em;\n\tbackground: transparent;\n\tcolor: #5d5d78;\n\tborder: 2px solid #5d5d78;\n\ttransition: all 0.3s ease-in-out;\n\t&:hover {\n\t    border: 2px solid #6464c2;\n\t    color: #6464c2;\n\t}\n\t', '\n\t  @media (max-width: 600px) {\n\t    width: 80%;\n\t    display: block;\n        margin: 10px auto;\n        padding: 10px;\n      }\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\n    color: red;\n    font-size: 14px;\n    padding: 20px 0;\n    '], ['\n    color: red;\n    font-size: 14px;\n    padding: 20px 0;\n    ']);
 
 var _react = __webpack_require__(6);
 
@@ -48134,6 +48168,8 @@ var AddExpensesContainer = _styledComponents2.default.div(_templateObject2);
 var Button = _styledComponents2.default.button(_templateObject3, function (props) {
     return props.primary && '\n\t\tbackground: #5d5d78;\n\t\tcolor: white;\n\t\t&:hover {\n\t        background: #6464c2;\n\t        color: white;\n\t    }\n\t';
 });
+
+var Error = _styledComponents2.default.div(_templateObject4);
 
 var ExpensesList = exports.ExpensesList = function (_React$Component) {
     _inherits(ExpensesList, _React$Component);
@@ -48171,7 +48207,9 @@ var ExpensesList = exports.ExpensesList = function (_React$Component) {
                     },
                     onRemoveClick: function onRemoveClick(event) {
                         return _this.props.onRemoveClick(expense, i);
-                    }
+                    },
+                    validation: _this.props.validation,
+                    validationClass: expense.validationClass
                 });
             });
             return expense;
@@ -48200,6 +48238,11 @@ var ExpensesList = exports.ExpensesList = function (_React$Component) {
                     Button,
                     { primary: true, onClick: this.props.expensesCount },
                     'Count your expenses'
+                ),
+                _react2.default.createElement(
+                    Error,
+                    { style: { display: this.props.validation === false ? 'block' : 'none' } },
+                    'Check if every expense has its price!'
                 )
             );
         }
@@ -48222,7 +48265,7 @@ exports.ExpensesListItem = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n      max-width: 700px;\n      width: 100%;\n      margin: 10px auto;\n      box-sizing: border-box;\n      padding: 1%;\n      text-align: left;\n      border-radius: 5px;\n      background: linear-gradient(228deg,rgba(39, 44, 50, 0.1) 0%,rgba(39, 44, 50, 0.35) 26%);\n      position: relative;\n      @media (max-width: 600px) {\n        margin: 25px auto;\n      }\n      >div {\n        display: inline-block;\n        box-sizing: border-box;\n        padding: 1%;\n        span {\n            display: block;\n            font-size: 13px;\n        }\n        input {\n            display: inline-block;\n            width: 100%;\n            margin-top: 8px;\n            border: transparent;\n            &:focus {\n            box-shadow: inset 0 0px 11px rgba(132, 181, 255, 0.6), 0 0px 1px rgba(0, 126, 255, 0.2), 0 0px 10px rgba(110, 141, 255, 0.5);\n            outline: 0;\n           }\n        }\n        input, select {\n            min-height: 35px;\n            box-sizing: border-box;\n            padding: 5px;\n        }\n        select {\n            margin-top: 9px;\n            border: transparent;\n            background: transparent;\n        }\n        option {\n            background: #edeef0;\n            color: #5d5d78;      \n        }\n        &:nth-of-type(1) {\n            width: 40%;\n        }\n        &:nth-of-type(2) {\n            width: 15%;\n        }\n        &:nth-of-type(3) {\n            width: 35%;\n            input {\n                width: 20%;\n            }\n        }\n        @media (max-width: 600px) {\n             &:nth-of-type(1) {\n                width: 100%;\n             }\n             &:nth-of-type(2), &:nth-of-type(3) {\n                width: 50%;\n             }\n        }\n      }\n      a {\n          position: absolute;\n          right: 32px;\n          top: 32px;\n          width: 32px;\n          height: 32px;\n          opacity: 0.3;\n          transition: all 0.2s ease-in-out;\n          cursor: pointer;\n          &:before, &:after {\n              position: absolute;\n              left: 15px;\n              content: \' \';\n              height: 33px;\n              width: 2px;\n              background-color: #333;\n        }\n        &:after {\n            transform: rotate(45deg);\n        }\n        &:before {\n            transform: rotate(-45deg);\n        }\n        &:hover {\n             opacity: 1;\n        }\n        @media (max-width: 600px) {\n            right: 0;\n            top: -14px;\n            height: 32px;\n            padding: 10px;\n            background: #edeef0;\n            width: 32px;\n            opacity: 1;\n            border-radius: 50%;\n            &:before, &:after {\n              position: absolute;\n              left: 15px;\n              content: \' \';\n              height: 15px;\n            }\n        }\n        \n      }\n'], ['\n      max-width: 700px;\n      width: 100%;\n      margin: 10px auto;\n      box-sizing: border-box;\n      padding: 1%;\n      text-align: left;\n      border-radius: 5px;\n      background: linear-gradient(228deg,rgba(39, 44, 50, 0.1) 0%,rgba(39, 44, 50, 0.35) 26%);\n      position: relative;\n      @media (max-width: 600px) {\n        margin: 25px auto;\n      }\n      >div {\n        display: inline-block;\n        box-sizing: border-box;\n        padding: 1%;\n        span {\n            display: block;\n            font-size: 13px;\n        }\n        input {\n            display: inline-block;\n            width: 100%;\n            margin-top: 8px;\n            border: transparent;\n            &:focus {\n            box-shadow: inset 0 0px 11px rgba(132, 181, 255, 0.6), 0 0px 1px rgba(0, 126, 255, 0.2), 0 0px 10px rgba(110, 141, 255, 0.5);\n            outline: 0;\n           }\n        }\n        input, select {\n            min-height: 35px;\n            box-sizing: border-box;\n            padding: 5px;\n        }\n        select {\n            margin-top: 9px;\n            border: transparent;\n            background: transparent;\n        }\n        option {\n            background: #edeef0;\n            color: #5d5d78;      \n        }\n        &:nth-of-type(1) {\n            width: 40%;\n        }\n        &:nth-of-type(2) {\n            width: 15%;\n        }\n        &:nth-of-type(3) {\n            width: 35%;\n            input {\n                width: 20%;\n            }\n        }\n        @media (max-width: 600px) {\n             &:nth-of-type(1) {\n                width: 100%;\n             }\n             &:nth-of-type(2), &:nth-of-type(3) {\n                width: 50%;\n             }\n        }\n      }\n      a {\n          position: absolute;\n          right: 32px;\n          top: 32px;\n          width: 32px;\n          height: 32px;\n          opacity: 0.3;\n          transition: all 0.2s ease-in-out;\n          cursor: pointer;\n          &:before, &:after {\n              position: absolute;\n              left: 15px;\n              content: \' \';\n              height: 33px;\n              width: 2px;\n              background-color: #333;\n        }\n        &:after {\n            transform: rotate(45deg);\n        }\n        &:before {\n            transform: rotate(-45deg);\n        }\n        &:hover {\n             opacity: 1;\n        }\n        @media (max-width: 600px) {\n            right: 0;\n            top: -14px;\n            height: 32px;\n            padding: 10px;\n            background: #edeef0;\n            width: 32px;\n            opacity: 1;\n            border-radius: 50%;\n            &:before, &:after {\n              position: absolute;\n              left: 15px;\n              content: \' \';\n              height: 15px;\n            }\n        }\n        \n      }\n']);
+var _templateObject = _taggedTemplateLiteral(['\n      max-width: 700px;\n      width: 100%;\n      margin: 10px auto;\n      box-sizing: border-box;\n      padding: 1%;\n      text-align: left;\n      border-radius: 5px;\n      background: linear-gradient(228deg,rgba(39, 44, 50, 0.1) 0%,rgba(39, 44, 50, 0.35) 26%);\n      position: relative;\n      @media (max-width: 600px) {\n        margin: 25px auto;\n      }\n      >div {\n        display: inline-block;\n        box-sizing: border-box;\n        padding: 1%;\n        span {\n            display: block;\n            font-size: 13px;\n        }\n        input {\n            display: inline-block;\n            width: 100%;\n            margin-top: 8px;\n            border: transparent;\n            &:focus {\n            box-shadow: inset 0 0px 11px rgba(132, 181, 255, 0.6), 0 0px 1px rgba(0, 126, 255, 0.2), 0 0px 10px rgba(110, 141, 255, 0.5);\n            outline: 0;\n           }\n        }\n        input, select {\n            min-height: 35px;\n            box-sizing: border-box;\n            padding: 5px;\n            &.invalid {\n              box-shadow: inset 0 0px 11px rgb(206, 20, 20), 0 0px 1px rgba(255, 0, 0, 0.6), 0 0px 10px rgba(255, 0, 0, 0.9);\n            }\n        }\n        select {\n            margin-top: 9px;\n            border: transparent;\n            background: transparent;\n        }\n        option {\n            background: #edeef0;\n            color: #5d5d78;      \n        }\n        &:nth-of-type(1) {\n            width: 40%;\n        }\n        &:nth-of-type(2) {\n            width: 15%;\n        }\n        &:nth-of-type(3) {\n            width: 35%;\n            input {\n                width: 20%;\n            }\n        }\n        @media (max-width: 600px) {\n             &:nth-of-type(1) {\n                width: 100%;\n             }\n             &:nth-of-type(2), &:nth-of-type(3) {\n                width: 50%;\n             }\n        }\n      }\n      a {\n          position: absolute;\n          right: 32px;\n          top: 32px;\n          width: 32px;\n          height: 32px;\n          opacity: 0.3;\n          transition: all 0.2s ease-in-out;\n          cursor: pointer;\n          &:before, &:after {\n              position: absolute;\n              left: 15px;\n              content: \' \';\n              height: 33px;\n              width: 2px;\n              background-color: #333;\n        }\n        &:after {\n            transform: rotate(45deg);\n        }\n        &:before {\n            transform: rotate(-45deg);\n        }\n        &:hover {\n             opacity: 1;\n        }\n        @media (max-width: 600px) {\n            right: 0;\n            top: -14px;\n            height: 32px;\n            padding: 10px;\n            background: #edeef0;\n            width: 32px;\n            opacity: 1;\n            border-radius: 50%;\n            &:before, &:after {\n              position: absolute;\n              left: 15px;\n              content: \' \';\n              height: 15px;\n            }\n        }\n        \n      }\n'], ['\n      max-width: 700px;\n      width: 100%;\n      margin: 10px auto;\n      box-sizing: border-box;\n      padding: 1%;\n      text-align: left;\n      border-radius: 5px;\n      background: linear-gradient(228deg,rgba(39, 44, 50, 0.1) 0%,rgba(39, 44, 50, 0.35) 26%);\n      position: relative;\n      @media (max-width: 600px) {\n        margin: 25px auto;\n      }\n      >div {\n        display: inline-block;\n        box-sizing: border-box;\n        padding: 1%;\n        span {\n            display: block;\n            font-size: 13px;\n        }\n        input {\n            display: inline-block;\n            width: 100%;\n            margin-top: 8px;\n            border: transparent;\n            &:focus {\n            box-shadow: inset 0 0px 11px rgba(132, 181, 255, 0.6), 0 0px 1px rgba(0, 126, 255, 0.2), 0 0px 10px rgba(110, 141, 255, 0.5);\n            outline: 0;\n           }\n        }\n        input, select {\n            min-height: 35px;\n            box-sizing: border-box;\n            padding: 5px;\n            &.invalid {\n              box-shadow: inset 0 0px 11px rgb(206, 20, 20), 0 0px 1px rgba(255, 0, 0, 0.6), 0 0px 10px rgba(255, 0, 0, 0.9);\n            }\n        }\n        select {\n            margin-top: 9px;\n            border: transparent;\n            background: transparent;\n        }\n        option {\n            background: #edeef0;\n            color: #5d5d78;      \n        }\n        &:nth-of-type(1) {\n            width: 40%;\n        }\n        &:nth-of-type(2) {\n            width: 15%;\n        }\n        &:nth-of-type(3) {\n            width: 35%;\n            input {\n                width: 20%;\n            }\n        }\n        @media (max-width: 600px) {\n             &:nth-of-type(1) {\n                width: 100%;\n             }\n             &:nth-of-type(2), &:nth-of-type(3) {\n                width: 50%;\n             }\n        }\n      }\n      a {\n          position: absolute;\n          right: 32px;\n          top: 32px;\n          width: 32px;\n          height: 32px;\n          opacity: 0.3;\n          transition: all 0.2s ease-in-out;\n          cursor: pointer;\n          &:before, &:after {\n              position: absolute;\n              left: 15px;\n              content: \' \';\n              height: 33px;\n              width: 2px;\n              background-color: #333;\n        }\n        &:after {\n            transform: rotate(45deg);\n        }\n        &:before {\n            transform: rotate(-45deg);\n        }\n        &:hover {\n             opacity: 1;\n        }\n        @media (max-width: 600px) {\n            right: 0;\n            top: -14px;\n            height: 32px;\n            padding: 10px;\n            background: #edeef0;\n            width: 32px;\n            opacity: 1;\n            border-radius: 50%;\n            &:before, &:after {\n              position: absolute;\n              left: 15px;\n              content: \' \';\n              height: 15px;\n            }\n        }\n        \n      }\n']);
 
 var _react = __webpack_require__(6);
 
@@ -48256,6 +48299,7 @@ var ExpensesListItem = exports.ExpensesListItem = function (_React$Component) {
     _createClass(ExpensesListItem, [{
         key: 'render',
         value: function render() {
+
             return _react2.default.createElement(
                 ExpenseContainer,
                 null,
@@ -48284,7 +48328,8 @@ var ExpensesListItem = exports.ExpensesListItem = function (_React$Component) {
                     _react2.default.createElement('input', { type: 'number',
                         onChange: this.props.onValueChange,
                         value: this.props.value,
-                        placeholder: 'Ex: 9,99'
+                        placeholder: 'Ex: 9,99',
+                        className: this.props.validationClass
                     })
                 ),
                 _react2.default.createElement(
