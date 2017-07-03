@@ -11,10 +11,16 @@ const Nav = styled.nav`
     top: 0;
     border-top: 4px solid #0469ff;
     opacity: 0.8;
+    @media (max-width: 600px) {
+        text-align: center;
+    }
 `;
 const Li = styled.li` 
     padding: 15px 30px;
     display: inline-block;
+    @media (max-width: 600px) {
+        padding: 12px 15px;
+    }
     a {
         text-decoration: none;
         color: rgba(255, 255, 255, 0.58);
@@ -26,7 +32,7 @@ const Li = styled.li`
         }
     }
     &:last-of-type a {
-        color: #dcabdf;
+        color: #ff669d;
         &:hover {
             background: rgba(103, 103, 103, 0.44);
         }

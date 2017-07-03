@@ -7,7 +7,7 @@ const AddHeading = styled.h2`
     font-weight: 700;
     letter-spacing: -1.4px;
     margin: 0px auto 50px auto;
-    color: #272c32;
+    color: rgba(39, 44, 50, 0.85);
 `;
 
 const AddExpensesContainer = styled.div`
