@@ -10,6 +10,7 @@ const Nav = styled.nav`
     position: fixed;
     top: 0;
     border-top: 4px solid #0469ff;
+    opacity: 0.8;
 `;
 const Li = styled.li` 
     padding: 15px 30px;

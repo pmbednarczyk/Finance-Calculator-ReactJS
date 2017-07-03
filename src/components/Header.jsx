@@ -70,6 +70,10 @@ const P = styled.p`
     margin-top: 30px;
     font-size: 22px;
     font-weight: 300;
+    @media (max-width: 1400px) {
+        max-width: 55%;
+    }
+    
     @media (max-width: 1000px) {
         max-width: 70%;
     }
@@ -103,12 +107,11 @@ const CTA = styled.div`
 
 const B = styled.b`
     font-weight: 900;
+    @media (max-width: 600px) {
+        display: block;
+        font-size: 120%;
+    }
 `;
-
-
-
-
-
 
 
 export class Header extends React.Component {
@@ -122,9 +125,9 @@ export class Header extends React.Component {
 
     componentDidMount() {
         this.intervalId = setInterval(() => {
-                this.setState({
-                    seconds: this.state.seconds + 1
-                });
+            this.setState({
+                seconds: this.state.seconds + 1
+            });
         }, 1000)
     }
 
@@ -136,7 +139,9 @@ export class Header extends React.Component {
         return (
             <FullContainer id="start">
                 <MainHeading>Calculate your unnecessary spendings</MainHeading>
-                <P>Have you ever wondered how much money do you spend on <B>{this.state.uselessExpenses[this.state.seconds%this.state.uselessExpenses.length]}</B> during your whole life?</P>
+                <P>Have you ever wondered how much money do you spend on
+                    <B> {this.state.uselessExpenses[this.state.seconds % this.state.uselessExpenses.length]}</B> during
+                    your whole life?</P>
                 <CTA><IndexLink to="/calc">Check it out</IndexLink></CTA>
             </FullContainer>
         )

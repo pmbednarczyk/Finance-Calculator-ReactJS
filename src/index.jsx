@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         frequency: 1,
                         period: 'per week',
                         validationText: '',
-                        validation: '',
+                        validation: null,
                     },
                 ],
                 chartData: null,
@@ -134,7 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (expense.period === "per year") {
                     return (expense.frequency * expense.value * userYears).toFixed(2)
                 }
-                // return (expense.value * expense.frequency)
             });
 
             const expensesColors = expensesCopy.map(() => {
@@ -158,7 +157,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Sumowanie wszystkich wydatków
         handleExpensesCount = () => {
-            this.getChartData();
+            const expensesCopy = this.state.expenses.slice();
+            const expensesValues = expensesCopy.map((expense) => {
+                return expense.value;
+            });
+
+            let noValue = expensesValues.some((expense) => {
+                return expense === '' || expense === '0';
+            });
+
+
+            if (noValue) {
+                console.log("Dodaj wydatki!");
+            } else {
+                this.getChartData();
+            }
+
         };
 
         handleDecreaseYears = () => {

@@ -15658,7 +15658,20 @@ document.addEventListener('DOMContentLoaded', function () {
             };
 
             _this.handleExpensesCount = function () {
-                _this.getChartData();
+                var expensesCopy = _this.state.expenses.slice();
+                var expensesValues = expensesCopy.map(function (expense) {
+                    return expense.value;
+                });
+
+                var noValue = expensesValues.some(function (expense) {
+                    return expense === '' || expense === '0';
+                });
+
+                if (noValue) {
+                    console.log("Dodaj wydatki!");
+                } else {
+                    _this.getChartData();
+                }
             };
 
             _this.handleDecreaseYears = function () {
@@ -15689,7 +15702,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     frequency: 1,
                     period: 'per week',
                     validationText: '',
-                    validation: ''
+                    validation: null
                 }],
                 chartData: null,
                 userYears: 10,
@@ -15721,7 +15734,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else if (expense.period === "per year") {
                         return (expense.frequency * expense.value * userYears).toFixed(2);
                     }
-                    // return (expense.value * expense.frequency)
                 });
 
                 var expensesColors = expensesCopy.map(function () {
@@ -45637,7 +45649,7 @@ exports.Menu = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n    display: block;\n    background: rgb(39, 44, 50);\n    width: 100%;\n    z-index: 2;\n    position: fixed;\n    top: 0;\n    border-top: 4px solid #0469ff;\n'], ['\n    display: block;\n    background: rgb(39, 44, 50);\n    width: 100%;\n    z-index: 2;\n    position: fixed;\n    top: 0;\n    border-top: 4px solid #0469ff;\n']),
+var _templateObject = _taggedTemplateLiteral(['\n    display: block;\n    background: rgb(39, 44, 50);\n    width: 100%;\n    z-index: 2;\n    position: fixed;\n    top: 0;\n    border-top: 4px solid #0469ff;\n    opacity: 0.8;\n'], ['\n    display: block;\n    background: rgb(39, 44, 50);\n    width: 100%;\n    z-index: 2;\n    position: fixed;\n    top: 0;\n    border-top: 4px solid #0469ff;\n    opacity: 0.8;\n']),
     _templateObject2 = _taggedTemplateLiteral([' \n    padding: 15px 30px;\n    display: inline-block;\n    a {\n        text-decoration: none;\n        color: rgba(255, 255, 255, 0.58);\n        transition: all 0.3s ease-in-out;\n        &:hover {\n            color: rgba(255, 255, 255, 1);\n        }\n    }\n'], [' \n    padding: 15px 30px;\n    display: inline-block;\n    a {\n        text-decoration: none;\n        color: rgba(255, 255, 255, 0.58);\n        transition: all 0.3s ease-in-out;\n        &:hover {\n            color: rgba(255, 255, 255, 1);\n        }\n    }\n']);
 
 var _react = __webpack_require__(6);
@@ -47973,9 +47985,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _templateObject = _taggedTemplateLiteral(['\n      width: 100%;\n      max-width: 1920px;\n      margin: 0 auto;\n      height: 100vh;\n      overflow: hidden;\n      position: relative;\n      background: linear-gradient(rgb(39, 44, 50),rgba(21,23,43,0.3)), url(./src/img/bg.jpeg) no-repeat center center;\n      background-size: cover;\n      background-attachment: fixed;\n      padding: 2%;\n      box-sizing: border-box;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      flex-direction: column;\n      @media (max-width: 600px) {\n         padding: 131px 2%;\n         min-height: 100vh;\n         height: auto;\n      }\n            \n'], ['\n      width: 100%;\n      max-width: 1920px;\n      margin: 0 auto;\n      height: 100vh;\n      overflow: hidden;\n      position: relative;\n      background: linear-gradient(rgb(39, 44, 50),rgba(21,23,43,0.3)), url(./src/img/bg.jpeg) no-repeat center center;\n      background-size: cover;\n      background-attachment: fixed;\n      padding: 2%;\n      box-sizing: border-box;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      flex-direction: column;\n      @media (max-width: 600px) {\n         padding: 131px 2%;\n         min-height: 100vh;\n         height: auto;\n      }\n            \n']),
     _templateObject2 = _taggedTemplateLiteral(['\n    font-size: 64px;\n    color: rgba(255, 255, 255, 0.85);\n    font-weight: 700;\n    letter-spacing: -1.4px;\n    text-align: center;\n    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;\n     transform: translate3d(0, 0, 0);\n     backface-visibility: hidden;\n     perspective: 1000px;\n     text-shadow: 2px 1px 5px rgba(0, 0, 0, 0.3);\n         \n     @media (max-width: 600px) {\n        font-size: 44px;\n     }\n    \n\n    @keyframes shake {\n      10%, 90% {\n        transform: translate3d(-1px, 0, 0);\n      }\n      \n      20%, 80% {\n        transform: translate3d(2px, 0, 0);\n      }\n    \n      30%, 50%, 70% {\n        transform: translate3d(-4px, 0, 0);\n      }\n    \n      40%, 60% {\n        transform: translate3d(4px, 0, 0);\n      }\n    }\n'], ['\n    font-size: 64px;\n    color: rgba(255, 255, 255, 0.85);\n    font-weight: 700;\n    letter-spacing: -1.4px;\n    text-align: center;\n    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;\n     transform: translate3d(0, 0, 0);\n     backface-visibility: hidden;\n     perspective: 1000px;\n     text-shadow: 2px 1px 5px rgba(0, 0, 0, 0.3);\n         \n     @media (max-width: 600px) {\n        font-size: 44px;\n     }\n    \n\n    @keyframes shake {\n      10%, 90% {\n        transform: translate3d(-1px, 0, 0);\n      }\n      \n      20%, 80% {\n        transform: translate3d(2px, 0, 0);\n      }\n    \n      30%, 50%, 70% {\n        transform: translate3d(-4px, 0, 0);\n      }\n    \n      40%, 60% {\n        transform: translate3d(4px, 0, 0);\n      }\n    }\n']),
-    _templateObject3 = _taggedTemplateLiteral(['\n    color: rgba(255, 255, 255, .85);\n    letter-spacing: -.4px;\n    max-width: 40%;\n    text-align: center;\n    margin-top: 30px;\n    font-size: 22px;\n    font-weight: 300;\n    @media (max-width: 1000px) {\n        max-width: 70%;\n    }\n    \n    @media (max-width: 600px) {\n        max-width: 85%;\n    }\n'], ['\n    color: rgba(255, 255, 255, .85);\n    letter-spacing: -.4px;\n    max-width: 40%;\n    text-align: center;\n    margin-top: 30px;\n    font-size: 22px;\n    font-weight: 300;\n    @media (max-width: 1000px) {\n        max-width: 70%;\n    }\n    \n    @media (max-width: 600px) {\n        max-width: 85%;\n    }\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n    color: rgba(255, 255, 255, .85);\n    letter-spacing: -.4px;\n    max-width: 40%;\n    text-align: center;\n    margin-top: 30px;\n    font-size: 22px;\n    font-weight: 300;\n    @media (max-width: 1400px) {\n        max-width: 55%;\n    }\n    \n    @media (max-width: 1000px) {\n        max-width: 70%;\n    }\n    \n    @media (max-width: 600px) {\n        max-width: 85%;\n    }\n'], ['\n    color: rgba(255, 255, 255, .85);\n    letter-spacing: -.4px;\n    max-width: 40%;\n    text-align: center;\n    margin-top: 30px;\n    font-size: 22px;\n    font-weight: 300;\n    @media (max-width: 1400px) {\n        max-width: 55%;\n    }\n    \n    @media (max-width: 1000px) {\n        max-width: 70%;\n    }\n    \n    @media (max-width: 600px) {\n        max-width: 85%;\n    }\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n    margin-top: 35px;\n    a {\n        background: rgba(4, 105, 255, .6);\n        color: rgba(255, 255, 255, .86);\n        font-size: 26px;\n        font-weight: 300;\n        letter-spacing: -1.4px;\n        text-decoration: none;\n        border-radius: 15px 0 15px 0;\n        padding: 10px 48px;\n        transition: all 0.3s ease-in-out;\n        @media (max-width: 600px) {\n            font-size: 22px;\n        }\n        &:hover {\n         color: rgba(0, 0, 0, 0.58);\n         background: rgba(255, 255, 255, 0.66);\n        }\n    }\n'], ['\n    margin-top: 35px;\n    a {\n        background: rgba(4, 105, 255, .6);\n        color: rgba(255, 255, 255, .86);\n        font-size: 26px;\n        font-weight: 300;\n        letter-spacing: -1.4px;\n        text-decoration: none;\n        border-radius: 15px 0 15px 0;\n        padding: 10px 48px;\n        transition: all 0.3s ease-in-out;\n        @media (max-width: 600px) {\n            font-size: 22px;\n        }\n        &:hover {\n         color: rgba(0, 0, 0, 0.58);\n         background: rgba(255, 255, 255, 0.66);\n        }\n    }\n']),
-    _templateObject5 = _taggedTemplateLiteral(['\n    font-weight: 900;\n'], ['\n    font-weight: 900;\n']);
+    _templateObject5 = _taggedTemplateLiteral(['\n    font-weight: 900;\n    @media (max-width: 600px) {\n        display: block;\n        font-size: 120%;\n    }\n'], ['\n    font-weight: 900;\n    @media (max-width: 600px) {\n        display: block;\n        font-size: 120%;\n    }\n']);
 
 var _react = __webpack_require__(6);
 
@@ -48052,10 +48064,11 @@ var Header = exports.Header = function (_React$Component) {
                 _react2.default.createElement(
                     P,
                     null,
-                    'Have you ever wondered how much money do you spend on ',
+                    'Have you ever wondered how much money do you spend on',
                     _react2.default.createElement(
                         B,
                         null,
+                        ' ',
                         this.state.uselessExpenses[this.state.seconds % this.state.uselessExpenses.length]
                     ),
                     ' during your whole life?'
