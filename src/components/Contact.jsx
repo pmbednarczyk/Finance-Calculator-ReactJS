@@ -6,7 +6,7 @@ const Img = styled.img`
             max-width: 380px;
            width: 100%;
            opacity: 0.8;
-           animation: 3s ease 0s normal forwards 1 fadein;
+           animation: 2s ease 0s normal forwards 1 fadein;
            @keyframes fadein{
                 0% { opacity:0.5; }
                 66% { opacity:0.8; }
@@ -24,7 +24,7 @@ const P = styled.p`
         margin: 20px auto;
         text-align: center;
         font-size: 18px;
-        letter-spacing: -.6px;
+        letter-spacing: -.4px;
         color: rgba(0, 0, 0, 0.79);
         line-height: 23px;
         span {
@@ -33,6 +33,12 @@ const P = styled.p`
             margin-bottom: 10px;
             display: block;
         }
+        animation: 2s ease 0s normal forwards 1 fadein;
+        @keyframes fadein{
+            0% { opacity:0.5; }
+            66% { opacity:0.8; }
+            100% { opacity:1; }
+        }
         `;
 
 const H1 = styled.h1`
@@ -40,7 +46,7 @@ const H1 = styled.h1`
             font-size: 21px;
             font-weight: 700;
             letter-spacing: -.9px;
-            color: #272c32;  
+            color: rgba(0, 0, 0, 0.79);
         `;
 
 const AContainer = styled.div`
