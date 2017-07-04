@@ -15627,7 +15627,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
             _this.handleFrequencyValChange = function (event, expense, i) {
                 var expensesCopy = _this.state.expenses.slice();
-                expensesCopy[i].frequency = event.target.value;
+                if (event.target.value < 1) {
+                    expensesCopy[i].frequency = 1;
+                } else {
+                    expensesCopy[i].frequency = event.target.value;
+                }
                 _this.setState({
                     expenses: expensesCopy
                 });
@@ -15669,10 +15673,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             _this.handleExpensesCount = function () {
                 var expensesCopy = _this.state.expenses.slice();
-                // const expensesValues = expensesCopy.map((expense) => {
-                //     return expense.value;
-                // });
-
 
                 expensesCopy.forEach(function (expense, i) {
                     if (expense.validationClass === "invalid" || expense.validationClass === '') {
@@ -15703,14 +15703,16 @@ document.addEventListener('DOMContentLoaded', function () {
             };
 
             _this.handleDecreaseYears = function () {
-                var newYears = _this.state.userYears - 1;
-                _this.setState({
-                    userYears: newYears
-                });
-                // Wymuszynie aktualizacji state
-                _this.forceUpdate(function () {
-                    _this.getChartData();
-                });
+                if (_this.state.userYears > 1) {
+                    var newYears = _this.state.userYears - 1;
+                    _this.setState({
+                        userYears: newYears
+                    });
+                    // Wymuszynie aktualizacji state
+                    _this.forceUpdate(function () {
+                        _this.getChartData();
+                    });
+                }
             };
 
             _this.handleIncreaseYears = function () {
@@ -44216,9 +44218,9 @@ exports.Contact = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n            max-width: 380px;\n           width: 100%;\n           opacity: 0.8;\n           animation: 2s ease 0s normal forwards 1 fadein;\n           @keyframes fadein{\n                0% { opacity:0.5; }\n                66% { opacity:0.8; }\n                100% { opacity:1; }\n           }\n           &:hover {\n            opacity: 1;\n           }\n        '], ['\n            max-width: 380px;\n           width: 100%;\n           opacity: 0.8;\n           animation: 2s ease 0s normal forwards 1 fadein;\n           @keyframes fadein{\n                0% { opacity:0.5; }\n                66% { opacity:0.8; }\n                100% { opacity:1; }\n           }\n           &:hover {\n            opacity: 1;\n           }\n        ']),
-    _templateObject2 = _taggedTemplateLiteral(['\n        max-width: 580px;\n        width: 100%;\n        padding: 20px;\n        opacity: 0.8;\n        margin: 20px auto;\n        text-align: center;\n        font-size: 18px;\n        letter-spacing: -.4px;\n        color: rgba(0, 0, 0, 0.79);\n        line-height: 23px;\n        span {\n            font-size: 30px;\n            font-weight: 600;\n            margin-bottom: 10px;\n            display: block;\n        }\n        animation: 2s ease 0s normal forwards 1 fadein;\n        @keyframes fadein{\n            0% { opacity:0.5; }\n            66% { opacity:0.8; }\n            100% { opacity:1; }\n        }\n        '], ['\n        max-width: 580px;\n        width: 100%;\n        padding: 20px;\n        opacity: 0.8;\n        margin: 20px auto;\n        text-align: center;\n        font-size: 18px;\n        letter-spacing: -.4px;\n        color: rgba(0, 0, 0, 0.79);\n        line-height: 23px;\n        span {\n            font-size: 30px;\n            font-weight: 600;\n            margin-bottom: 10px;\n            display: block;\n        }\n        animation: 2s ease 0s normal forwards 1 fadein;\n        @keyframes fadein{\n            0% { opacity:0.5; }\n            66% { opacity:0.8; }\n            100% { opacity:1; }\n        }\n        ']),
-    _templateObject3 = _taggedTemplateLiteral(['\n            margin-top: 10px;\n            font-size: 21px;\n            font-weight: 700;\n            letter-spacing: -.9px;\n            color: rgba(0, 0, 0, 0.79);\n        '], ['\n            margin-top: 10px;\n            font-size: 21px;\n            font-weight: 700;\n            letter-spacing: -.9px;\n            color: rgba(0, 0, 0, 0.79);\n        ']),
+var _templateObject = _taggedTemplateLiteral(['\n            max-width: 380px;\n           width: 100%;\n           opacity: 0.8;\n           margin: 15px 0;\n           animation: 2s ease 0s normal forwards 1 fadein;\n           @keyframes fadein{\n                0% { opacity:0.5; }\n                66% { opacity:0.8; }\n                100% { opacity:1; }\n           }\n           &:hover {\n            opacity: 1;\n           }\n        '], ['\n            max-width: 380px;\n           width: 100%;\n           opacity: 0.8;\n           margin: 15px 0;\n           animation: 2s ease 0s normal forwards 1 fadein;\n           @keyframes fadein{\n                0% { opacity:0.5; }\n                66% { opacity:0.8; }\n                100% { opacity:1; }\n           }\n           &:hover {\n            opacity: 1;\n           }\n        ']),
+    _templateObject2 = _taggedTemplateLiteral(['\n        max-width: 580px;\n        width: 95%;\n        padding: 0px;\n        opacity: 0.8;\n        margin: 10px auto;\n        text-align: center;\n        font-size: 18px;\n        letter-spacing: -.4px;\n        color: rgba(0, 0, 0, 0.79);\n        line-height: 25px;\n        span {\n            font-size: 30px;\n            font-weight: 600;\n            margin-bottom: 10px;\n            display: block;\n        }\n        animation: 2s ease 0s normal forwards 1 fadein;\n        @keyframes fadein{\n            0% { opacity:0.5; }\n            66% { opacity:0.8; }\n            100% { opacity:1; }\n        }\n        '], ['\n        max-width: 580px;\n        width: 95%;\n        padding: 0px;\n        opacity: 0.8;\n        margin: 10px auto;\n        text-align: center;\n        font-size: 18px;\n        letter-spacing: -.4px;\n        color: rgba(0, 0, 0, 0.79);\n        line-height: 25px;\n        span {\n            font-size: 30px;\n            font-weight: 600;\n            margin-bottom: 10px;\n            display: block;\n        }\n        animation: 2s ease 0s normal forwards 1 fadein;\n        @keyframes fadein{\n            0% { opacity:0.5; }\n            66% { opacity:0.8; }\n            100% { opacity:1; }\n        }\n        ']),
+    _templateObject3 = _taggedTemplateLiteral(['\n            margin: 20px 0 15px;\n            font-size: 21px;\n            font-weight: 700;\n            letter-spacing: -.9px;\n            color: rgba(0, 0, 0, 0.79);\n        '], ['\n            margin: 20px 0 15px;\n            font-size: 21px;\n            font-weight: 700;\n            letter-spacing: -.9px;\n            color: rgba(0, 0, 0, 0.79);\n        ']),
     _templateObject4 = _taggedTemplateLiteral(['\n            margin: 20px 0;\n            a {\n                display: inline-block;\n                margin-right: 15px;\n                transition: all 0.3s ease-in-out;\n                &:last-of-type {\n                    margin-right: 0;\n                }\n                &:hover {\n                    opacity: 0.8;\n                }\n                img {\n                    max-width: 35px;\n                    border-radius: 5px;\n                }\n            }\n        '], ['\n            margin: 20px 0;\n            a {\n                display: inline-block;\n                margin-right: 15px;\n                transition: all 0.3s ease-in-out;\n                &:last-of-type {\n                    margin-right: 0;\n                }\n                &:hover {\n                    opacity: 0.8;\n                }\n                img {\n                    max-width: 35px;\n                    border-radius: 5px;\n                }\n            }\n        ']),
     _templateObject5 = _taggedTemplateLiteral(['\n            justify-content: center;\n            min-height: 100vh;\n            text-align: center;\n            padding: 1%;\n            padding-top: 80px;\n            @media (max-width: 600px) {\n                padding-top: 111px;\n            }\n            \n        '], ['\n            justify-content: center;\n            min-height: 100vh;\n            text-align: center;\n            padding: 1%;\n            padding-top: 80px;\n            @media (max-width: 600px) {\n                padding-top: 111px;\n            }\n            \n        ']);
 
@@ -44268,7 +44270,7 @@ var Contact = exports.Contact = function (_React$Component) {
             return _react2.default.createElement(
                 CContainer,
                 null,
-                _react2.default.createElement(Img, { src: './src/img/default-avatar.jpg' }),
+                _react2.default.createElement(Img, { src: './src/img/pmb-avatar.jpg' }),
                 _react2.default.createElement(
                     P,
                     null,
@@ -44282,6 +44284,13 @@ var Contact = exports.Contact = function (_React$Component) {
                     'My main goal is to master Javascript programming skills, especially in new libraries ex. ReactJS.'
                 ),
                 _react2.default.createElement(
+                    P,
+                    null,
+                    'Experience in Front-End: 1 year+ ',
+                    _react2.default.createElement('br', null),
+                    'Preferred location: Cracow, Poland'
+                ),
+                _react2.default.createElement(
                     H1,
                     null,
                     'Contact me at pmbednarczyk@gmail.com'
@@ -44293,6 +44302,17 @@ var Contact = exports.Contact = function (_React$Component) {
                         'a',
                         { href: 'https://github.com/pmbednarczyk/', target: '_blank' },
                         _react2.default.createElement('img', { src: './src/img/git.jpg' })
+                    ),
+                    _react2.default.createElement(
+                        'a',
+                        { href: 'https://www.linkedin.com/in/pawel-bednarczyk/', target: '_blank' },
+                        _react2.default.createElement('img', {
+                            src: './src/img/in.png' })
+                    ),
+                    _react2.default.createElement(
+                        'a',
+                        { href: 'https://www.fb.com/pavaka', target: '_blank' },
+                        _react2.default.createElement('img', { src: './src/img/fb.jpg' })
                     )
                 )
             );
@@ -48066,7 +48086,7 @@ var Header = exports.Header = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
 
         _this.state = {
-            uselessExpenses: ["Beer", "Hazard", "Snacks", "Parties", "Gas", "Cigarettes"],
+            uselessExpenses: ["Beer", "Gambling", "Snacks", "Parties", "Gas", "Cigarettes"],
             seconds: 0
         };
         return _this;
@@ -48144,7 +48164,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _templateObject = _taggedTemplateLiteral(['\n    font-size: 34px;\n    font-weight: 700;\n    letter-spacing: -1.4px;\n    margin: 0px auto 50px auto;\n    color: rgba(39, 44, 50, 0.85);\n'], ['\n    font-size: 34px;\n    font-weight: 700;\n    letter-spacing: -1.4px;\n    margin: 0px auto 50px auto;\n    color: rgba(39, 44, 50, 0.85);\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n    text-align: center;\n    padding: 110px 2% 10px;\n'], ['\n    text-align: center;\n    padding: 110px 2% 10px;\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n\tborder-radius: 3px;\n    padding: 7px 20px;\n\tmargin: 0 1em;\n\tbackground: transparent;\n\tcolor: #5d5d78;\n\tborder: 2px solid #5d5d78;\n\ttransition: all 0.3s ease-in-out;\n\t&:hover {\n\t    border: 2px solid #6464c2;\n\t    color: #6464c2;\n\t}\n\t', '\n\t  @media (max-width: 600px) {\n\t    width: 80%;\n\t    display: block;\n        margin: 10px auto;\n        padding: 10px;\n      }\n'], ['\n\tborder-radius: 3px;\n    padding: 7px 20px;\n\tmargin: 0 1em;\n\tbackground: transparent;\n\tcolor: #5d5d78;\n\tborder: 2px solid #5d5d78;\n\ttransition: all 0.3s ease-in-out;\n\t&:hover {\n\t    border: 2px solid #6464c2;\n\t    color: #6464c2;\n\t}\n\t', '\n\t  @media (max-width: 600px) {\n\t    width: 80%;\n\t    display: block;\n        margin: 10px auto;\n        padding: 10px;\n      }\n']),
-    _templateObject4 = _taggedTemplateLiteral(['\n    color: red;\n    font-size: 14px;\n    padding: 20px 0;\n    '], ['\n    color: red;\n    font-size: 14px;\n    padding: 20px 0;\n    ']);
+    _templateObject4 = _taggedTemplateLiteral(['\n    color: red;\n    font-size: 14px;\n    padding: 20px 0;\n    '], ['\n    color: red;\n    font-size: 14px;\n    padding: 20px 0;\n    ']),
+    _templateObject5 = _taggedTemplateLiteral(['\n    color: rgba(71, 78, 85, 0.84);\n    font-size: 13px;\n    '], ['\n    color: rgba(71, 78, 85, 0.84);\n    font-size: 13px;\n    ']);
 
 var _react = __webpack_require__(6);
 
@@ -48175,6 +48196,8 @@ var Button = _styledComponents2.default.button(_templateObject3, function (props
 });
 
 var Error = _styledComponents2.default.div(_templateObject4);
+
+var P = _styledComponents2.default.p(_templateObject5);
 
 var ExpensesList = exports.ExpensesList = function (_React$Component) {
     _inherits(ExpensesList, _React$Component);
@@ -48232,6 +48255,11 @@ var ExpensesList = exports.ExpensesList = function (_React$Component) {
                     AddHeading,
                     null,
                     'Add your expenses:'
+                ),
+                _react2.default.createElement(
+                    P,
+                    null,
+                    'At this moment the result will be formatted in polish currency.'
                 ),
                 this.getExpenses(),
                 _react2.default.createElement(

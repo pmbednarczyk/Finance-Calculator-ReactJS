@@ -118,7 +118,7 @@ export class Header extends React.Component {
     constructor() {
         super(...arguments);
         this.state = {
-            uselessExpenses: ["Beer", "Hazard", "Snacks", "Parties", "Gas", "Cigarettes"],
+            uselessExpenses: ["Beer", "Gambling", "Snacks", "Parties", "Gas", "Cigarettes"],
             seconds: 0,
         }
     }

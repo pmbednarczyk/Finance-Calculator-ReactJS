@@ -49,6 +49,11 @@ const Error = styled.div`
     padding: 20px 0;
     `
 
+const P = styled.p`
+    color: rgba(71, 78, 85, 0.84);
+    font-size: 13px;
+    `
+
 
 export class ExpensesList extends React.Component {
     getExpenses = () => {
@@ -76,6 +81,7 @@ export class ExpensesList extends React.Component {
         return (
         <AddExpensesContainer>
             <AddHeading>Add your expenses:</AddHeading>
+            <P>At this moment the result will be formatted in polish currency.</P>
             {this.getExpenses()}
             <Button onClick={this.props.addNewExpense}>Add another expense</Button>
             <Button primary onClick={this.props.expensesCount}>Count your expenses</Button>

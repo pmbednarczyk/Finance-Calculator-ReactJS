@@ -6,6 +6,7 @@ const Img = styled.img`
             max-width: 380px;
            width: 100%;
            opacity: 0.8;
+           margin: 15px 0;
            animation: 2s ease 0s normal forwards 1 fadein;
            @keyframes fadein{
                 0% { opacity:0.5; }
@@ -18,15 +19,15 @@ const Img = styled.img`
         `;
 const P = styled.p`
         max-width: 580px;
-        width: 100%;
-        padding: 20px;
+        width: 95%;
+        padding: 0px;
         opacity: 0.8;
-        margin: 20px auto;
+        margin: 10px auto;
         text-align: center;
         font-size: 18px;
         letter-spacing: -.4px;
         color: rgba(0, 0, 0, 0.79);
-        line-height: 23px;
+        line-height: 25px;
         span {
             font-size: 30px;
             font-weight: 600;
@@ -42,7 +43,7 @@ const P = styled.p`
         `;
 
 const H1 = styled.h1`
-            margin-top: 10px;
+            margin: 20px 0 15px;
             font-size: 21px;
             font-weight: 700;
             letter-spacing: -.9px;
@@ -86,17 +87,18 @@ export class Contact extends React.Component {
 
         return (
             <CContainer>
-                <Img src="./src/img/default-avatar.jpg"/>
+                <Img src="./src/img/pmb-avatar.jpg"/>
                 <P><span>Hello, World!</span>
                     My name is Pawel and I would like to dedicate my knowledge and positive energy to work in Front-end
                     development. <br/>My main goal is to master Javascript programming skills, especially in new libraries
                     ex. ReactJS.</P>
+                <P>Experience in Front-End: 1 year+ <br/>Preferred location: Cracow, Poland</P>
                 <H1>Contact me at pmbednarczyk@gmail.com</H1>
                 <AContainer>
                     <a href="https://github.com/pmbednarczyk/" target="_blank"><img src="./src/img/git.jpg"/></a>
-                    {/*<a href="https://www.linkedin.com/in/pawel-bednarczyk/" target="_blank"><img*/}
-                        {/*src="./src/img/in.png"/></a>*/}
-                    {/*<a href="https://www.fb.com/pavaka" target="_blank"><img src="./src/img/fb.jpg"/></a>*/}
+                    <a href="https://www.linkedin.com/in/pawel-bednarczyk/" target="_blank"><img
+                        src="./src/img/in.png"/></a>
+                    <a href="https://www.fb.com/pavaka" target="_blank"><img src="./src/img/fb.jpg"/></a>
                 </AContainer>
             </CContainer>
 

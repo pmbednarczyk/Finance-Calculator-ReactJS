@@ -81,7 +81,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         handleFrequencyValChange = (event, expense, i) => {
             const expensesCopy = this.state.expenses.slice();
-            expensesCopy[i].frequency = event.target.value;
+            if (event.target.value < 1) {
+                expensesCopy[i].frequency = 1
+            } else {
+                expensesCopy[i].frequency = event.target.value;
+            }
             this.setState({
                 expenses: expensesCopy
             });
@@ -167,9 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Sumowanie wszystkich wydatków
         handleExpensesCount = () => {
             const expensesCopy = this.state.expenses.slice();
-            // const expensesValues = expensesCopy.map((expense) => {
-            //     return expense.value;
-            // });
 
 
             expensesCopy.forEach((expense, i) => {
@@ -201,15 +202,16 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         handleDecreaseYears = () => {
-            const newYears = this.state.userYears - 1;
-            this.setState({
-                userYears: newYears,
-            });
-            // Wymuszynie aktualizacji state
-            this.forceUpdate(() => {
-                this.getChartData();
-            });
-
+            if (this.state.userYears > 1) {
+                const newYears = this.state.userYears - 1;
+                this.setState({
+                    userYears: newYears,
+                });
+                // Wymuszynie aktualizacji state
+                this.forceUpdate(() => {
+                    this.getChartData();
+                });
+            }
         };
 
         handleIncreaseYears = () => {
