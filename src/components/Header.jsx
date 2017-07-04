@@ -9,7 +9,7 @@ const FullContainer = styled.div`
       height: 100vh;
       overflow: hidden;
       position: relative;
-      background: linear-gradient(rgba(0, 54, 93, 0.81),rgba(21,23,43,0.3)), url(./src/img/bg.jpeg) no-repeat center center;
+      background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.3)), url(./src/img/bg.jpeg) no-repeat center center;
       background-size: cover;
       background-attachment: fixed;
       padding: 2%;
@@ -70,6 +70,7 @@ const P = styled.p`
     margin-top: 30px;
     font-size: 22px;
     font-weight: 300;
+    text-shadow: 2px 1px 5px rgba(0, 0, 0, 0.3);
     @media (max-width: 1400px) {
         max-width: 55%;
     }
