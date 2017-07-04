@@ -9,7 +9,7 @@ const FullContainer = styled.div`
       height: 100vh;
       overflow: hidden;
       position: relative;
-      background: linear-gradient(rgb(39, 44, 50),rgba(21,23,43,0.3)), url(./src/img/bg.jpeg) no-repeat center center;
+      background: linear-gradient(rgba(0, 54, 93, 0.81),rgba(21,23,43,0.3)), url(./src/img/bg.jpeg) no-repeat center center;
       background-size: cover;
       background-attachment: fixed;
       padding: 2%;
