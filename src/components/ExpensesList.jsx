@@ -7,7 +7,7 @@ const AddHeading = styled.h2`
     font-weight: 700;
     letter-spacing: -1.4px;
     margin: 0px auto 50px auto;
-    color: rgba(39, 44, 50, 0.85);
+    color: rgba(39, 44, 50, 0.95);
 `;
 
 const AddExpensesContainer = styled.div`
@@ -54,6 +54,22 @@ const P = styled.p`
     font-size: 13px;
     `
 
+const Input = styled.input`
+    height: 35px;
+    text-align: center;
+    &[type=checkbox]{
+        width: 35px;
+        margin: 12px 6px 0 15px;
+        cursor: pointer;
+    }
+    &[type=number]{
+        margin: 0 4px;
+        width: 50px;
+    }
+`
+const Span = styled.span`
+    font-size: 13px;
+`
 
 export class ExpensesList extends React.Component {
     getExpenses = () => {
@@ -85,8 +101,22 @@ export class ExpensesList extends React.Component {
             {this.getExpenses()}
             <Button onClick={this.props.addNewExpense}>Add another expense</Button>
             <Button primary onClick={this.props.expensesCount}>Count your expenses</Button>
+
+            {/*Next feature*/}
+            {/*<Input type="checkbox"*/}
+                   {/*value={this.props.inflation}*/}
+                   {/*onChange={this.props.inflationChange}*/}
+            {/*/>*/}
+            {/*<Span>Include*/}
+                {/*<Input type="number"*/}
+                       {/*placeholder="2"*/}
+                       {/*value={this.props.inflationValue}*/}
+                       {/*onChange={this.props.inflationChange}*/}
+                {/*/>% annual inflation rate.*/}
+            {/*</Span>*/}
+
             <Error style={{ display : this.props.validation === false ? 'block' : 'none',}}>
-               Check if every expense has its price!
+                {this.props.validationText}
             </Error>
         </AddExpensesContainer>
         )

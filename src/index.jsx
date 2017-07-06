@@ -44,11 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         validationClass: '',
                     },
                 ],
-                validationText: '',
+                validationText: 'Check if every expense has its price!',
                 validation: null,
                 chartData: null,
                 userYears: 10,
                 showChart: false,
+                inflation: null,
+                inflationValue: 2,
             }
         }
 
@@ -225,7 +227,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         };
 
-        componentWillUpdate() {
+        handleInflationChange = (event) => {
+            const expensesCopy = this.state.expenses.slice();
+            expensesCopy[i].name = event.target.value;
+            this.setState({
+                expenses: expensesCopy
+            });
+
+
 
         };
 
@@ -242,6 +251,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                   expenses={this.state.expenses}
                                   validation={this.state.validation}
                                   validationText={this.state.validationText}
+                                  inflation={this.state.inflation}
+                                  inflationValue={this.state.inflationValue}
+                                  inflationChange={this.handleInflationChange}
 
                     />
                     <Chart chartData={this.state.chartData}

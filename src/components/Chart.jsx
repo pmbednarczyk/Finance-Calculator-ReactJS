@@ -1,12 +1,14 @@
 import React from 'react';
 import {Pie} from 'react-chartjs-2';
 import styled from 'styled-components';
+import {ChartTreasures} from './ChartTreasures.jsx';
 
 const ChartContainer = styled.div`
      text-align: center;
      margin: 80px 0;
      width: 100%;
      h2 {
+        color: rgba(39, 44, 50, 0.95);
         font-size: 34px;
         font-weight: 700;
         letter-spacing: -1.4px;
@@ -54,34 +56,36 @@ export class Chart extends React.Component {
         const currencyFormatter = require('currency-formatter');
 
         return (
-            <ChartContainer>
-                <h2>In {this.props.userYears}
-                    <button onClick={this.props.onUserYearsDecrease}> - </button>
-                    <button onClick={this.props.onUserYearsIncrease}> + </button>
-                    years you will spend: <em>{currencyFormatter.format(totalSum, {locale: 'pl-PL'}) }</em>
-                </h2>
-                {/*<p>Number of expenses:{this.props.expenses.length}</p>*/}
-                <Pie
-                    data={this.props.chartData}
-                    options={{
-                        title: {
-                            fontSize: 25
-                        },
-                        legend: {
-                            display: true,
-                        },
-                        tooltips: {
-                            callbacks: {
-                                label: function(tooltipItem, data) {
-                                    let indice = tooltipItem.index;
-                                    return  data.labels[indice] +': '+ currencyFormatter.format(data.datasets[0].data[indice], {locale: 'pl-PL'})  + '';
+            <div>
+                <ChartContainer>
+                    <h2>In {this.props.userYears}
+                        <button onClick={this.props.onUserYearsDecrease}> -</button>
+                        <button onClick={this.props.onUserYearsIncrease}> +</button>
+                        years you will spend: <em>{currencyFormatter.format(totalSum, {locale: 'pl-PL'}) }</em>
+                    </h2>
+                    {/*<p>Number of expenses:{this.props.expenses.length}</p>*/}
+                    <Pie
+                        data={this.props.chartData}
+                        options={{
+                            title: {
+                                fontSize: 25
+                            },
+                            legend: {
+                                display: true,
+                            },
+                            tooltips: {
+                                callbacks: {
+                                    label: function (tooltipItem, data) {
+                                        let indice = tooltipItem.index;
+                                        return data.labels[indice] + ': ' + currencyFormatter.format(data.datasets[0].data[indice], {locale: 'pl-PL'}) + '';
+                                    }
                                 }
                             }
-                        }
-                    }}
-                />
-                {/*<ChartTreasures/>*/}
-            </ChartContainer>
+                        }}
+                    />
+                </ChartContainer>
+                <ChartTreasures expensesData={this.props.chartData}/>
+            </div>
         )
     }
 }
