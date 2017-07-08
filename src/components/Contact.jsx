@@ -89,9 +89,10 @@ export class Contact extends React.Component {
             <CContainer>
                 <Img src="./src/img/pmb-avatar.jpg"/>
                 <P><span>Hello, World!</span>
-                    My name is Pawel and I would like to dedicate my knowledge and positive energy to work in Front-end
-                    development. <br/>My main goal is to master Javascript programming skills, especially in new libraries
-                    ex. ReactJS.</P>
+                    I am Pawel and I would like to dedicate my knowledge and positive energy to work in Front-end
+                    development - especially in Javascript and its new libraries like ReactJS. <br/>My main goal is to
+                    work with professionals and develop highest quality digital products.<br/>I have still lot to learn
+                    and It will be pleasure to work as Junior Front-end Developer at innovative projects.</P>
                 <P>Experience in Front-End: 1 year+ <br/>Preferred location: Cracow, Poland</P>
                 <H1>Contact me at pmbednarczyk@gmail.com</H1>
                 <AContainer>

@@ -14,7 +14,7 @@ const Wrapper = styled.div`
     margin-left: auto;
     box-sizing: border-box;
     padding: 0;
-    background: linear-gradient(rgba(255, 255, 255, .1),rgba(255, 255, 255, 0.2)), url(./src/img/bg-calc.jpg) no-repeat center center;
+    background: linear-gradient(rgba(255, 255, 255, .1),rgba(255, 255, 255, 0.2)), url(./src/img/bg-calc-optimized.jpg) no-repeat center center;
     background-attachment: fixed;
 `;
 
