@@ -233,9 +233,6 @@ document.addEventListener('DOMContentLoaded', () => {
             this.setState({
                 expenses: expensesCopy
             });
-
-
-
         };
 
         render() {

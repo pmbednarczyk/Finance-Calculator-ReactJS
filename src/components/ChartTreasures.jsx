@@ -73,20 +73,20 @@ export class ChartTreasures extends React.Component {
             let seconds = parseInt((totalSum / 1666.66).toFixed(2));
             const timeFormatter = require('time-formatter');
             const time = timeFormatter.seconds(seconds, true);
-            return `Bill Gates would had to work ${time} to cover your spendings!`
+            return `Bill Gates would have to work ${time} to cover your spendings!`
         };
 
 
         return (
             <TreasuresContainer>
-                <H2>For money you spend on unnecessary things you could buy:</H2>
+                <H2>With money you spend on unnecessary things you could buy:</H2>
                 <Ul>
-                    <Li><Em>{treasures(3)}x</Em> fresh breads</Li>
-                    <Li><Em>{treasures(40)}x</Em> books</Li>
-                    <Li><Em>{treasures(6000)}x</Em> egzotic trips</Li>
-                    <Li><Em>{treasures(120000)}x</Em> luxury cars</Li>
-                    <Li><Em>{treasures(240000)}x</Em> medium size flats in Cracow</Li>
-                    <Li><Em>{treasures(740000)}x</Em> space trips</Li>
+                    <Li><Em>{treasures(3)}</Em> fresh bread</Li>
+                    <Li><Em>{treasures(40)}</Em> books</Li>
+                    <Li><Em>{treasures(6000)}</Em> exotic trips</Li>
+                    <Li><Em>{treasures(120000)}</Em> luxury cars</Li>
+                    <Li><Em>{treasures(240000)}</Em> medium sized flats in Cracow</Li>
+                    <Li><Em>{treasures(740000)}</Em> space trips</Li>
                     <Li>{billGates()}</Li>
                 </Ul>
             </TreasuresContainer>

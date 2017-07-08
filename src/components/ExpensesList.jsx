@@ -97,7 +97,7 @@ export class ExpensesList extends React.Component {
         return (
         <AddExpensesContainer>
             <AddHeading>Add your expenses:</AddHeading>
-            <P>At this moment the result will be formatted in polish currency.</P>
+            <P>At this moment the result will be formatted in Polish currency.</P>
             {this.getExpenses()}
             <Button onClick={this.props.addNewExpense}>Add another expense</Button>
             <Button primary onClick={this.props.expensesCount}>Count your expenses</Button>
