@@ -7,6 +7,9 @@ import {ExpensesList} from './components/ExpensesList.jsx';
 import {Chart} from './components/Chart.jsx';
 import styled from 'styled-components';
 import {Router, Route, Link, IndexLink, IndexRoute, hashHistory} from 'react-router';
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
 
 const Wrapper = styled.div`
     width: 100%;
@@ -112,7 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         };
 
-
         //Dodawanie kolejnycych wydatków
         handleAddNewExpense = event => {
             const expensesCopy = this.state.expenses.slice();
@@ -129,7 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 chartData: {},
             });
         };
-
 
         getChartData() {
             const userYears = this.state.userYears;

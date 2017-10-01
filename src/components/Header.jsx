@@ -23,7 +23,6 @@ const FullContainer = styled.div`
          min-height: 100vh;
          height: auto;
       }
-            
 `;
 
 const MainHeading = styled.h1`
@@ -37,25 +36,19 @@ const MainHeading = styled.h1`
      backface-visibility: hidden;
      perspective: 1000px;
      text-shadow: 2px 1px 5px rgba(0, 0, 0, 0.3);
-         
      @media (max-width: 600px) {
         font-size: 44px;
      }
-    
-
     @keyframes shake {
       10%, 90% {
         transform: translate3d(-1px, 0, 0);
       }
-      
       20%, 80% {
         transform: translate3d(2px, 0, 0);
       }
-    
       30%, 50%, 70% {
         transform: translate3d(-4px, 0, 0);
       }
-    
       40%, 60% {
         transform: translate3d(4px, 0, 0);
       }
@@ -74,11 +67,9 @@ const P = styled.p`
     @media (max-width: 1400px) {
         max-width: 55%;
     }
-    
     @media (max-width: 1000px) {
         max-width: 70%;
     }
-    
     @media (max-width: 600px) {
         max-width: 85%;
     }
