@@ -39,7 +39,6 @@ const ChartContainer = styled.div`
             margin-right: 10px;
         }
      }
-     
 `;
 
 export class Chart extends React.Component {
