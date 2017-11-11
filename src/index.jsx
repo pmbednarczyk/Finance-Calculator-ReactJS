@@ -7,17 +7,18 @@ import {
   IndexRoute,
   hashHistory,
 } from 'react-router';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducer from './reducers';
 import { Contact } from './components/Contact.jsx';
 import { Menu } from './components/Menu.jsx';
 import { Header } from './components/Header.jsx';
 import { ExpensesList } from './components/ExpensesList.jsx';
 import { Chart } from './components/Chart.jsx';
 
-// import {Provider} from 'react-redux';
-// import {createStore} from 'redux';
-// import financeCalc from './reducers';
 
-// let store = createStore(financeCalc);
+
+const store = createStore(reducer);
 
 const Wrapper = styled.div`
     width: 100%;
@@ -286,7 +287,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   ReactDOM.render(
-    <App />,
+    <Provider store={store}>
+      <App />
+    </Provider>,
     document.querySelector('#app'),
   );
 });
