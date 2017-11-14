@@ -1,6 +1,6 @@
 const	path	=	require("path");
 module.exports	=	{
-    entry:	"./src/index.jsx",
+    entry:	"./src/containers/App/index.js",
     output:	{
         path:	path.resolve("./"),
         filename:	"out.js"
@@ -9,7 +9,7 @@ module.exports	=	{
     module:	{
         loaders:	[
             {
-                test:	/\.jsx$/,		exclude:	/node_modules/,
+                test:	/\.js$/,		exclude:	/node_modules/,
                 loader:	'babel-loader',
                 query:	{	presets:	['es2015', 'stage-2', 'react']	}
             }

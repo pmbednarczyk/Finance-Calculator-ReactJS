@@ -106,7 +106,7 @@ const B = styled.b`
 `;
 
 
-export class Header extends React.Component {
+export class Home extends React.Component {
     constructor() {
         super(...arguments);
         this.state = {

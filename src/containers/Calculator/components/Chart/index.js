@@ -1,7 +1,7 @@
 import React from 'react';
 import {Pie} from 'react-chartjs-2';
 import styled from 'styled-components';
-import {ChartTreasures} from './ChartTreasures.jsx';
+import { ChartTreasures } from './components/ChartTreasures';
 
 const ChartContainer = styled.div`
      text-align: center;

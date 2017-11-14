@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components'
-import Container from '../index.jsx';
 
 const Img = styled.img`
             max-width: 380px;
@@ -73,20 +72,9 @@ const AContainer = styled.div`
 export class Contact extends React.Component {
 
     render() {
-        const CContainer = styled(Container)`
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-            padding: 1%;
-            padding-top: 80px;
-            @media (max-width: 600px) {
-                padding-top: 111px;
-            }
-            
-        `;
 
         return (
-            <CContainer>
+            <div>
                 <Img src="./src/img/pmb-avatar.jpg"/>
                 <P><span>Hello, World!</span>
                     I am Pawel and I would like to dedicate my knowledge and positive energy to work in Front-end
@@ -101,7 +89,7 @@ export class Contact extends React.Component {
                         src="./src/img/in.png"/></a>
                     <a href="https://www.fb.com/pavaka" target="_blank"><img src="./src/img/fb.jpg"/></a>
                 </AContainer>
-            </CContainer>
+            </div>
 
         )
     }

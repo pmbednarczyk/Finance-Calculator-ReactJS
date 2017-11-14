@@ -44,6 +44,7 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-react": "^7.4.0",
     "eslint-plugin-standard": "^3.0.1",
+    "react-router-redux": "^4.0.8",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.5.0"
   }

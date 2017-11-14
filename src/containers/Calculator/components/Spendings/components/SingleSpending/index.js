@@ -117,50 +117,47 @@ const ExpenseContainer = styled.div`
 `;
 
 
-export class ExpensesListItem extends React.Component {
+export class SingleSpending extends React.Component {
+  render() {
+    return (
+      <ExpenseContainer>
+        <div>
+          <span>Expense name:</span>
+          <input type="text"
+                 onChange={this.props.onNameChange}
+                 value={this.props.name}
+                 placeholder="Ex: Beer, Snacks, Cigarettes..."
+          />
+        </div>
+        <div>
+          <span>Price per unit: </span>
 
-    render() {
-
-        return (
-            <ExpenseContainer>
-                <div>
-                    <span>Expense name:</span>
-                    <input type="text"
-                           onChange={this.props.onNameChange}
-                           value={this.props.name}
-                           placeholder="Ex: Beer, Snacks, Cigarettes..."
-                    />
-                </div>
-                <div>
-                    <span>Price per unit: </span>
-
-                    <input type="number"
-                           onChange={this.props.onValueChange}
-                           value={this.props.value}
-                           placeholder="Ex: 9,99"
-                           className={this.props.validationClass}
-                    />
-                </div>
-                <div>
-                    <span>How often do you buy it?</span>
-                    <input type="number"
-                           onChange={this.props.onFrequencyChange}
-                           value={this.props.frequency}
-                           placeholder="Ex: 4"
-                    />
-                    <select
-                        onChange={this.props.onPeriodChange}
-                        value={this.props.period}
-                    >
-                        <option>per week</option>
-                        <option>per month</option>
-                        <option>per year</option>
-                    </select>
-                </div>
-                <a onClick={this.props.onRemoveClick}></a>
-            </ExpenseContainer>
-        )
-    }
+          <input type="number"
+                 onChange={this.props.onValueChange}
+                 value={this.props.value}
+                 placeholder="Ex: 9,99"
+                 className={this.props.validationClass}
+          />
+        </div>
+        <div>
+          <span>How often do you buy it?</span>
+          <input type="number"
+                 onChange={this.props.onFrequencyChange}
+                 value={this.props.frequency}
+                 placeholder="Ex: 4"
+          />
+          <select
+            onChange={this.props.onPeriodChange}
+            value={this.props.period}
+          >
+            <option>per week</option>
+            <option>per month</option>
+            <option>per year</option>
+          </select>
+        </div>
+        <a onClick={this.props.onRemoveClick}></a>
+      </ExpenseContainer>
+    );
+  }
 }
-
 
