@@ -16791,7 +16791,7 @@ module.exports = ReactElementValidator;
 // React 15.5 references this module, and assumes PropTypes are still callable in production.
 // Therefore we re-export development-only version with all the PropTypes checks here.
 // However if one is migrating to the `prop-types` npm library, they will go through the
-// `index.js` entry point, and it will branch depending on the environment.
+// `clientMiddleware.js` entry point, and it will branch depending on the environment.
 var factory = __webpack_require__(106);
 module.exports = function(isValidElement) {
   // It is still allowed in 15.5.
@@ -49730,7 +49730,7 @@ var Home = exports.Home = function (_React$Component) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.Calculator = undefined;
 
@@ -49766,245 +49766,244 @@ var Wrapper = _styledComponents2.default.div(_templateObject);
 var Container = _styledComponents2.default.div(_templateObject2);
 
 var Calculator = exports.Calculator = function (_React$Component) {
-    _inherits(Calculator, _React$Component);
+  _inherits(Calculator, _React$Component);
 
-    function Calculator() {
-        _classCallCheck(this, Calculator);
+  function Calculator() {
+    _classCallCheck(this, Calculator);
 
-        var _this = _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).apply(this, arguments));
 
-        _this.handleValueValChange = function (event, expense, i) {
-            var expensesCopy = _this.state.expenses.slice();
-            expensesCopy[i].value = event.target.value;
-            if (event.target.value > 0 && event.target.value !== '') {
-                expensesCopy[i].validationClass = 'valid';
-                _this.setState({
-                    expenses: expensesCopy,
-                    validation: true
-                });
-            } else {
-                expensesCopy[i].validationClass = 'invalid';
-                _this.setState({
-                    expenses: expensesCopy,
-                    validation: false
-                });
-            }
-        };
+    _this.handleValueValChange = function (event, expense, i) {
+      var expensesCopy = _this.state.expenses.slice();
+      expensesCopy[i].value = event.target.value;
+      if (event.target.value > 0 && event.target.value !== '') {
+        expensesCopy[i].validationClass = 'valid';
+        _this.setState({
+          expenses: expensesCopy,
+          validation: true
+        });
+      } else {
+        expensesCopy[i].validationClass = 'invalid';
+        _this.setState({
+          expenses: expensesCopy,
+          validation: false
+        });
+      }
+    };
 
-        _this.handleFrequencyValChange = function (event, expense, i) {
-            var expensesCopy = _this.state.expenses.slice();
-            if (event.target.value < 1) {
-                expensesCopy[i].frequency = 1;
-            } else {
-                expensesCopy[i].frequency = event.target.value;
-            }
-            _this.setState({
-                expenses: expensesCopy
-            });
-        };
+    _this.handleFrequencyValChange = function (event, expense, i) {
+      var expensesCopy = _this.state.expenses.slice();
+      if (event.target.value < 1) {
+        expensesCopy[i].frequency = 1;
+      } else {
+        expensesCopy[i].frequency = event.target.value;
+      }
+      _this.setState({
+        expenses: expensesCopy
+      });
+    };
 
-        _this.handlePeriodValChange = function (event, expense, i) {
-            var expensesCopy = _this.state.expenses.slice();
-            expensesCopy[i].period = event.target.value;
-            _this.setState({
-                expenses: expensesCopy
-            });
-        };
+    _this.handlePeriodValChange = function (event, expense, i) {
+      var expensesCopy = _this.state.expenses.slice();
+      expensesCopy[i].period = event.target.value;
+      _this.setState({
+        expenses: expensesCopy
+      });
+    };
 
-        _this.handleExpenseRemove = function (expense, i) {
-            if (_this.state.expenses.length > 1) {
-                var expensesCopy = _this.state.expenses.slice();
-                expensesCopy.splice(i, 1);
-                _this.setState({
-                    expenses: expensesCopy
-                });
-            }
-        };
+    _this.handleExpenseRemove = function (expense, i) {
+      if (_this.state.expenses.length > 1) {
+        var expensesCopy = _this.state.expenses.slice();
+        expensesCopy.splice(i, 1);
+        _this.setState({
+          expenses: expensesCopy
+        });
+      }
+    };
 
-        _this.handleAddNewExpense = function () {
-            var expensesCopy = _this.state.expenses.slice();
-            var newExpense = {
-                name: '',
-                value: '',
-                frequency: 1,
-                period: 'per week',
-                validationClass: ''
-            };
-            expensesCopy.push(newExpense);
-            _this.setState({
-                expenses: expensesCopy,
-                chartData: {}
-            });
-        };
+    _this.handleAddNewExpense = function () {
+      var expensesCopy = _this.state.expenses.slice();
+      var newExpense = {
+        name: '',
+        value: '',
+        frequency: 1,
+        period: 'per week',
+        validationClass: ''
+      };
+      expensesCopy.push(newExpense);
+      _this.setState({
+        expenses: expensesCopy,
+        chartData: {}
+      });
+    };
 
-        _this.handleNameValChange = function (event, expense, i) {
-            var expensesCopy = _this.state.expenses.slice();
-            expensesCopy[i].name = event.target.value;
-            _this.setState({
-                expenses: expensesCopy
-            });
-        };
+    _this.handleNameValChange = function (event, expense, i) {
+      var expensesCopy = _this.state.expenses.slice();
+      expensesCopy[i].name = event.target.value;
+      _this.setState({
+        expenses: expensesCopy
+      });
+    };
 
-        _this.handleExpensesCount = function () {
-            var expensesCopy = _this.state.expenses.slice();
+    _this.handleExpensesCount = function () {
+      var expensesCopy = _this.state.expenses.slice();
 
-            expensesCopy.forEach(function (expense, i) {
-                if (expense.validationClass === 'invalid' || expense.validationClass === '') {
-                    expensesCopy[i].validationClass = 'invalid';
-                    _this.setState({
-                        expenses: expensesCopy
-                    });
-                    console.log(expensesCopy[i].validationClass);
-                }
-            });
+      expensesCopy.forEach(function (expense, i) {
+        if (expense.validationClass === 'invalid' || expense.validationClass === '') {
+          expensesCopy[i].validationClass = 'invalid';
+          _this.setState({
+            expenses: expensesCopy
+          });
+        }
+      });
 
-            var noValue = expensesCopy.some(function (expense) {
-                return expense.validationClass !== 'valid';
-            });
+      var noValue = expensesCopy.some(function (expense) {
+        return expense.validationClass !== 'valid';
+      });
 
-            if (!noValue) {
-                _this.setState({
-                    validation: true
-                });
-                _this.forceUpdate(function () {
-                    _this.getChartData();
-                });
-            } else {
-                _this.setState({
-                    validation: false
-                });
-            }
-        };
+      if (!noValue) {
+        _this.setState({
+          validation: true
+        });
+        _this.forceUpdate(function () {
+          _this.getChartData();
+        });
+      } else {
+        _this.setState({
+          validation: false
+        });
+      }
+    };
 
-        _this.handleDecreaseYears = function () {
-            if (_this.state.userYears > 1) {
-                var newYears = _this.state.userYears - 1;
-                _this.setState({
-                    userYears: newYears
-                });
-                // Wymuszynie aktualizacji state
-                _this.forceUpdate(function () {
-                    _this.getChartData();
-                });
-            }
-        };
+    _this.handleDecreaseYears = function () {
+      if (_this.state.userYears > 1) {
+        var newYears = _this.state.userYears - 1;
+        _this.setState({
+          userYears: newYears
+        });
+        // Wymuszynie aktualizacji state
+        _this.forceUpdate(function () {
+          _this.getChartData();
+        });
+      }
+    };
 
-        _this.handleIncreaseYears = function () {
-            var newYears = _this.state.userYears + 1;
-            _this.setState({
-                userYears: newYears
-            });
-            _this.forceUpdate(function () {
-                _this.getChartData();
-            });
-        };
+    _this.handleIncreaseYears = function () {
+      var newYears = _this.state.userYears + 1;
+      _this.setState({
+        userYears: newYears
+      });
+      _this.forceUpdate(function () {
+        _this.getChartData();
+      });
+    };
 
-        _this.handleInflationChange = function (event, i) {
-            var expensesCopy = _this.state.expenses.slice();
-            expensesCopy[i].name = event.target.value;
-            _this.setState({
-                expenses: expensesCopy
-            });
-        };
+    _this.handleInflationChange = function (event, i) {
+      var expensesCopy = _this.state.expenses.slice();
+      expensesCopy[i].name = event.target.value;
+      _this.setState({
+        expenses: expensesCopy
+      });
+    };
 
-        _this.state = {
-            expenses: [{
-                name: '',
-                value: '',
-                frequency: 1,
-                period: 'per week',
-                validationClass: ''
-            }],
-            validationText: 'Check if every expense has its price!',
-            validation: null,
-            chartData: null,
-            userYears: 10,
-            showChart: false,
-            inflation: null,
-            inflationValue: 2
-        };
-        return _this;
+    _this.state = {
+      expenses: [{
+        name: '',
+        value: '',
+        frequency: 1,
+        period: 'per week',
+        validationClass: ''
+      }],
+      validationText: 'Check if every expense has its price!',
+      validation: null,
+      chartData: null,
+      userYears: 10,
+      showChart: false,
+      inflation: null,
+      inflationValue: 2
+    };
+    return _this;
+  }
+
+  // Dodawanie kolejnycych wydatków
+
+
+  _createClass(Calculator, [{
+    key: 'getChartData',
+    value: function getChartData() {
+      var userYears = this.state.userYears;
+      var expensesCopy = this.state.expenses.slice();
+      var expensesNames = expensesCopy.map(function (expense) {
+        return expense.name;
+      });
+      var expensesValues = expensesCopy.map(function (expense) {
+        if (expense.period === 'per week') {
+          // 365.2422 / 7 = 52.2
+          return (52.2 * expense.frequency * expense.value * userYears).toFixed(2);
+        } else if (expense.period === 'per month') {
+          // 365.2422 / 30.43685 = 12
+          return (12 * expense.frequency * expense.value * userYears).toFixed(2);
+        }
+        return (expense.frequency * expense.value * userYears).toFixed(2);
+      });
+
+      var expensesColors = expensesCopy.map(function () {
+        return '#' + Math.random().toString(16).substr(-6);
+      });
+
+      this.setState({
+        showChart: true,
+        chartData: {
+          labels: expensesNames,
+          datasets: [{
+            label: 'Expenes',
+            data: expensesValues,
+            backgroundColor: expensesColors
+          }]
+        }
+      });
     }
 
-    // Dodawanie kolejnycych wydatków
+    // Sumowanie wszystkich wydatków
 
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement(
+          Container,
+          null,
+          _react2.default.createElement(_Spendings.Spendings, {
+            onNameChange: this.handleNameValChange,
+            onValueChange: this.handleValueValChange,
+            onFrequencyChange: this.handleFrequencyValChange,
+            onPeriodChange: this.handlePeriodValChange,
+            addNewExpense: this.handleAddNewExpense,
+            expensesCount: this.handleExpensesCount,
+            onRemoveClick: this.handleExpenseRemove,
+            expenses: this.state.expenses,
+            validation: this.state.validation,
+            validationText: this.state.validationText,
+            inflation: this.state.inflation,
+            inflationValue: this.state.inflationValue,
+            inflationChange: this.handleInflationChange
+          }),
+          _react2.default.createElement(_Chart.Chart, {
+            chartData: this.state.chartData,
+            expenses: this.state.expenses,
+            userYears: this.state.userYears,
+            showChart: this.state.showChart,
+            onUserYearsIncrease: this.handleIncreaseYears,
+            onUserYearsDecrease: this.handleDecreaseYears
+          })
+        )
+      );
+    }
+  }]);
 
-    _createClass(Calculator, [{
-        key: 'getChartData',
-        value: function getChartData() {
-            var userYears = this.state.userYears;
-            var expensesCopy = this.state.expenses.slice();
-            var expensesNames = expensesCopy.map(function (expense) {
-                return expense.name;
-            });
-            var expensesValues = expensesCopy.map(function (expense) {
-                if (expense.period === 'per week') {
-                    // 365.2422 / 7 = 52.2
-                    return (52.2 * expense.frequency * expense.value * userYears).toFixed(2);
-                } else if (expense.period === 'per month') {
-                    // 365.2422 / 30.43685 = 12
-                    return (12 * expense.frequency * expense.value * userYears).toFixed(2);
-                }
-                return (expense.frequency * expense.value * userYears).toFixed(2);
-            });
-
-            var expensesColors = expensesCopy.map(function () {
-                return '#' + Math.random().toString(16).substr(-6);
-            });
-
-            this.setState({
-                showChart: true,
-                chartData: {
-                    labels: expensesNames,
-                    datasets: [{
-                        label: 'Expenes',
-                        data: expensesValues,
-                        backgroundColor: expensesColors
-                    }]
-                }
-            });
-        }
-
-        // Sumowanie wszystkich wydatków
-
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                Wrapper,
-                null,
-                _react2.default.createElement(
-                    Container,
-                    null,
-                    _react2.default.createElement(_Spendings.Spendings, {
-                        onNameChange: this.handleNameValChange,
-                        onValueChange: this.handleValueValChange,
-                        onFrequencyChange: this.handleFrequencyValChange,
-                        onPeriodChange: this.handlePeriodValChange,
-                        addNewExpense: this.handleAddNewExpense,
-                        expensesCount: this.handleExpensesCount,
-                        onRemoveClick: this.handleExpenseRemove,
-                        expenses: this.state.expenses,
-                        validation: this.state.validation,
-                        validationText: this.state.validationText,
-                        inflation: this.state.inflation,
-                        inflationValue: this.state.inflationValue,
-                        inflationChange: this.handleInflationChange
-                    }),
-                    _react2.default.createElement(_Chart.Chart, {
-                        chartData: this.state.chartData,
-                        expenses: this.state.expenses,
-                        userYears: this.state.userYears,
-                        showChart: this.state.showChart,
-                        onUserYearsIncrease: this.handleIncreaseYears,
-                        onUserYearsDecrease: this.handleDecreaseYears
-                    })
-                )
-            );
-        }
-    }]);
-
-    return Calculator;
+  return Calculator;
 }(_react2.default.Component);
 
 /***/ }),
