@@ -1,6 +1,6 @@
 import React from 'react';
 import {IndexLink} from 'react-router';
-import styled from 'styled-components'
+import styled from 'styled-components' ;
 
 const Nav = styled.nav`
     display: block;
