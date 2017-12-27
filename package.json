@@ -4,7 +4,8 @@
   "description": "Finance Calculator in ReactJS.",
   "main": "out.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -46,6 +47,6 @@
     "eslint-plugin-standard": "^3.0.1",
     "react-router-redux": "^4.0.8",
     "webpack": "^3.0.0",
-    "webpack-dev-server": "^2.5.0"
+    "webpack-dev-server": "^2.9.7"
   }
 }
