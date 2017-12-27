@@ -34303,7 +34303,7 @@ document.addEventListener('DOMContentLoaded', function () {
       value: function render() {
         return _react2.default.createElement(
           _reactRouter.Router,
-          { history: _reactRouter.browserHistory },
+          { history: _reactRouter.hashHistory },
           _react2.default.createElement(
             _reactRouter.Route,
             { path: '/', component: _Header.Menu },
@@ -47671,10 +47671,11 @@ exports.Contact = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n            max-width: 380px;\n           width: 100%;\n           opacity: 0.8;\n           margin: 15px 0;\n           animation: 2s ease 0s normal forwards 1 fadein;\n           @keyframes fadein{\n                0% { opacity:0.5; }\n                66% { opacity:0.8; }\n                100% { opacity:1; }\n           }\n           &:hover {\n            opacity: 1;\n           }\n        '], ['\n            max-width: 380px;\n           width: 100%;\n           opacity: 0.8;\n           margin: 15px 0;\n           animation: 2s ease 0s normal forwards 1 fadein;\n           @keyframes fadein{\n                0% { opacity:0.5; }\n                66% { opacity:0.8; }\n                100% { opacity:1; }\n           }\n           &:hover {\n            opacity: 1;\n           }\n        ']),
-    _templateObject2 = _taggedTemplateLiteral(['\n        max-width: 580px;\n        width: 95%;\n        padding: 0px;\n        opacity: 0.8;\n        margin: 10px auto;\n        text-align: center;\n        font-size: 18px;\n        letter-spacing: -.4px;\n        color: rgba(0, 0, 0, 0.79);\n        line-height: 25px;\n        span {\n            font-size: 30px;\n            font-weight: 600;\n            margin-bottom: 10px;\n            display: block;\n        }\n        animation: 2s ease 0s normal forwards 1 fadein;\n        @keyframes fadein{\n            0% { opacity:0.5; }\n            66% { opacity:0.8; }\n            100% { opacity:1; }\n        }\n        '], ['\n        max-width: 580px;\n        width: 95%;\n        padding: 0px;\n        opacity: 0.8;\n        margin: 10px auto;\n        text-align: center;\n        font-size: 18px;\n        letter-spacing: -.4px;\n        color: rgba(0, 0, 0, 0.79);\n        line-height: 25px;\n        span {\n            font-size: 30px;\n            font-weight: 600;\n            margin-bottom: 10px;\n            display: block;\n        }\n        animation: 2s ease 0s normal forwards 1 fadein;\n        @keyframes fadein{\n            0% { opacity:0.5; }\n            66% { opacity:0.8; }\n            100% { opacity:1; }\n        }\n        ']),
-    _templateObject3 = _taggedTemplateLiteral(['\n            margin: 20px 0 15px;\n            font-size: 21px;\n            font-weight: 700;\n            letter-spacing: -.9px;\n            color: rgba(0, 0, 0, 0.79);\n        '], ['\n            margin: 20px 0 15px;\n            font-size: 21px;\n            font-weight: 700;\n            letter-spacing: -.9px;\n            color: rgba(0, 0, 0, 0.79);\n        ']),
-    _templateObject4 = _taggedTemplateLiteral(['\n            margin: 20px 0;\n            a {\n                display: inline-block;\n                margin-right: 15px;\n                transition: all 0.3s ease-in-out;\n                &:last-of-type {\n                    margin-right: 0;\n                }\n                &:hover {\n                    opacity: 0.8;\n                }\n                img {\n                    max-width: 35px;\n                    border-radius: 5px;\n                }\n            }\n        '], ['\n            margin: 20px 0;\n            a {\n                display: inline-block;\n                margin-right: 15px;\n                transition: all 0.3s ease-in-out;\n                &:last-of-type {\n                    margin-right: 0;\n                }\n                &:hover {\n                    opacity: 0.8;\n                }\n                img {\n                    max-width: 35px;\n                    border-radius: 5px;\n                }\n            }\n        ']);
+var _templateObject = _taggedTemplateLiteral(['\n      width: 100%;\n      max-width: 1920px;\n      margin: 0 auto;\n      overflow: hidden;\n      position: relative;\n      padding: 2%;\n      box-sizing: border-box;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      flex-direction: column;\n      @media (max-width: 600px) {\n         padding: 131px 2%;\n         min-height: 100vh;\n         height: auto;\n      }\n'], ['\n      width: 100%;\n      max-width: 1920px;\n      margin: 0 auto;\n      overflow: hidden;\n      position: relative;\n      padding: 2%;\n      box-sizing: border-box;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      flex-direction: column;\n      @media (max-width: 600px) {\n         padding: 131px 2%;\n         min-height: 100vh;\n         height: auto;\n      }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n            max-width: 380px;\n           width: 100%;\n           opacity: 0.8;\n           margin: 15px 0;\n           animation: 2s ease 0s normal forwards 1 fadein;\n           @keyframes fadein{\n                0% { opacity:0.5; }\n                66% { opacity:0.8; }\n                100% { opacity:1; }\n           }\n           &:hover {\n            opacity: 1;\n           }\n        '], ['\n            max-width: 380px;\n           width: 100%;\n           opacity: 0.8;\n           margin: 15px 0;\n           animation: 2s ease 0s normal forwards 1 fadein;\n           @keyframes fadein{\n                0% { opacity:0.5; }\n                66% { opacity:0.8; }\n                100% { opacity:1; }\n           }\n           &:hover {\n            opacity: 1;\n           }\n        ']),
+    _templateObject3 = _taggedTemplateLiteral(['\n        max-width: 580px;\n        width: 95%;\n        padding: 0px;\n        opacity: 0.8;\n        margin: 10px auto;\n        text-align: center;\n        font-size: 18px;\n        letter-spacing: -.4px;\n        color: rgba(0, 0, 0, 0.79);\n        line-height: 25px;\n        span {\n            font-size: 30px;\n            font-weight: 600;\n            margin-bottom: 10px;\n            display: block;\n        }\n        animation: 2s ease 0s normal forwards 1 fadein;\n        @keyframes fadein{\n            0% { opacity:0.5; }\n            66% { opacity:0.8; }\n            100% { opacity:1; }\n        }\n        '], ['\n        max-width: 580px;\n        width: 95%;\n        padding: 0px;\n        opacity: 0.8;\n        margin: 10px auto;\n        text-align: center;\n        font-size: 18px;\n        letter-spacing: -.4px;\n        color: rgba(0, 0, 0, 0.79);\n        line-height: 25px;\n        span {\n            font-size: 30px;\n            font-weight: 600;\n            margin-bottom: 10px;\n            display: block;\n        }\n        animation: 2s ease 0s normal forwards 1 fadein;\n        @keyframes fadein{\n            0% { opacity:0.5; }\n            66% { opacity:0.8; }\n            100% { opacity:1; }\n        }\n        ']),
+    _templateObject4 = _taggedTemplateLiteral(['\n            margin: 20px 0 15px;\n            font-size: 21px;\n            font-weight: 700;\n            letter-spacing: -.9px;\n            color: rgba(0, 0, 0, 0.79);\n        '], ['\n            margin: 20px 0 15px;\n            font-size: 21px;\n            font-weight: 700;\n            letter-spacing: -.9px;\n            color: rgba(0, 0, 0, 0.79);\n        ']),
+    _templateObject5 = _taggedTemplateLiteral(['\n            margin: 20px 0;\n            a {\n                display: inline-block;\n                margin-right: 15px;\n                transition: all 0.3s ease-in-out;\n                &:last-of-type {\n                    margin-right: 0;\n                }\n                &:hover {\n                    opacity: 0.8;\n                }\n                img {\n                    max-width: 35px;\n                    border-radius: 5px;\n                }\n            }\n        '], ['\n            margin: 20px 0;\n            a {\n                display: inline-block;\n                margin-right: 15px;\n                transition: all 0.3s ease-in-out;\n                &:last-of-type {\n                    margin-right: 0;\n                }\n                &:hover {\n                    opacity: 0.8;\n                }\n                img {\n                    max-width: 35px;\n                    border-radius: 5px;\n                }\n            }\n        ']);
 
 var _react = __webpack_require__(9);
 
@@ -47694,12 +47695,14 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var Img = _styledComponents2.default.img(_templateObject);
-var P = _styledComponents2.default.p(_templateObject2);
+var Container = _styledComponents2.default.div(_templateObject);
 
-var H1 = _styledComponents2.default.h1(_templateObject3);
+var Img = _styledComponents2.default.img(_templateObject2);
+var P = _styledComponents2.default.p(_templateObject3);
 
-var AContainer = _styledComponents2.default.div(_templateObject4);
+var H1 = _styledComponents2.default.h1(_templateObject4);
+
+var AContainer = _styledComponents2.default.div(_templateObject5);
 
 var Contact = exports.Contact = function (_React$Component) {
     _inherits(Contact, _React$Component);
@@ -47713,9 +47716,8 @@ var Contact = exports.Contact = function (_React$Component) {
     _createClass(Contact, [{
         key: 'render',
         value: function render() {
-
             return _react2.default.createElement(
-                'div',
+                Container,
                 null,
                 _react2.default.createElement(Img, { src: './src/img/pmb-avatar.jpg' }),
                 _react2.default.createElement(

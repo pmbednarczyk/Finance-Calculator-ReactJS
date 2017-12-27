@@ -15,8 +15,8 @@ module.exports = {
   ],
   devServer: {
     historyApiFallback: true,
-    contentBase: './',
   },
+  watch: true,
   module: {
     loaders: [
       {

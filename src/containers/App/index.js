@@ -4,7 +4,7 @@ import {
   Router,
   Route,
   IndexRoute,
-  browserHistory,
+  hashHistory,
 } from 'react-router';
 import { Contact } from '../Contact';
 import { Menu } from './components/Header';
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   class App extends React.Component {
     render() {
       return (
-        <Router history={browserHistory}>
+        <Router history={hashHistory}>
           <Route path="/" component={Menu}>
             <IndexRoute component={Home} />
             <Route path="/calc" component={Calculator} />
