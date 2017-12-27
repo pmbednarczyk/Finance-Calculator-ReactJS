@@ -4,8 +4,9 @@ import {
   Router,
   Route,
   IndexRoute,
-  hashHistory,
 } from 'react-router';
+import { Provider } from 'react-redux';
+import store, { history } from '../../redux/store';
 import { Contact } from '../Contact';
 import { Menu } from './components/Header';
 import { Home } from '../Home';
@@ -15,13 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
   class App extends React.Component {
     render() {
       return (
-        <Router history={hashHistory}>
+      <Provider store={store}>
+        <Router history={history}>
           <Route path="/" component={Menu}>
             <IndexRoute component={Home} />
             <Route path="/calc" component={Calculator} />
             <Route path="/contact" component={Contact} />
           </Route>
         </Router>
+      </Provider>
       );
     }
   }
