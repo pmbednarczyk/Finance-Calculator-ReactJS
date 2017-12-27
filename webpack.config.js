@@ -13,7 +13,10 @@ module.exports = {
     //   },
     // }),
   ],
-  watch: true,
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './',
+  },
   module: {
     loaders: [
       {
