@@ -1,5 +1,24 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
+
+const Container = styled.div`
+      width: 100%;
+      max-width: 1920px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+      padding: 2%;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      @media (max-width: 600px) {
+         padding: 131px 2%;
+         min-height: 100vh;
+         height: auto;
+      }
+`;
 
 const Img = styled.img`
             max-width: 380px;
@@ -71,26 +90,24 @@ const AContainer = styled.div`
 
 export class Contact extends React.Component {
 
-    render() {
-
-        return (
-            <div>
-                <Img src="./src/img/pmb-avatar.jpg"/>
-                <P><span>Hello, World!</span>
-                    I am Pawel and I would like to dedicate my knowledge and positive energy to work in Front-end
-                    development - especially in Javascript and its new libraries like ReactJS. <br/>My main goal is to
-                    work with professionals and develop highest quality digital products.<br/>I have still lot to learn
-                    and It will be pleasure to work as Junior Front-end Developer at innovative projects.</P>
-                <P>Experience in Front-End: 1 year+ <br/>Preferred location: Cracow, Poland</P>
-                <H1>Contact me at pmbednarczyk@gmail.com</H1>
-                <AContainer>
-                    <a href="https://github.com/pmbednarczyk/" target="_blank"><img src="./src/img/git.jpg"/></a>
-                    <a href="https://www.linkedin.com/in/pawel-bednarczyk/" target="_blank"><img
-                        src="./src/img/in.png"/></a>
-                    <a href="https://www.fb.com/pavaka" target="_blank"><img src="./src/img/fb.jpg"/></a>
-                </AContainer>
-            </div>
-
-        )
-    }
+  render() {
+    return (
+      <Container>
+        <Img src="./src/img/pmb-avatar.jpg" />
+        <P><span>Hello, World!</span>
+          I am Pawel and I would like to dedicate my knowledge and positive energy to work in Front-end
+          development - especially in Javascript and its new libraries like ReactJS. <br/>My main goal is to
+          work with professionals and develop highest quality digital products.<br/>I have still lot to learn
+          and It will be pleasure to work as Junior Front-end Developer at innovative projects.</P>
+        <P>Experience in Front-End: 1 year+ <br/>Preferred location: Cracow, Poland</P>
+        <H1>Contact me at pmbednarczyk@gmail.com</H1>
+        <AContainer>
+          <a href="https://github.com/pmbednarczyk/" target="_blank"><img src="./src/img/git.jpg"/></a>
+          <a href="https://www.linkedin.com/in/pawel-bednarczyk/" target="_blank"><img
+            src="./src/img/in.png"/></a>
+          <a href="https://www.fb.com/pavaka" target="_blank"><img src="./src/img/fb.jpg"/></a>
+        </AContainer>
+      </Container>
+    )
+  }
 }
