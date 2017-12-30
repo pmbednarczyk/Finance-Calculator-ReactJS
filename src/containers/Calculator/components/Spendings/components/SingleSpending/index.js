@@ -116,7 +116,6 @@ const ExpenseContainer = styled.div`
       }
 `;
 
-
 export class SingleSpending extends React.Component {
   render() {
     return (
@@ -155,7 +154,7 @@ export class SingleSpending extends React.Component {
             <option>per year</option>
           </select>
         </div>
-        <a onClick={this.props.onRemoveClick}></a>
+        <a onClick={this.props.onRemoveClick} />
       </ExpenseContainer>
     );
   }

@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
+import calculator from './calculator';
 
-import test from './test';
-
-const rootReducer = combineReducers({ test, routing: routerReducer });
+const rootReducer = combineReducers({ calculator, routing: routerReducer });
 
 export default rootReducer;

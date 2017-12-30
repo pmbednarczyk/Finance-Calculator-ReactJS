@@ -16,8 +16,8 @@ const AddExpensesContainer = styled.div`
 `;
 
 const Button = styled.button`
-	border-radius: 3px;
-    padding: 7px 20px;
+    border-radius: 3px;
+  padding: 7px 20px;
 	margin: 0 1em;
 	background: transparent;
 	color: #5d5d78;
@@ -75,6 +75,7 @@ export class Spendings extends React.Component {
   getExpenses = () => {
     const expense = this.props.expenses.map((expense, i) => {
       return <SingleSpending
+        {...this.props}
         key={i}
         name={expense.name}
         value={expense.value}

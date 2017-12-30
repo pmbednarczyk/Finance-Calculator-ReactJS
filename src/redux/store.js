@@ -4,14 +4,9 @@ import { browserHistory } from 'react-router';
 
 
 // import the root reducer
-import rootReducer from './modules/index';
+import rootReducer from './reducers/index';
 
-// create an object for the default data
-const defaultState = {
-  likes: 0,
-};
-
-const store = createStore(rootReducer, defaultState);
+const store = createStore(rootReducer);
 
 export const history = syncHistoryWithStore(browserHistory, store);
 

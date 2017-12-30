@@ -22,7 +22,7 @@ const Container = styled.div`
       align-items: center;
       flex-direction: column;
 `;
-export class Calculator extends React.Component {
+class Calculator extends React.Component {
   constructor() {
     super(...arguments);
     this.state = {
@@ -37,8 +37,6 @@ export class Calculator extends React.Component {
       ],
       validationText: 'Check if every expense has its price!',
       validation: null,
-      chartData: null,
-      userYears: 10,
       showChart: false,
       inflation: null,
       inflationValue: 2,
@@ -89,6 +87,7 @@ export class Calculator extends React.Component {
       expensesCopy.splice(i, 1);
       this.setState({
         expenses: expensesCopy,
+        showChart: false,
       });
     }
   };
@@ -106,45 +105,9 @@ export class Calculator extends React.Component {
     expensesCopy.push(newExpense);
     this.setState({
       expenses: expensesCopy,
-      chartData: {},
+      showChart: false,
     });
   };
-
-  getChartData() {
-    const userYears = this.state.userYears;
-    const expensesCopy = this.state.expenses.slice();
-    const expensesNames = expensesCopy.map(expense => (
-      expense.name
-    ));
-    const expensesValues = expensesCopy.map((expense) => {
-      if (expense.period === 'per week') {
-        // 365.2422 / 7 = 52.2
-        return (52.2 * expense.frequency * expense.value * userYears).toFixed(2);
-      } else if (expense.period === 'per month') {
-        // 365.2422 / 30.43685 = 12
-        return (12 * expense.frequency * expense.value * userYears).toFixed(2);
-      }
-      return (expense.frequency * expense.value * userYears).toFixed(2);
-    });
-
-    const expensesColors = expensesCopy.map(() => (
-      `#${Math.random().toString(16).substr(-6)}`
-    ));
-
-    this.setState({
-      showChart: true,
-      chartData: {
-        labels: expensesNames,
-        datasets: [
-          {
-            label: 'Expenes',
-            data: expensesValues,
-            backgroundColor: expensesColors,
-          },
-        ],
-      },
-    });
-  }
 
   handleNameValChange = (event, expense, i) => {
     const expensesCopy = this.state.expenses.slice();
@@ -175,38 +138,13 @@ export class Calculator extends React.Component {
     if (!noValue) {
       this.setState({
         validation: true,
-      });
-      this.forceUpdate(() => {
-        this.getChartData();
+        showChart: true,
       });
     } else {
       this.setState({
         validation: false,
       });
     }
-  };
-
-  handleDecreaseYears = () => {
-    if (this.state.userYears > 1) {
-      const newYears = this.state.userYears - 1;
-      this.setState({
-        userYears: newYears,
-      });
-      // Wymuszynie aktualizacji state
-      this.forceUpdate(() => {
-        this.getChartData();
-      });
-    }
-  };
-
-  handleIncreaseYears = () => {
-    const newYears = this.state.userYears + 1;
-    this.setState({
-      userYears: newYears,
-    });
-    this.forceUpdate(() => {
-      this.getChartData();
-    });
   };
 
   handleInflationChange = (event, i) => {
@@ -222,6 +160,7 @@ export class Calculator extends React.Component {
       <Wrapper>
         <Container>
           <Spendings
+            {...this.props}
             onNameChange={this.handleNameValChange}
             onValueChange={this.handleValueValChange}
             onFrequencyChange={this.handleFrequencyValChange}
@@ -238,15 +177,14 @@ export class Calculator extends React.Component {
           />
 
           <Chart
-            chartData={this.state.chartData}
+            {...this.props}
             expenses={this.state.expenses}
-            userYears={this.state.userYears}
             showChart={this.state.showChart}
-            onUserYearsIncrease={this.handleIncreaseYears}
-            onUserYearsDecrease={this.handleDecreaseYears}
           />
         </Container>
       </Wrapper>
     );
   }
 }
+
+export default Calculator;

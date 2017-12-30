@@ -1,5 +1,5 @@
 import React from 'react';
-import {IndexLink} from 'react-router';
+import { IndexLink } from 'react-router';
 import styled from 'styled-components' ;
 
 const Nav = styled.nav`
@@ -39,30 +39,25 @@ const Li = styled.li`
     }
 `;
 
-export class Menu extends React.Component {
+class Header extends React.Component {
+  render() {
+    const active = {
+      textShadow: 'rgba(30, 53, 116, 0.9) 0px 0px 15px',
+      color: 'rgb(227, 225, 228)',
+      border: '1px solid rgba(231, 231, 231, 0.42)',
+      background: 'rgba(103, 103, 103, 0.44)',
+    };
 
-    render() {
-        const active = {
-            textShadow: 'rgba(30, 53, 116, 0.9) 0px 0px 15px',
-            color: 'rgb(227, 225, 228)',
-            border: '1px solid rgba(231, 231, 231, 0.42)',
-            background: 'rgba(103, 103, 103, 0.44)',
-        };
-
-        return (
-            <div>
-                <Nav>
-                    <ul>
-                        <Li><IndexLink activeStyle={active} to="/">Start</IndexLink></Li>
-                        <Li><IndexLink activeStyle={active} to="/calc">Calc it</IndexLink></Li>
-                        <Li><IndexLink activeStyle={active} to="/contact">Hire me</IndexLink></Li>
-                    </ul>
-                </Nav>
-                {this.props.children}
-            </div>
-        )
-    }
+    return (
+      <Nav>
+        <ul>
+          <Li><IndexLink activeStyle={active} to="/">Start</IndexLink></Li>
+          <Li><IndexLink activeStyle={active} to="/calc">Calc it</IndexLink></Li>
+          <Li><IndexLink activeStyle={active} to="/contact">Hire me</IndexLink></Li>
+        </ul>
+      </Nav>
+    );
+  }
 }
 
-
-
+export default Header;
