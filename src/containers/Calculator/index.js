@@ -81,33 +81,33 @@ class Calculator extends React.Component {
     });
   };
 
-  handleExpenseRemove = (expense, i) => {
-    if (this.state.expenses.length > 1) {
-      const expensesCopy = this.state.expenses.slice();
-      expensesCopy.splice(i, 1);
-      this.setState({
-        expenses: expensesCopy,
-        showChart: false,
-      });
-    }
-  };
+  // handleExpenseRemove = (expense, i) => {
+  //   if (this.state.expenses.length > 1) {
+  //     const expensesCopy = this.state.expenses.slice();
+  //     expensesCopy.splice(i, 1);
+  //     this.setState({
+  //       expenses: expensesCopy,
+  //       showChart: false,
+  //     });
+  //   }
+  // };
 
   // Dodawanie kolejnycych wydatków
-  handleAddNewExpense = () => {
-    const expensesCopy = this.state.expenses.slice();
-    const newExpense = {
-      name: '',
-      value: '',
-      frequency: 1,
-      period: 'per week',
-      validationClass: '',
-    };
-    expensesCopy.push(newExpense);
-    this.setState({
-      expenses: expensesCopy,
-      showChart: false,
-    });
-  };
+  // handleAddNewExpense = () => {
+  //   const expensesCopy = this.state.expenses.slice();
+  //   const newExpense = {
+  //     name: '',
+  //     value: '',
+  //     frequency: 1,
+  //     period: 'per week',
+  //     validationClass: '',
+  //   };
+  //   expensesCopy.push(newExpense);
+  //   this.setState({
+  //     expenses: expensesCopy,
+  //     showChart: false,
+  //   });
+  // };
 
   handleNameValChange = (event, expense, i) => {
     const expensesCopy = this.state.expenses.slice();
@@ -165,10 +165,10 @@ class Calculator extends React.Component {
             onValueChange={this.handleValueValChange}
             onFrequencyChange={this.handleFrequencyValChange}
             onPeriodChange={this.handlePeriodValChange}
-            addNewExpense={this.handleAddNewExpense}
+            // addNewExpense={this.handleAddNewExpense}
             expensesCount={this.handleExpensesCount}
-            onRemoveClick={this.handleExpenseRemove}
-            expenses={this.state.expenses}
+            // onRemoveClick={this.handleExpenseRemove}
+            expenses={this.props.calculator.expenses}
             validation={this.state.validation}
             validationText={this.state.validationText}
             inflation={this.state.inflation}

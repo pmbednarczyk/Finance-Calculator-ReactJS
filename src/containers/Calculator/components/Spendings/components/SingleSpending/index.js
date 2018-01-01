@@ -154,7 +154,7 @@ export class SingleSpending extends React.Component {
             <option>per year</option>
           </select>
         </div>
-        <a onClick={this.props.onRemoveClick} />
+        <a onClick={event => this.props.removeExpense(this.props.index)} />
       </ExpenseContainer>
     );
   }

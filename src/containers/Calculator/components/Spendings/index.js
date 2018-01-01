@@ -1,6 +1,6 @@
 import React from 'react';
-import { SingleSpending } from './components/SingleSpending';
 import styled from 'styled-components';
+import { SingleSpending } from './components/SingleSpending';
 
 const AddHeading = styled.h2`
     font-size: 34px;
@@ -77,6 +77,7 @@ export class Spendings extends React.Component {
       return <SingleSpending
         {...this.props}
         key={i}
+        index={i}
         name={expense.name}
         value={expense.value}
         frequency={expense.frequency}
@@ -85,8 +86,6 @@ export class Spendings extends React.Component {
         onValueChange={event => this.props.onValueChange(event, expense, i)}
         onFrequencyChange={event => this.props.onFrequencyChange(event, expense, i)}
         onPeriodChange={event => this.props.onPeriodChange(event, expense, i)}
-        onRemoveClick={event => this.props.onRemoveClick(expense, i)}
-        validation={this.props.validation}
         validationClass={expense.validationClass}
       />;
     });
