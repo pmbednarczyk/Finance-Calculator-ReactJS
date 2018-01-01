@@ -26,134 +26,19 @@ class Calculator extends React.Component {
   constructor() {
     super(...arguments);
     this.state = {
-      expenses: [
-        {
-          name: '',
-          value: '',
-          frequency: 1,
-          period: 'per week',
-          validationClass: '',
-        },
-      ],
-      validationText: 'Check if every expense has its price!',
-      validation: null,
-      showChart: false,
       inflation: null,
       inflationValue: 2,
     };
   }
 
-  handleValueValChange = (event, expense, i) => {
-    const expensesCopy = this.state.expenses.slice();
-    expensesCopy[i].value = event.target.value;
-    if (event.target.value > 0 && event.target.value !== '') {
-      expensesCopy[i].validationClass = 'valid';
-      this.setState({
-        expenses: expensesCopy,
-        validation: true,
-      });
-    } else {
-      expensesCopy[i].validationClass = 'invalid';
-      this.setState({
-        expenses: expensesCopy,
-        validation: false,
-      });
-    }
-  };
-
-  handleFrequencyValChange = (event, expense, i) => {
-    const expensesCopy = this.state.expenses.slice();
-    if (event.target.value < 1) {
-      expensesCopy[i].frequency = 1;
-    } else {
-      expensesCopy[i].frequency = event.target.value;
-    }
-    this.setState({
-      expenses: expensesCopy,
-    });
-  };
-
-  handlePeriodValChange = (event, expense, i) => {
-    const expensesCopy = this.state.expenses.slice();
-    expensesCopy[i].period = event.target.value;
-    this.setState({
-      expenses: expensesCopy,
-    });
-  };
-
-  // handleExpenseRemove = (expense, i) => {
-  //   if (this.state.expenses.length > 1) {
-  //     const expensesCopy = this.state.expenses.slice();
-  //     expensesCopy.splice(i, 1);
-  //     this.setState({
-  //       expenses: expensesCopy,
-  //       showChart: false,
-  //     });
-  //   }
-  // };
-
-  // Dodawanie kolejnycych wydatków
-  // handleAddNewExpense = () => {
+  // TBC
+  // handleInflationChange = (event, i) => {
   //   const expensesCopy = this.state.expenses.slice();
-  //   const newExpense = {
-  //     name: '',
-  //     value: '',
-  //     frequency: 1,
-  //     period: 'per week',
-  //     validationClass: '',
-  //   };
-  //   expensesCopy.push(newExpense);
+  //   expensesCopy[i].name = event.target.value;
   //   this.setState({
   //     expenses: expensesCopy,
-  //     showChart: false,
   //   });
   // };
-
-  handleNameValChange = (event, expense, i) => {
-    const expensesCopy = this.state.expenses.slice();
-    expensesCopy[i].name = event.target.value;
-    this.setState({
-      expenses: expensesCopy,
-    });
-  };
-
-  // Sumowanie wszystkich wydatków
-  handleExpensesCount = () => {
-    const expensesCopy = this.state.expenses.slice();
-
-    expensesCopy.forEach((expense, i) => {
-      if (expense.validationClass === 'invalid' ||
-        expense.validationClass === '') {
-        expensesCopy[i].validationClass = 'invalid';
-        this.setState({
-          expenses: expensesCopy,
-        });
-      }
-    });
-
-    const noValue = expensesCopy.some(expense => (
-      expense.validationClass !== 'valid'
-    ));
-
-    if (!noValue) {
-      this.setState({
-        validation: true,
-        showChart: true,
-      });
-    } else {
-      this.setState({
-        validation: false,
-      });
-    }
-  };
-
-  handleInflationChange = (event, i) => {
-    const expensesCopy = this.state.expenses.slice();
-    expensesCopy[i].name = event.target.value;
-    this.setState({
-      expenses: expensesCopy,
-    });
-  };
 
   render() {
     return (
@@ -161,16 +46,6 @@ class Calculator extends React.Component {
         <Container>
           <Spendings
             {...this.props}
-            onNameChange={this.handleNameValChange}
-            onValueChange={this.handleValueValChange}
-            onFrequencyChange={this.handleFrequencyValChange}
-            onPeriodChange={this.handlePeriodValChange}
-            // addNewExpense={this.handleAddNewExpense}
-            expensesCount={this.handleExpensesCount}
-            // onRemoveClick={this.handleExpenseRemove}
-            expenses={this.props.calculator.expenses}
-            validation={this.state.validation}
-            validationText={this.state.validationText}
             inflation={this.state.inflation}
             inflationValue={this.state.inflationValue}
             inflationChange={this.handleInflationChange}
@@ -178,8 +53,6 @@ class Calculator extends React.Component {
 
           <Chart
             {...this.props}
-            expenses={this.state.expenses}
-            showChart={this.state.showChart}
           />
         </Container>
       </Wrapper>

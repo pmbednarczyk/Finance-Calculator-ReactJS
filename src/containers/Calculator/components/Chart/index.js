@@ -64,7 +64,7 @@ export class Chart extends React.Component {
   }
 
   getChartData() {
-    const { calculator: { userYears }, expenses } = this.props;
+    const { calculator: { userYears, expenses } } = this.props;
     const expensesCopy = expenses.slice();
     const expensesNames = expensesCopy.map(expense => (
       expense.name
@@ -72,12 +72,12 @@ export class Chart extends React.Component {
     const expensesValues = expensesCopy.map((expense) => {
       if (expense.period === 'per week') {
         // 365.2422 / 7 = 52.2
-        return (52.2 * expense.frequency * expense.value * userYears).toFixed(2);
+        return (52.2 * expense.frequency * expense.price * userYears).toFixed(2);
       } else if (expense.period === 'per month') {
         // 365.2422 / 30.43685 = 12
-        return (12 * expense.frequency * expense.value * userYears).toFixed(2);
+        return (12 * expense.frequency * expense.price * userYears).toFixed(2);
       }
-      return (expense.frequency * expense.value * userYears).toFixed(2);
+      return (expense.frequency * expense.price * userYears).toFixed(2);
     });
 
     const expensesColors = expensesCopy.map(() => (
@@ -100,8 +100,7 @@ export class Chart extends React.Component {
 
   render() {
     const {
-      showChart,
-      calculator: { userYears },
+      calculator: { userYears, showChart },
       decrementYears,
       incrementYears
     } = this.props;
