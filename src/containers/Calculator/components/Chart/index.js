@@ -45,7 +45,7 @@ export class Chart extends React.Component {
   constructor() {
     super(...arguments);
     this.state = {
-      chartData: null,
+      chartData: {},
     };
   }
 
