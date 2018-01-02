@@ -135,7 +135,7 @@ export class SingleSpending extends React.Component {
                  onChange={event => this.props.changePrice(event, this.props.index)}
                  value={this.props.price}
                  placeholder="Ex: 9,99"
-                 className={this.props.valid ? 'valid' : 'invalid'}
+                 className={(!this.props.calculator.validation && !this.props.valid) ? 'invalid' : ''}
           />
         </div>
         <div>

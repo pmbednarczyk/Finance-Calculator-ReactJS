@@ -9,7 +9,7 @@ const initialState = {
       valid: false,
     },
   ],
-  validation: null,
+  validation: true,
   showChart: false,
 };
 
