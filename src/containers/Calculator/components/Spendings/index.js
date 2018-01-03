@@ -1,6 +1,6 @@
 import React from 'react';
-import { SingleSpending } from './components/SingleSpending';
 import styled from 'styled-components';
+import { SingleSpending } from './components/SingleSpending';
 
 const AddHeading = styled.h2`
     font-size: 34px;
@@ -16,8 +16,8 @@ const AddExpensesContainer = styled.div`
 `;
 
 const Button = styled.button`
-	border-radius: 3px;
-    padding: 7px 20px;
+    border-radius: 3px;
+  padding: 7px 20px;
 	margin: 0 1em;
 	background: transparent;
 	color: #5d5d78;
@@ -72,21 +72,24 @@ const Span = styled.span`
 `
 
 export class Spendings extends React.Component {
+  constructor() {
+    super(...arguments);
+    this.state = {
+      validationText: 'Check if every expense has its price!',
+    };
+  }
+
   getExpenses = () => {
-    const expense = this.props.expenses.map((expense, i) => {
+    const expense = this.props.calculator.expenses.map((expense, i) => {
       return <SingleSpending
+        {...this.props}
         key={i}
+        index={i}
         name={expense.name}
-        value={expense.value}
+        price={expense.price}
         frequency={expense.frequency}
         period={expense.period}
-        onNameChange={event => this.props.onNameChange(event, expense, i)}
-        onValueChange={event => this.props.onValueChange(event, expense, i)}
-        onFrequencyChange={event => this.props.onFrequencyChange(event, expense, i)}
-        onPeriodChange={event => this.props.onPeriodChange(event, expense, i)}
-        onRemoveClick={event => this.props.onRemoveClick(expense, i)}
-        validation={this.props.validation}
-        validationClass={expense.validationClass}
+        valid={expense.valid}
       />;
     });
     return expense;
@@ -99,8 +102,8 @@ export class Spendings extends React.Component {
         <AddHeading>Add your expenses:</AddHeading>
         <P>At this moment the result will be formatted in Polish currency.</P>
         {this.getExpenses()}
-        <Button onClick={this.props.addNewExpense}>Add another expense</Button>
-        <Button primary onClick={this.props.expensesCount}>Count your expenses</Button>
+        <Button onClick={this.props.addExpense}>Add another expense</Button>
+        <Button primary onClick={this.props.countExpenses}>Count your expenses</Button>
 
         {/*Next feature*/}
         {/*<Input type="checkbox"*/}
@@ -115,8 +118,8 @@ export class Spendings extends React.Component {
         {/*/>% annual inflation rate.*/}
         {/*</Span>*/}
 
-        <Error style={{ display : this.props.validation === false ? 'block' : 'none',}}>
-          {this.props.validationText}
+        <Error style={{ display : this.props.calculator.validation === false ? 'block' : 'none',}}>
+          {this.state.validationText}
         </Error>
       </AddExpensesContainer>
     );

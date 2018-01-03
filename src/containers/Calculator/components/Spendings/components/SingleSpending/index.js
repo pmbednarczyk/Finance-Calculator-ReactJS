@@ -116,7 +116,6 @@ const ExpenseContainer = styled.div`
       }
 `;
 
-
 export class SingleSpending extends React.Component {
   render() {
     return (
@@ -124,7 +123,7 @@ export class SingleSpending extends React.Component {
         <div>
           <span>Expense name:</span>
           <input type="text"
-                 onChange={this.props.onNameChange}
+                 onChange={event => this.props.changeName(event, this.props.index)}
                  value={this.props.name}
                  placeholder="Ex: Beer, Snacks, Cigarettes..."
           />
@@ -133,21 +132,21 @@ export class SingleSpending extends React.Component {
           <span>Price per unit: </span>
 
           <input type="number"
-                 onChange={this.props.onValueChange}
-                 value={this.props.value}
+                 onChange={event => this.props.changePrice(event, this.props.index)}
+                 value={this.props.price}
                  placeholder="Ex: 9,99"
-                 className={this.props.validationClass}
+                 className={(!this.props.calculator.validation && !this.props.valid) ? 'invalid' : ''}
           />
         </div>
         <div>
           <span>How often do you buy it?</span>
           <input type="number"
-                 onChange={this.props.onFrequencyChange}
+                 onChange={event => this.props.changeFrequency(event, this.props.index)}
                  value={this.props.frequency}
                  placeholder="Ex: 4"
           />
           <select
-            onChange={this.props.onPeriodChange}
+            onChange={event => this.props.changePeriod(event, this.props.index)}
             value={this.props.period}
           >
             <option>per week</option>
@@ -155,7 +154,7 @@ export class SingleSpending extends React.Component {
             <option>per year</option>
           </select>
         </div>
-        <a onClick={this.props.onRemoveClick}></a>
+        <a onClick={event => this.props.removeExpense(this.props.index)} />
       </ExpenseContainer>
     );
   }
