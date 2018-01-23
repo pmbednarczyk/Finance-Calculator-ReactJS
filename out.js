@@ -52385,7 +52385,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n    display: block;\n    background: rgb(39, 44, 50);\n    width: 100%;\n    z-index: 2;\n    position: fixed;\n    top: 0;\n    border-top: 4px solid #0469ff;\n    opacity: 0.8;\n    @media (max-width: 600px) {\n        text-align: center;\n    }\n'], ['\n    display: block;\n    background: rgb(39, 44, 50);\n    width: 100%;\n    z-index: 2;\n    position: fixed;\n    top: 0;\n    border-top: 4px solid #0469ff;\n    opacity: 0.8;\n    @media (max-width: 600px) {\n        text-align: center;\n    }\n']),
+var _templateObject = _taggedTemplateLiteral(['\n    display: block;\n    background: rgba(0, 0, 0, 0.66);\n    width: 100%;\n    z-index: 2;\n    position: fixed;\n    top: 0;\n    border-top: 8px solid #0469ff;\n    opacity: 0.8;\n    @media (max-width: 600px) {\n        text-align: center;\n    }\n'], ['\n    display: block;\n    background: rgba(0, 0, 0, 0.66);\n    width: 100%;\n    z-index: 2;\n    position: fixed;\n    top: 0;\n    border-top: 8px solid #0469ff;\n    opacity: 0.8;\n    @media (max-width: 600px) {\n        text-align: center;\n    }\n']),
     _templateObject2 = _taggedTemplateLiteral([' \n    padding: 15px 30px;\n    display: inline-block;\n    @media (max-width: 600px) {\n        padding: 12px 15px;\n    }\n    a {\n        text-decoration: none;\n        color: rgba(255, 255, 255, 0.58);\n        transition: all 0.3s ease-in-out;\n        padding: 7px 15px;\n        border 1px solid transparent;\n        &:hover {\n            color: rgba(255, 255, 255, 1);\n        }\n    }\n    &:last-of-type a {\n        color: #ff669d;\n        &:hover {\n            background: rgba(103, 103, 103, 0.44);\n        }\n    }\n'], [' \n    padding: 15px 30px;\n    display: inline-block;\n    @media (max-width: 600px) {\n        padding: 12px 15px;\n    }\n    a {\n        text-decoration: none;\n        color: rgba(255, 255, 255, 0.58);\n        transition: all 0.3s ease-in-out;\n        padding: 7px 15px;\n        border 1px solid transparent;\n        &:hover {\n            color: rgba(255, 255, 255, 1);\n        }\n    }\n    &:last-of-type a {\n        color: #ff669d;\n        &:hover {\n            background: rgba(103, 103, 103, 0.44);\n        }\n    }\n']);
 
 var _react = __webpack_require__(8);
@@ -52481,17 +52481,17 @@ exports.default = Header;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.Home = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n      width: 100%;\n      max-width: 1920px;\n      margin: 0 auto;\n      height: 100vh;\n      overflow: hidden;\n      position: relative;\n      background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.3)), url(./src/img/bg-optimized.jpg) no-repeat center center;\n      background-size: cover;\n      background-attachment: fixed;\n      padding: 2%;\n      box-sizing: border-box;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      flex-direction: column;\n      @media (max-width: 600px) {\n         padding: 131px 2%;\n         min-height: 100vh;\n         height: auto;\n      }\n'], ['\n      width: 100%;\n      max-width: 1920px;\n      margin: 0 auto;\n      height: 100vh;\n      overflow: hidden;\n      position: relative;\n      background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.3)), url(./src/img/bg-optimized.jpg) no-repeat center center;\n      background-size: cover;\n      background-attachment: fixed;\n      padding: 2%;\n      box-sizing: border-box;\n      display: flex;\n      align-items: center;\n      justify-content: center;\n      flex-direction: column;\n      @media (max-width: 600px) {\n         padding: 131px 2%;\n         min-height: 100vh;\n         height: auto;\n      }\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n    font-size: 64px;\n    color: rgba(255, 255, 255, 0.85);\n    font-weight: 700;\n    letter-spacing: -1.4px;\n    text-align: center;\n    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;\n     transform: translate3d(0, 0, 0);\n     backface-visibility: hidden;\n     perspective: 1000px;\n     text-shadow: 2px 1px 5px rgba(0, 0, 0, 0.3);\n     @media (max-width: 600px) {\n        font-size: 44px;\n     }\n    @keyframes shake {\n      10%, 90% {\n        transform: translate3d(-1px, 0, 0);\n      }\n      20%, 80% {\n        transform: translate3d(2px, 0, 0);\n      }\n      30%, 50%, 70% {\n        transform: translate3d(-4px, 0, 0);\n      }\n      40%, 60% {\n        transform: translate3d(4px, 0, 0);\n      }\n    }\n'], ['\n    font-size: 64px;\n    color: rgba(255, 255, 255, 0.85);\n    font-weight: 700;\n    letter-spacing: -1.4px;\n    text-align: center;\n    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;\n     transform: translate3d(0, 0, 0);\n     backface-visibility: hidden;\n     perspective: 1000px;\n     text-shadow: 2px 1px 5px rgba(0, 0, 0, 0.3);\n     @media (max-width: 600px) {\n        font-size: 44px;\n     }\n    @keyframes shake {\n      10%, 90% {\n        transform: translate3d(-1px, 0, 0);\n      }\n      20%, 80% {\n        transform: translate3d(2px, 0, 0);\n      }\n      30%, 50%, 70% {\n        transform: translate3d(-4px, 0, 0);\n      }\n      40%, 60% {\n        transform: translate3d(4px, 0, 0);\n      }\n    }\n']),
-    _templateObject3 = _taggedTemplateLiteral(['\n    color: rgba(255, 255, 255, .85);\n    letter-spacing: -.4px;\n    max-width: 40%;\n    text-align: center;\n    margin-top: 30px;\n    font-size: 22px;\n    font-weight: 300;\n    text-shadow: 2px 1px 5px rgba(0, 0, 0, 0.3);\n    @media (max-width: 1400px) {\n        max-width: 55%;\n    }\n    @media (max-width: 1000px) {\n        max-width: 70%;\n    }\n    @media (max-width: 600px) {\n        max-width: 85%;\n    }\n'], ['\n    color: rgba(255, 255, 255, .85);\n    letter-spacing: -.4px;\n    max-width: 40%;\n    text-align: center;\n    margin-top: 30px;\n    font-size: 22px;\n    font-weight: 300;\n    text-shadow: 2px 1px 5px rgba(0, 0, 0, 0.3);\n    @media (max-width: 1400px) {\n        max-width: 55%;\n    }\n    @media (max-width: 1000px) {\n        max-width: 70%;\n    }\n    @media (max-width: 600px) {\n        max-width: 85%;\n    }\n']),
-    _templateObject4 = _taggedTemplateLiteral(['\n    margin-top: 35px;\n    a {\n        background: rgba(4, 105, 255, .6);\n        color: rgba(255, 255, 255, .86);\n        font-size: 26px;\n        font-weight: 300;\n        letter-spacing: -1.4px;\n        text-decoration: none;\n        border-radius: 15px 0 15px 0;\n        padding: 10px 48px;\n        transition: all 0.3s ease-in-out;\n        @media (max-width: 600px) {\n            font-size: 22px;\n        }\n        &:hover {\n         color: rgba(0, 0, 0, 0.58);\n         background: rgba(255, 255, 255, 0.66);\n        }\n    }\n'], ['\n    margin-top: 35px;\n    a {\n        background: rgba(4, 105, 255, .6);\n        color: rgba(255, 255, 255, .86);\n        font-size: 26px;\n        font-weight: 300;\n        letter-spacing: -1.4px;\n        text-decoration: none;\n        border-radius: 15px 0 15px 0;\n        padding: 10px 48px;\n        transition: all 0.3s ease-in-out;\n        @media (max-width: 600px) {\n            font-size: 22px;\n        }\n        &:hover {\n         color: rgba(0, 0, 0, 0.58);\n         background: rgba(255, 255, 255, 0.66);\n        }\n    }\n']),
-    _templateObject5 = _taggedTemplateLiteral(['\n    font-weight: 900;\n    @media (max-width: 600px) {\n        display: block;\n        font-size: 120%;\n    }\n'], ['\n    font-weight: 900;\n    @media (max-width: 600px) {\n        display: block;\n        font-size: 120%;\n    }\n']);
+    _templateObject2 = _taggedTemplateLiteral(['\n    font-size: 64px;\n    color: rgba(255, 255, 255, 0.85);\n    font-weight: 700;\n    letter-spacing: -1.4px;\n    max-width: 900px;\n    text-align: center;\n    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;\n     transform: translate3d(0, 0, 0);\n     backface-visibility: hidden;\n     perspective: 1000px;\n     text-shadow: 2px 1px 5px rgba(0, 0, 0, 0.3);\n     @media (max-width: 600px) {\n        font-size: 44px;\n     }\n    @keyframes shake {\n      10%, 90% {\n        transform: translate3d(-1px, 0, 0);\n      }\n      20%, 80% {\n        transform: translate3d(2px, 0, 0);\n      }\n      30%, 50%, 70% {\n        transform: translate3d(-4px, 0, 0);\n      }\n      40%, 60% {\n        transform: translate3d(4px, 0, 0);\n      }\n    }\n'], ['\n    font-size: 64px;\n    color: rgba(255, 255, 255, 0.85);\n    font-weight: 700;\n    letter-spacing: -1.4px;\n    max-width: 900px;\n    text-align: center;\n    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;\n     transform: translate3d(0, 0, 0);\n     backface-visibility: hidden;\n     perspective: 1000px;\n     text-shadow: 2px 1px 5px rgba(0, 0, 0, 0.3);\n     @media (max-width: 600px) {\n        font-size: 44px;\n     }\n    @keyframes shake {\n      10%, 90% {\n        transform: translate3d(-1px, 0, 0);\n      }\n      20%, 80% {\n        transform: translate3d(2px, 0, 0);\n      }\n      30%, 50%, 70% {\n        transform: translate3d(-4px, 0, 0);\n      }\n      40%, 60% {\n        transform: translate3d(4px, 0, 0);\n      }\n    }\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n    color: rgba(255, 255, 255, .85);\n    letter-spacing: -.4px;\n    max-width: 300px;\n    text-align: center;\n    margin-top: 30px;\n    font-size: 22px;\n    font-weight: 300;\n    text-shadow: 2px 1px 5px rgba(0, 0, 0, 0.3);\n'], ['\n    color: rgba(255, 255, 255, .85);\n    letter-spacing: -.4px;\n    max-width: 300px;\n    text-align: center;\n    margin-top: 30px;\n    font-size: 22px;\n    font-weight: 300;\n    text-shadow: 2px 1px 5px rgba(0, 0, 0, 0.3);\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\n    margin-top: 35px;\n    a {\n        background: rgba(4, 105, 255, .8);\n        color: rgba(255, 255, 255, .86);\n        font-size: 22px;\n        font-weight: 300;\n        letter-spacing: -1.4px;\n        text-decoration: none;\n        border-radius: 15px 0 15px 0;\n        padding: 10px 48px;\n        transition: all 0.3s ease-in-out;\n        @media (min-width: 600px) {\n           font-size: 26px;\n           padding: 15px 90px;\n        }\n        &:hover {\n         color: rgba(0, 0, 0, 0.58);\n         background: rgba(255, 255, 255, 0.95);\n        }\n    }\n'], ['\n    margin-top: 35px;\n    a {\n        background: rgba(4, 105, 255, .8);\n        color: rgba(255, 255, 255, .86);\n        font-size: 22px;\n        font-weight: 300;\n        letter-spacing: -1.4px;\n        text-decoration: none;\n        border-radius: 15px 0 15px 0;\n        padding: 10px 48px;\n        transition: all 0.3s ease-in-out;\n        @media (min-width: 600px) {\n           font-size: 26px;\n           padding: 15px 90px;\n        }\n        &:hover {\n         color: rgba(0, 0, 0, 0.58);\n         background: rgba(255, 255, 255, 0.95);\n        }\n    }\n']),
+    _templateObject5 = _taggedTemplateLiteral(['\n    font-weight: 900;\n    display: block;\n    font-size: 30px;\n    @media (min-width: 600px) {\n       font-size: 40px;\n    }\n'], ['\n    font-weight: 900;\n    display: block;\n    font-size: 30px;\n    @media (min-width: 600px) {\n       font-size: 40px;\n    }\n']);
 
 var _react = __webpack_require__(8);
 
@@ -52524,73 +52524,73 @@ var CTA = _styledComponents2.default.div(_templateObject4);
 var B = _styledComponents2.default.b(_templateObject5);
 
 var Home = exports.Home = function (_React$Component) {
-    _inherits(Home, _React$Component);
+  _inherits(Home, _React$Component);
 
-    function Home() {
-        _classCallCheck(this, Home);
+  function Home() {
+    _classCallCheck(this, Home);
 
-        var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
 
-        _this.state = {
-            uselessExpenses: ["Beer", "Gambling", "Snacks", "Parties", "Gas", "Cigarettes"],
-            seconds: 0
-        };
-        return _this;
+    _this.state = {
+      uselessExpenses: ["Beer", "Gambling", "Snacks", "Parties", "Gas", "Cigarettes"],
+      seconds: 0
+    };
+    return _this;
+  }
+
+  _createClass(Home, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.intervalId = setInterval(function () {
+        _this2.setState({
+          seconds: _this2.state.seconds + 1
+        });
+      }, 1000);
     }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      clearInterval(this.intervalId);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        FullContainer,
+        { id: 'start' },
+        _react2.default.createElement(
+          MainHeading,
+          null,
+          'Calculate your unnecessary spendings'
+        ),
+        _react2.default.createElement(
+          P,
+          null,
+          'Have you ever wondered how much money do you spend on',
+          _react2.default.createElement(
+            B,
+            null,
+            ' ',
+            this.state.uselessExpenses[this.state.seconds % this.state.uselessExpenses.length]
+          ),
+          'during your whole life?'
+        ),
+        _react2.default.createElement(
+          CTA,
+          null,
+          _react2.default.createElement(
+            _reactRouter.Link,
+            { to: '/calc' },
+            'Check it out'
+          )
+        )
+      );
+    }
+  }]);
 
-    _createClass(Home, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            var _this2 = this;
-
-            this.intervalId = setInterval(function () {
-                _this2.setState({
-                    seconds: _this2.state.seconds + 1
-                });
-            }, 1000);
-        }
-    }, {
-        key: 'componentWillUnmount',
-        value: function componentWillUnmount() {
-            clearInterval(this.intervalId);
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                FullContainer,
-                { id: 'start' },
-                _react2.default.createElement(
-                    MainHeading,
-                    null,
-                    'Calculate your unnecessary spendings'
-                ),
-                _react2.default.createElement(
-                    P,
-                    null,
-                    'Have you ever wondered how much money do you spend on',
-                    _react2.default.createElement(
-                        B,
-                        null,
-                        ' ',
-                        this.state.uselessExpenses[this.state.seconds % this.state.uselessExpenses.length]
-                    ),
-                    ' during your whole life?'
-                ),
-                _react2.default.createElement(
-                    CTA,
-                    null,
-                    _react2.default.createElement(
-                        _reactRouter.IndexLink,
-                        { to: '/calc' },
-                        'Check it out'
-                    )
-                )
-            );
-        }
-    }]);
-
-    return Home;
+  return Home;
 }(_react2.default.Component);
 
 /***/ }),
@@ -52603,8 +52603,6 @@ var Home = exports.Home = function (_React$Component) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -52643,23 +52641,8 @@ var Calculator = function (_React$Component) {
   function Calculator() {
     _classCallCheck(this, Calculator);
 
-    var _this = _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).apply(this, arguments));
-
-    _this.state = {
-      inflation: null,
-      inflationValue: 2
-    };
-    return _this;
+    return _possibleConstructorReturn(this, (Calculator.__proto__ || Object.getPrototypeOf(Calculator)).apply(this, arguments));
   }
-
-  // TBC
-  // handleInflationChange = (event, i) => {
-  //   const expensesCopy = this.state.expenses.slice();
-  //   expensesCopy[i].name = event.target.value;
-  //   this.setState({
-  //     expenses: expensesCopy,
-  //   });
-  // };
 
   _createClass(Calculator, [{
     key: 'render',
@@ -52670,11 +52653,7 @@ var Calculator = function (_React$Component) {
         _react2.default.createElement(
           Container,
           null,
-          _react2.default.createElement(_Spendings.Spendings, _extends({}, this.props, {
-            inflation: this.state.inflation,
-            inflationValue: this.state.inflationValue,
-            inflationChange: this.handleInflationChange
-          })),
+          _react2.default.createElement(_Spendings.Spendings, this.props),
           _react2.default.createElement(_Chart.Chart, this.props)
         )
       );
@@ -52706,9 +52685,7 @@ var _templateObject = _taggedTemplateLiteral(['\n    font-size: 34px;\n    font-
     _templateObject2 = _taggedTemplateLiteral(['\n    text-align: center;\n    padding: 110px 2% 10px;\n'], ['\n    text-align: center;\n    padding: 110px 2% 10px;\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n    border-radius: 3px;\n  padding: 7px 20px;\n\tmargin: 0 1em;\n\tbackground: transparent;\n\tcolor: #5d5d78;\n\tborder: 2px solid #5d5d78;\n\ttransition: all 0.3s ease-in-out;\n\t&:hover {\n\t    border: 2px solid #6464c2;\n\t    color: #6464c2;\n\t}\n\t', '\n\t  @media (max-width: 600px) {\n\t    width: 80%;\n\t    display: block;\n        margin: 10px auto;\n        padding: 10px;\n      }\n'], ['\n    border-radius: 3px;\n  padding: 7px 20px;\n\tmargin: 0 1em;\n\tbackground: transparent;\n\tcolor: #5d5d78;\n\tborder: 2px solid #5d5d78;\n\ttransition: all 0.3s ease-in-out;\n\t&:hover {\n\t    border: 2px solid #6464c2;\n\t    color: #6464c2;\n\t}\n\t', '\n\t  @media (max-width: 600px) {\n\t    width: 80%;\n\t    display: block;\n        margin: 10px auto;\n        padding: 10px;\n      }\n']),
     _templateObject4 = _taggedTemplateLiteral(['\n    color: red;\n    font-size: 14px;\n    padding: 20px 0;\n    '], ['\n    color: red;\n    font-size: 14px;\n    padding: 20px 0;\n    ']),
-    _templateObject5 = _taggedTemplateLiteral(['\n    color: rgba(71, 78, 85, 0.84);\n    font-size: 13px;\n    '], ['\n    color: rgba(71, 78, 85, 0.84);\n    font-size: 13px;\n    ']),
-    _templateObject6 = _taggedTemplateLiteral(['\n    height: 35px;\n    text-align: center;\n    &[type=checkbox]{\n        width: 35px;\n        margin: 12px 6px 0 15px;\n        cursor: pointer;\n    }\n    &[type=number]{\n        margin: 0 4px;\n        width: 50px;\n    }\n'], ['\n    height: 35px;\n    text-align: center;\n    &[type=checkbox]{\n        width: 35px;\n        margin: 12px 6px 0 15px;\n        cursor: pointer;\n    }\n    &[type=number]{\n        margin: 0 4px;\n        width: 50px;\n    }\n']),
-    _templateObject7 = _taggedTemplateLiteral(['\n    font-size: 13px;\n'], ['\n    font-size: 13px;\n']);
+    _templateObject5 = _taggedTemplateLiteral(['\n    color: rgba(71, 78, 85, 0.84);\n    font-size: 13px;\n    '], ['\n    color: rgba(71, 78, 85, 0.84);\n    font-size: 13px;\n    ']);
 
 var _react = __webpack_require__(8);
 
@@ -52742,9 +52719,6 @@ var Error = _styledComponents2.default.div(_templateObject4);
 
 var P = _styledComponents2.default.p(_templateObject5);
 
-var Input = _styledComponents2.default.input(_templateObject6);
-var Span = _styledComponents2.default.span(_templateObject7);
-
 var Spendings = exports.Spendings = function (_React$Component) {
   _inherits(Spendings, _React$Component);
 
@@ -52765,6 +52739,7 @@ var Spendings = exports.Spendings = function (_React$Component) {
           valid: expense.valid
         }));
       });
+
       return expense;
     };
 
@@ -52777,7 +52752,6 @@ var Spendings = exports.Spendings = function (_React$Component) {
   _createClass(Spendings, [{
     key: 'render',
     value: function render() {
-
       return _react2.default.createElement(
         AddExpensesContainer,
         null,
@@ -69620,7 +69594,7 @@ module.exports = toNumber;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.ChartTreasures = undefined;
 
@@ -69659,123 +69633,95 @@ var Li = _styledComponents2.default.li(_templateObject4);
 var Em = _styledComponents2.default.em(_templateObject5);
 
 var ChartTreasures = exports.ChartTreasures = function (_React$Component) {
-    _inherits(ChartTreasures, _React$Component);
+  _inherits(ChartTreasures, _React$Component);
 
-    function ChartTreasures() {
-        _classCallCheck(this, ChartTreasures);
+  function ChartTreasures() {
+    _classCallCheck(this, ChartTreasures);
 
-        return _possibleConstructorReturn(this, (ChartTreasures.__proto__ || Object.getPrototypeOf(ChartTreasures)).apply(this, arguments));
-    }
+    return _possibleConstructorReturn(this, (ChartTreasures.__proto__ || Object.getPrototypeOf(ChartTreasures)).apply(this, arguments));
+  }
 
-    _createClass(ChartTreasures, [{
-        key: 'render',
-        value: function render() {
-            var expensesCopy = this.props.expensesData.datasets[0].data.slice();
-            var totalSum = 0;
-            expensesCopy.forEach(function (expense) {
-                totalSum += parseInt(expense);
-            });
+  _createClass(ChartTreasures, [{
+    key: 'render',
+    value: function render() {
+      var expensesCopy = this.props.expensesData.datasets[0].data.slice();
+      var totalSum = 0;
+      expensesCopy.forEach(function (expense) {
+        totalSum += parseInt(expense);
+      });
 
-            var treasures = function treasures(price) {
-                var value = totalSum / price;
-                if (value > 10) {
-                    return value.toFixed();
-                } else if (value > 1) {
-                    return value.toFixed(1);
-                } else {
-                    return value.toFixed(2);
-                }
-            };
-
-            var billGates = function billGates() {
-                var seconds = parseInt((totalSum / 1666.66).toFixed(2));
-                var timeFormatter = __webpack_require__(601);
-                var time = timeFormatter.seconds(seconds, true);
-                return 'Bill Gates would have to work ' + time + ' to cover your spendings!';
-            };
-
-            return _react2.default.createElement(
-                TreasuresContainer,
-                null,
-                _react2.default.createElement(
-                    H2,
-                    null,
-                    'With money you spend on unnecessary things you could buy:'
-                ),
-                _react2.default.createElement(
-                    Ul,
-                    null,
-                    _react2.default.createElement(
-                        Li,
-                        null,
-                        _react2.default.createElement(
-                            Em,
-                            null,
-                            treasures(3)
-                        ),
-                        ' fresh bread'
-                    ),
-                    _react2.default.createElement(
-                        Li,
-                        null,
-                        _react2.default.createElement(
-                            Em,
-                            null,
-                            treasures(40)
-                        ),
-                        ' books'
-                    ),
-                    _react2.default.createElement(
-                        Li,
-                        null,
-                        _react2.default.createElement(
-                            Em,
-                            null,
-                            treasures(6000)
-                        ),
-                        ' exotic trips'
-                    ),
-                    _react2.default.createElement(
-                        Li,
-                        null,
-                        _react2.default.createElement(
-                            Em,
-                            null,
-                            treasures(120000)
-                        ),
-                        ' luxury cars'
-                    ),
-                    _react2.default.createElement(
-                        Li,
-                        null,
-                        _react2.default.createElement(
-                            Em,
-                            null,
-                            treasures(240000)
-                        ),
-                        ' medium sized flats in Cracow'
-                    ),
-                    _react2.default.createElement(
-                        Li,
-                        null,
-                        _react2.default.createElement(
-                            Em,
-                            null,
-                            treasures(740000)
-                        ),
-                        ' space trips'
-                    ),
-                    _react2.default.createElement(
-                        Li,
-                        null,
-                        billGates()
-                    )
-                )
-            );
+      var countTreasures = function countTreasures(price) {
+        var value = totalSum / price;
+        if (value > 10) {
+          return value.toFixed();
+        } else if (value > 1) {
+          return value.toFixed(1);
+        } else {
+          return value.toFixed(2);
         }
-    }]);
+      };
 
-    return ChartTreasures;
+      var billGates = function billGates() {
+        var seconds = parseInt((totalSum / 1666.66).toFixed(2));
+        var timeFormatter = __webpack_require__(601);
+        var time = timeFormatter.seconds(seconds, true);
+        return 'Bill Gates would have to work ' + time + ' to cover your spendings!';
+      };
+
+      var treasures = [{
+        name: 'fresh bread',
+        price: 3
+      }, {
+        name: 'books',
+        price: 40
+      }, {
+        name: 'exotic trips',
+        price: 6000
+      }, {
+        name: 'luxury cars',
+        price: 120000
+      }, {
+        name: 'medium sized flats in Cracow',
+        price: 280000
+      }, {
+        name: 'space trips',
+        price: 740000
+      }];
+
+      return _react2.default.createElement(
+        TreasuresContainer,
+        null,
+        _react2.default.createElement(
+          H2,
+          null,
+          'With money you spend on unnecessary things you could buy:'
+        ),
+        _react2.default.createElement(
+          Ul,
+          null,
+          treasures.map(function (treasure) {
+            return _react2.default.createElement(
+              Li,
+              null,
+              _react2.default.createElement(
+                Em,
+                null,
+                countTreasures(treasure.price)
+              ),
+              ' treasure.name'
+            );
+          }),
+          _react2.default.createElement(
+            Li,
+            null,
+            billGates()
+          )
+        )
+      );
+    }
+  }]);
+
+  return ChartTreasures;
 }(_react2.default.Component);
 
 /***/ }),

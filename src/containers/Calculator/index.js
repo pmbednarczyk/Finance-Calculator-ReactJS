@@ -25,20 +25,7 @@ const Container = styled.div`
 class Calculator extends React.Component {
   constructor() {
     super(...arguments);
-    this.state = {
-      inflation: null,
-      inflationValue: 2,
-    };
   }
-
-  // TBC
-  // handleInflationChange = (event, i) => {
-  //   const expensesCopy = this.state.expenses.slice();
-  //   expensesCopy[i].name = event.target.value;
-  //   this.setState({
-  //     expenses: expensesCopy,
-  //   });
-  // };
 
   render() {
     return (
@@ -46,9 +33,6 @@ class Calculator extends React.Component {
         <Container>
           <Spendings
             {...this.props}
-            inflation={this.state.inflation}
-            inflationValue={this.state.inflationValue}
-            inflationChange={this.handleInflationChange}
           />
 
           <Chart

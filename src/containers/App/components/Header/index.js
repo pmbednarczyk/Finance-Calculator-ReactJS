@@ -4,12 +4,12 @@ import styled from 'styled-components' ;
 
 const Nav = styled.nav`
     display: block;
-    background: rgb(39, 44, 50);
+    background: rgba(0, 0, 0, 0.66);
     width: 100%;
     z-index: 2;
     position: fixed;
     top: 0;
-    border-top: 4px solid #0469ff;
+    border-top: 8px solid #0469ff;
     opacity: 0.8;
     @media (max-width: 600px) {
         text-align: center;

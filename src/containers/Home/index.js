@@ -1,5 +1,5 @@
 import React from 'react';
-import {IndexLink} from 'react-router';
+import { Link } from 'react-router';
 import styled from 'styled-components';
 
 const FullContainer = styled.div`
@@ -30,6 +30,7 @@ const MainHeading = styled.h1`
     color: rgba(255, 255, 255, 0.85);
     font-weight: 700;
     letter-spacing: -1.4px;
+    max-width: 900px;
     text-align: center;
     animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
      transform: translate3d(0, 0, 0);
@@ -58,87 +59,78 @@ const MainHeading = styled.h1`
 const P = styled.p`
     color: rgba(255, 255, 255, .85);
     letter-spacing: -.4px;
-    max-width: 40%;
+    max-width: 300px;
     text-align: center;
     margin-top: 30px;
     font-size: 22px;
     font-weight: 300;
     text-shadow: 2px 1px 5px rgba(0, 0, 0, 0.3);
-    @media (max-width: 1400px) {
-        max-width: 55%;
-    }
-    @media (max-width: 1000px) {
-        max-width: 70%;
-    }
-    @media (max-width: 600px) {
-        max-width: 85%;
-    }
 `;
 
 const CTA = styled.div`
     margin-top: 35px;
     a {
-        background: rgba(4, 105, 255, .6);
+        background: rgba(4, 105, 255, .8);
         color: rgba(255, 255, 255, .86);
-        font-size: 26px;
+        font-size: 22px;
         font-weight: 300;
         letter-spacing: -1.4px;
         text-decoration: none;
         border-radius: 15px 0 15px 0;
         padding: 10px 48px;
         transition: all 0.3s ease-in-out;
-        @media (max-width: 600px) {
-            font-size: 22px;
+        @media (min-width: 600px) {
+           font-size: 26px;
+           padding: 15px 90px;
         }
         &:hover {
          color: rgba(0, 0, 0, 0.58);
-         background: rgba(255, 255, 255, 0.66);
+         background: rgba(255, 255, 255, 0.95);
         }
     }
 `;
 
 const B = styled.b`
     font-weight: 900;
-    @media (max-width: 600px) {
-        display: block;
-        font-size: 120%;
+    display: block;
+    font-size: 30px;
+    @media (min-width: 600px) {
+       font-size: 40px;
     }
 `;
 
 
 export class Home extends React.Component {
-    constructor() {
-        super(...arguments);
-        this.state = {
-            uselessExpenses: ["Beer", "Gambling", "Snacks", "Parties", "Gas", "Cigarettes"],
-            seconds: 0,
-        }
-    }
+  constructor() {
+    super(...arguments);
+    this.state = {
+      uselessExpenses: ["Beer", "Gambling", "Snacks", "Parties", "Gas", "Cigarettes"],
+      seconds: 0,
+    };
+  }
 
-    componentDidMount() {
-        this.intervalId = setInterval(() => {
-            this.setState({
-                seconds: this.state.seconds + 1
-            });
-        }, 1000)
-    }
+  componentDidMount() {
+    this.intervalId = setInterval(() => {
+      this.setState({
+        seconds: this.state.seconds + 1,
+      });
+    }, 1000);
+  }
 
-    componentWillUnmount() {
-        clearInterval(this.intervalId);
-    }
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
+  }
 
-    render() {
-        return (
-            <FullContainer id="start">
-                <MainHeading>Calculate your unnecessary spendings</MainHeading>
-                <P>Have you ever wondered how much money do you spend on
-                    <B> {this.state.uselessExpenses[this.state.seconds % this.state.uselessExpenses.length]}</B> during
-                    your whole life?</P>
-                <CTA><IndexLink to="/calc">Check it out</IndexLink></CTA>
-            </FullContainer>
-        )
-    }
+  render() {
+    return (
+      <FullContainer id="start">
+          <MainHeading>Calculate your unnecessary spendings</MainHeading>
+          <P>Have you ever wondered how much money do you spend on
+              <B> {this.state.uselessExpenses[this.state.seconds % this.state.uselessExpenses.length]}</B>
+              during your whole life?
+          </P>
+          <CTA><Link to="/calc">Check it out</Link></CTA>
+      </FullContainer>
+    );
+  }
 }
-
-
-

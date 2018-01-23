@@ -16,7 +16,7 @@ const H2 = styled.h2`
     @media (max-width: 600px) {
         font-size: 24px;
     }
-`
+`;
 
 const Ul = styled.ul`
     display: flex;
@@ -24,7 +24,7 @@ const Ul = styled.ul`
     align-items: center;
     flex-flow: row wrap;
     min-height: 400px;
-`
+`;
 
 const Li = styled.li`
     width: 320px;
@@ -35,7 +35,7 @@ const Li = styled.li`
         font-weight: 700;
         margin-top: 40px;
     }
-`
+`;
 const Em = styled.em`
     display: block;
     font-size: 50px;
@@ -45,53 +45,74 @@ const Em = styled.em`
     @media (max-width: 600px) {
         font-size: 34px;
     }
-`
+`;
 
 
 export class ChartTreasures extends React.Component {
 
-    render() {
-        const expensesCopy = this.props.expensesData.datasets[0].data.slice();
-        let totalSum = 0;
-        expensesCopy.forEach((expense) => {
-            totalSum += parseInt(expense);
-        });
+  render() {
+    const expensesCopy = this.props.expensesData.datasets[0].data.slice();
+    let totalSum = 0;
+    expensesCopy.forEach((expense) => {
+      totalSum += parseInt(expense);
+    });
 
-        const treasures = (price) => {
-            const value = (totalSum / price);
-            if (value > 10) {
-                return value.toFixed();
-            } else if (value > 1) {
-                return value.toFixed(1);
-            } else {
-                return value.toFixed(2);
-            }
-        };
-
-
-        const billGates = () => {
-            let seconds = parseInt((totalSum / 1666.66).toFixed(2));
-            const timeFormatter = require('time-formatter');
-            const time = timeFormatter.seconds(seconds, true);
-            return `Bill Gates would have to work ${time} to cover your spendings!`
-        };
+    const countTreasures = (price) => {
+      const value = (totalSum / price);
+      if (value > 10) {
+        return value.toFixed();
+      } else if (value > 1) {
+        return value.toFixed(1);
+      } else {
+        return value.toFixed(2);
+      }
+    };
 
 
-        return (
-            <TreasuresContainer>
-                <H2>With money you spend on unnecessary things you could buy:</H2>
-                <Ul>
-                    <Li><Em>{treasures(3)}</Em> fresh bread</Li>
-                    <Li><Em>{treasures(40)}</Em> books</Li>
-                    <Li><Em>{treasures(6000)}</Em> exotic trips</Li>
-                    <Li><Em>{treasures(120000)}</Em> luxury cars</Li>
-                    <Li><Em>{treasures(240000)}</Em> medium sized flats in Cracow</Li>
-                    <Li><Em>{treasures(740000)}</Em> space trips</Li>
-                    <Li>{billGates()}</Li>
-                </Ul>
-            </TreasuresContainer>
-        )
-    }
+    const billGates = () => {
+      let seconds = parseInt((totalSum / 1666.66).toFixed(2));
+      const timeFormatter = require('time-formatter');
+      const time = timeFormatter.seconds(seconds, true);
+      return `Bill Gates would have to work ${time} to cover your spendings!`;
+    };
+
+    const treasures = [
+      {
+        name: 'fresh bread',
+        price: 3,
+      },
+      {
+        name: 'books',
+        price: 40,
+      },
+      {
+        name: 'exotic trips',
+        price: 6000,
+      },
+      {
+        name: 'luxury cars',
+        price: 120000,
+      },
+      {
+        name: 'medium sized flats in Cracow',
+        price: 280000,
+      },
+      {
+        name: 'space trips',
+        price: 740000,
+      },
+    ];
+
+
+    return (
+      <TreasuresContainer>
+          <H2>With money you spend on unnecessary things you could buy:</H2>
+          <Ul>{treasures.map(treasure => (
+            <Li><Em>{countTreasures(treasure.price)}</Em> treasure.name</Li>
+          ))}
+          <Li>{billGates()}</Li>
+          </Ul>
+      </TreasuresContainer>
+    );
+  }
 }
-
-

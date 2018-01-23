@@ -41,35 +41,18 @@ const Button = styled.button`
         margin: 10px auto;
         padding: 10px;
       }
-`
+`;
 
 const Error = styled.div`
     color: red;
     font-size: 14px;
     padding: 20px 0;
-    `
+    `;
 
 const P = styled.p`
     color: rgba(71, 78, 85, 0.84);
     font-size: 13px;
-    `
-
-const Input = styled.input`
-    height: 35px;
-    text-align: center;
-    &[type=checkbox]{
-        width: 35px;
-        margin: 12px 6px 0 15px;
-        cursor: pointer;
-    }
-    &[type=number]{
-        margin: 0 4px;
-        width: 50px;
-    }
-`
-const Span = styled.span`
-    font-size: 13px;
-`
+    `;
 
 export class Spendings extends React.Component {
   constructor() {
@@ -92,11 +75,10 @@ export class Spendings extends React.Component {
         valid={expense.valid}
       />;
     });
+
     return expense;
   };
   render() {
-
-
     return (
       <AddExpensesContainer>
         <AddHeading>Add your expenses:</AddHeading>
@@ -104,21 +86,7 @@ export class Spendings extends React.Component {
         {this.getExpenses()}
         <Button onClick={this.props.addExpense}>Add another expense</Button>
         <Button primary onClick={this.props.countExpenses}>Count your expenses</Button>
-
-        {/*Next feature*/}
-        {/*<Input type="checkbox"*/}
-        {/*value={this.props.inflation}*/}
-        {/*onChange={this.props.inflationChange}*/}
-        {/*/>*/}
-        {/*<Span>Include*/}
-        {/*<Input type="number"*/}
-        {/*placeholder="2"*/}
-        {/*value={this.props.inflationValue}*/}
-        {/*onChange={this.props.inflationChange}*/}
-        {/*/>% annual inflation rate.*/}
-        {/*</Span>*/}
-
-        <Error style={{ display : this.props.calculator.validation === false ? 'block' : 'none',}}>
+        <Error style={{ display: this.props.calculator.validation === false ? 'block' : 'none' }}>
           {this.state.validationText}
         </Error>
       </AddExpensesContainer>
