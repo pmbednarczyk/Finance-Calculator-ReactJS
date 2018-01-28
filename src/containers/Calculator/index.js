@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Spendings } from './components/Spendings';
 import { Chart } from './components/Chart';
 
@@ -22,26 +23,22 @@ const Container = styled.div`
       align-items: center;
       flex-direction: column;
 `;
-class Calculator extends React.Component {
-  constructor() {
-    super(...arguments);
-  }
 
-  render() {
-    return (
-      <Wrapper>
-        <Container>
-          <Spendings
-            {...this.props}
-          />
+const Calculator = props => (
+  <Wrapper>
+    <Container>
+      <Spendings
+        {...props}
+      />
+      <Chart
+        {...props}
+      />
+    </Container>
+  </Wrapper>
+);
 
-          <Chart
-            {...this.props}
-          />
-        </Container>
-      </Wrapper>
-    );
-  }
-}
+Calculator.propTypes = {
+  props: PropTypes.shape({}),
+};
 
 export default Calculator;

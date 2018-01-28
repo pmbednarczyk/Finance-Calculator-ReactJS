@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const TreasuresContainer = styled.div`
      text-align: center;
@@ -48,71 +49,78 @@ const Em = styled.em`
 `;
 
 
-export class ChartTreasures extends React.Component {
+const ChartTreasures = ({ expensesData }) => {
+  const expensesCopy = expensesData.datasets[0].data.slice();
+  let totalSum = 0;
+  expensesCopy.forEach((expense) => {
+    totalSum += parseInt(expense);
+  });
 
-  render() {
-    const expensesCopy = this.props.expensesData.datasets[0].data.slice();
-    let totalSum = 0;
-    expensesCopy.forEach((expense) => {
-      totalSum += parseInt(expense);
-    });
-
-    const countTreasures = (price) => {
-      const value = (totalSum / price);
-      if (value > 10) {
-        return value.toFixed();
-      } else if (value > 1) {
-        return value.toFixed(1);
-      } else {
-        return value.toFixed(2);
-      }
-    };
+  const countTreasures = (price) => {
+    const value = (totalSum / price);
+    if (value > 10) {
+      return value.toFixed();
+    } else if (value > 1) {
+      return value.toFixed(1);
+    } else {
+      return value.toFixed(2);
+    }
+  };
 
 
-    const billGates = () => {
-      let seconds = parseInt((totalSum / 1666.66).toFixed(2));
-      const timeFormatter = require('time-formatter');
-      const time = timeFormatter.seconds(seconds, true);
-      return `Bill Gates would have to work ${time} to cover your spendings!`;
-    };
+  const billGates = () => {
+    const seconds = parseInt((totalSum / 1666.66).toFixed(2));
+    const timeFormatter = require('time-formatter');
+    const time = timeFormatter.seconds(seconds, true);
+    return `Bill Gates would have to work ${time} to cover your spendings!`;
+  };
 
-    const treasures = [
-      {
-        name: 'fresh bread',
-        price: 3,
-      },
-      {
-        name: 'books',
-        price: 40,
-      },
-      {
-        name: 'exotic trips',
-        price: 6000,
-      },
-      {
-        name: 'luxury cars',
-        price: 120000,
-      },
-      {
-        name: 'medium sized flats in Cracow',
-        price: 280000,
-      },
-      {
-        name: 'space trips',
-        price: 740000,
-      },
-    ];
+  const treasures = [
+    {
+      name: 'fresh bread',
+      price: 3,
+    },
+    {
+      name: 'books',
+      price: 40,
+    },
+    {
+      name: 'exotic trips',
+      price: 6000,
+    },
+    {
+      name: 'luxury cars',
+      price: 120000,
+    },
+    {
+      name: 'medium sized flats in Cracow',
+      price: 280000,
+    },
+    {
+      name: 'space trips',
+      price: 740000,
+    },
+  ];
 
 
-    return (
-      <TreasuresContainer>
-          <H2>With money you spend on unnecessary things you could buy:</H2>
-          <Ul>{treasures.map(treasure => (
-            <Li><Em>{countTreasures(treasure.price)}</Em> treasure.name</Li>
-          ))}
-          <Li>{billGates()}</Li>
-          </Ul>
-      </TreasuresContainer>
-    );
-  }
-}
+  return (
+    <TreasuresContainer>
+      <H2>With money you spend on unnecessary things you could buy:</H2>
+      <Ul>{treasures.map(treasure => (
+        <Li key={treasure.name}><Em>{countTreasures(treasure.price)}</Em> treasure.name</Li>
+      ))}
+        <Li>{billGates()}</Li>
+      </Ul>
+    </TreasuresContainer>
+  );
+};
+
+ChartTreasures.defaultProps = {
+  expensesData: [],
+};
+
+ChartTreasures.propTypes = {
+  expensesData: PropTypes.array,
+};
+
+export default ChartTreasures;

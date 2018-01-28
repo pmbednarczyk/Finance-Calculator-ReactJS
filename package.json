@@ -5,6 +5,7 @@
   "main": "out.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "wp": "node_modules/.bin/webpack",
     "dev": "webpack-dev-server"
   },
   "repository": {
@@ -20,6 +21,7 @@
   "dependencies": {
     "chart.js": "^2.6.0",
     "currency-formatter": "^1.2.1",
+    "prop-types": "^15.6.0",
     "react": "^15.4.0",
     "react-chartjs-2": "^2.1.0",
     "react-dom": "^15.4.0",

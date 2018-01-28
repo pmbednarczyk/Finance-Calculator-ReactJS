@@ -1,7 +1,8 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import styled from 'styled-components';
-import { ChartTreasures } from './components/ChartTreasures';
+import PropTypes from 'prop-types';
+import ChartTreasures from './components/ChartTreasures';
 
 const ChartContainer = styled.div`
      text-align: center;
@@ -102,7 +103,7 @@ export class Chart extends React.Component {
     const {
       calculator: { userYears, showChart },
       decrementYears,
-      incrementYears
+      incrementYears,
     } = this.props;
     const { chartData } = this.state;
     if (!showChart || typeof chartData.datasets === 'undefined') {
@@ -121,7 +122,7 @@ export class Chart extends React.Component {
           <h2>In {userYears}
             <button onClick={decrementYears}> -</button>
             <button onClick={incrementYears}> +</button>
-            years you will spend: <em>{currencyFormatter.format(totalSum, {locale: 'pl-PL'}) }</em>
+            years you will spend: <em>{currencyFormatter.format(totalSum, { locale: 'pl-PL' }) }</em>
           </h2>
           <Pie
             data={chartData}
@@ -134,9 +135,9 @@ export class Chart extends React.Component {
               },
               tooltips: {
                 callbacks: {
-                  label: function (tooltipItem, data) {
-                    let indice = tooltipItem.index;
-                    return data.labels[indice] + ': ' + currencyFormatter.format(data.datasets[0].data[indice], {locale: 'pl-PL'}) + '';
+                  label: (tooltipItem, data) => {
+                    const indice = tooltipItem.index;
+                    return `${data.labels[indice]}: ${currencyFormatter.format(data.datasets[0].data[indice], { locale: 'pl-PL' })}`;
                   },
                 },
               },
@@ -149,3 +150,14 @@ export class Chart extends React.Component {
   }
 }
 
+Chart.defaultProps = {
+  calculator: {},
+  decrementYears: () => {},
+  incrementYears: () => {},
+};
+
+Chart.propTypes = {
+  calculator: PropTypes.shape({}),
+  decrementYears: PropTypes.func,
+  incrementYears: PropTypes.func,
+};
